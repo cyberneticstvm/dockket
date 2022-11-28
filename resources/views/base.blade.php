@@ -6,11 +6,11 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 
-		<title>Demo Medical 2 | Porto - Multipurpose Website Template</title>	
+		<title>Dockket | Online Doctor Booking App</title>	
 
-		<meta name="keywords" content="WebSite Template" />
-		<meta name="description" content="Porto - Multipurpose Website Template">
-		<meta name="author" content="okler.net">
+		<meta name="keywords" content="doctor booking, online doctor booing" />
+		<meta name="description" content="Dockket - Online Doctor Booking App">
+		<meta name="author" content="eniecoitsolutions.com">
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="{{ public_path().'/img/favicon.ico' }}" type="image/x-icon" />
