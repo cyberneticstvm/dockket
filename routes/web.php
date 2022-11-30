@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DoctorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('/doctor/registration/', [DoctorController::class, 'showReg'])->name('doctor.show.registration');
+Route::post('/doctor/registration/', [DoctorController::class, 'reg'])->name('doctor.registration');
+Route::get('/doctor/login/', [DoctorController::class, 'showLogin'])->name('doctor.show.login');
+Route::post('/doctor/login/', [DoctorController::class, 'login'])->name('doctor.login');
+Route::get('/doctor/profile/', [DoctorController::class, 'profile'])->name('doctor.profile');
+Route::get('/doctor/appointments/', [DoctorController::class, 'appointments'])->name('doctor.appointments');
+Route::get('/doctor/settings/', [DoctorController::class, 'settings'])->name('doctor.settings');
+Route::get('/doctor/reports/', [DoctorController::class, 'reports'])->name('doctor.reports');
+
+/*Route::group(['middleware' => ['auth', 'doctor']], function(){
+
+});*/
