@@ -11,6 +11,7 @@
 		<meta name="keywords" content="doctor booking, online doctor booing" />
 		<meta name="description" content="Dockket - Online Doctor Booking App">
 		<meta name="author" content="eniecoitsolutions.com">
+		<meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="{{ public_path().'/img/favicon.ico' }}" type="image/x-icon" />

@@ -1,41 +1,63 @@
 @extends('doctor.base')
 @section('content')
 <div role="main" class="main">
-    <div class="col-lg-9 order-1 order-lg-2">							
-        <div class="row justify-content-md-center">
-            <div class="col-md-9">
-                <div class="featured-box featured-box-primary text-start mt-0">
-                    <div class="box-content">
-                        <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">I'm a Returning Customer</h4>
-                        <form action="/" id="frmSignIn" method="post" class="needs-validation">
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label class="form-label">Username or E-mail Address</label>
-                                    <input type="text" name="username" value="" class="form-control form-control-lg" required>
+    <div class="container pt-3 pb-2">
+        <div class="row pt-2">
+            <div class="col-lg-12">
+                <h3 class="text-center text-primary">Doctor Login</h3>
+            </div>
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">							
+                <div class="row justify-content-md-center">
+                    <div class="col-md-9">
+                        <div class="featured-box featured-box-primary text-start mt-0">
+                            <div class="box-content">
+                                <h4 class="color-primary font-weight-semibold text-4 text-uppercase mb-3">Login as a Doctor</h4>
+                                @if (count($errors) > 0)
+                                <div role="alert" class="alert alert-danger">
+                                    @foreach ($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col">
-                                    <a class="float-end" href="#">(Lost Password?)</a>
-                                    <label class="form-label">Password</label>
-                                    <input type="password" name="password" value="" class="form-control form-control-lg" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-lg-6">
-                                    <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" name="rememberme" class="custom-control-input" id="rememberme">
-                                        <label class="custom-control-label text-2" for="rememberme">Remember Me</label>
+                                @endif
+                                <form action="{{ route('doctor.login') }}" method="post">
+                                    @csrf
+                                    <div class="row">
+                                        <div class="form-group col">
+                                            <label class="form-label">E-mail Address <span class="text-danger">*</span></label>
+                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="E-mail Address">
+                                            @error('email')
+                                            <small class="text-danger">{{ $errors->first('email') }}</small>
+                                            @enderror
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group col-lg-6">
-                                    <input type="submit" value="Login" class="btn btn-primary btn-modern float-end" data-loading-text="Loading...">
-                                </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-12">
+                                            <label class="form-label">Password <span class="text-danger">*</span></label>
+                                            <input type="password" name="password" value="" class="form-control" placeholder="*****">
+                                            @error('password')
+                                            <small class="text-danger">{{ $errors->first('password') }}</small>
+                                            @enderror
+                                        </div>                                        
+                                    </div>
+                                    <div class="row">
+                                        <div class="form-group col-lg-9"></div>
+                                        <div class="form-group col-lg-3">
+                                            <button type="submit" class="btn-submit btn btn-primary btn-modern float-end">Login</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <a href="/doctor/registration/">Register</a>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="col-lg-2"></div>
         </div>
     </div>
 </div>

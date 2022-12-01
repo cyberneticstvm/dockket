@@ -16,6 +16,7 @@
             <li class="nav-item"><a class="nav-link text-3 {{ (request()->segment(2) == 'appointments') ? 'active' : '' }}" href="/doctor/appointments/">My Appointments</a></li>
             <li class="nav-item"><a class="nav-link text-3 {{ (request()->segment(2) == 'settings') ? 'active' : '' }}" href="/doctor/settings/">Settings</a></li>
             <li class="nav-item"><a class="nav-link text-3 {{ (request()->segment(2) == 'reports') ? 'active' : '' }}" href="/doctor/reports/">Reports</a></li>
+            <li class="nav-item"><a href="/doctor/logout/">Logout</a></li>
         </ul>
     </aside>
 </div>
