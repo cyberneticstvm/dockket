@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Branch;
+use App\Models\Specialization;
 use Hash;
 use Session;
 use DB;
@@ -54,8 +57,8 @@ class DoctorController extends Controller
             'password' => 'required|min:6',
         ]);
         $credentials = $request->only('email', 'password');
-        if (Auth::attempt($credentials)):
-            return redirect()->intended('/doctor/profile/')->withSuccess('You have Successfully loggedin');
+        if (Auth::attempt($credentials, $request->has('remember'))):            
+            return redirect()->intended(route('doctor.profile'))->withSuccess('You have Successfully loggedin');
         endif;
         return redirect()->back()->withErrors('Oops! You have entered invalid credentials')->withInput($request->all());
     }
@@ -67,7 +70,9 @@ class DoctorController extends Controller
     }
 
     public function profile(){
-        return view('doctor.profile');
+        $branches = DB::table('branches')->get();
+        $specializations = Specialization::all();
+        return view('doctor.profile', compact('branches', 'specializations'));
     }
 
     public function appointments(){
@@ -75,7 +80,8 @@ class DoctorController extends Controller
     }
 
     public function settings(){
-        return view('doctor.settings');
+        $start = strtotime("06:00"); $end = strtotime("22:00");
+        return view('doctor.settings', compact('start', 'end'));
     }
 
     public function reports(){
@@ -129,7 +135,19 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$id,
+            'mobile' => 'required|unique:doctors,mobile',
+            'branch' => 'required',
+            'spec' => 'required',
+        ]);
+        $input = $request->all();
+        if($request->profPhoto):
+            $fpath = 'doctor/photo/'.$id.'.png';
+            Storage::disk('public')->put($fpath, base64_decode(str_replace(['data:image/jpeg;base64,', 'data:image/png;base64,', ' '], ['', '', '+'], $request->profPhoto)));
+        endif;
+        return redirect()->route('doctor.profile')->with('success','Profile updated successfully');
     }
 
     /**

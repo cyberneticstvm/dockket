@@ -20,6 +20,7 @@
                                 @endif
                                 <form action="{{ route('doctor.registration') }}" method="post">
                                     @csrf
+                                    <input type="hidden" name="user_type" value="D" />
                                     <div class="row">
                                         <div class="form-group col">
                                             <label class="form-label">Full Name <span class="text-danger">*</span></label>
