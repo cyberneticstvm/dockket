@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Branch;
 use App\Models\Specialization;
+use App\Models\Doctor;
 use Hash;
 use Session;
 use DB;
@@ -72,20 +73,29 @@ class DoctorController extends Controller
     public function profile(){
         $branches = DB::table('branches')->get();
         $specializations = Specialization::all();
-        return view('doctor.profile', compact('branches', 'specializations'));
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.profile', compact('branches', 'specializations', 'doctor'));
     }
 
     public function appointments(){
-        return view('doctor.appointments');
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.appointments', compact('doctor'));
+    }
+
+    public function leaves(){
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.leaves', compact('doctor'));
     }
 
     public function settings(){
         $start = strtotime("06:00"); $end = strtotime("22:00");
-        return view('doctor.settings', compact('start', 'end'));
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.settings', compact('start', 'end', 'doctor'));
     }
 
     public function reports(){
-        return view('doctor.reports');
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.reports', compact('doctor'));
     }
 
     public function create()
@@ -135,18 +145,32 @@ class DoctorController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        $did = ($doctor && $doctor->id) ? 'required|unique:doctors,mobile,'.$doctor->id : 'required|unique:doctors,mobile';
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
-            'mobile' => 'required|unique:doctors,mobile',
+            'mobile' => $did,
             'branch' => 'required',
             'spec' => 'required',
+            'designation' => 'required',
         ]);
-        $input = $request->all();
-        if($request->profPhoto):
+        $input = $request->except(array('_token', 'email', 'name'));        
+        $next = Doctor::selectRaw("CONCAT_WS('', 'DOC', LPAD(IFNULL(max(id)+1, 1), 4, '0')) AS docid")->first();
+        $input['doctor_id'] = ($request->doctor_id) ? $request->doctor_id : $next->docid;
+        if($request->photo):
             $fpath = 'doctor/photo/'.$id.'.png';
-            Storage::disk('public')->put($fpath, base64_decode(str_replace(['data:image/jpeg;base64,', 'data:image/png;base64,', ' '], ['', '', '+'], $request->profPhoto)));
+            Storage::disk('public')->put($fpath, base64_decode(str_replace(['data:image/jpeg;base64,', 'data:image/png;base64,', ' '], ['', '', '+'], $request->photo)));
+            $input['photo'] = $id.'.png';
         endif;
+        try{
+            DB::transaction(function () use ($input, $request, $id) {
+                Doctor::upsert($input, 'user_id');
+                User::where('id', $id)->update(['name' => $request->name, 'email' => $request->email]);
+            });            
+        }catch(Exception $e){
+            throw $e;
+        }        
         return redirect()->route('doctor.profile')->with('success','Profile updated successfully');
     }
 

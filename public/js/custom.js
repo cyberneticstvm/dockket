@@ -23,6 +23,10 @@ $(function(){
             }
             reader.readAsDataURL(file);
         }
-        $(this).val('');
     });
-})
+
+});
+
+setTimeout(function () {
+    $(".alert").hide('slow');
+}, 3000);

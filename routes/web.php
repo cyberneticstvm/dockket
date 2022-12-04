@@ -31,6 +31,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function(){
     Route::post('/doctor/profile/{id}/', [DoctorController::class, 'update'])->name('doctor.profile.update');
 
     Route::get('/doctor/appointments/', [DoctorController::class, 'appointments'])->name('doctor.appointments');
+    Route::get('/doctor/leaves/', [DoctorController::class, 'leaves'])->name('doctor.leaves');
     Route::get('/doctor/settings/', [DoctorController::class, 'settings'])->name('doctor.settings');
     Route::get('/doctor/reports/', [DoctorController::class, 'reports'])->name('doctor.reports');
     Route::get('/doctor/logout/', [DoctorController::class, 'logout'])->name('doctor.logout');

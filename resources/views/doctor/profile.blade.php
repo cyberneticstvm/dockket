@@ -10,12 +10,15 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
+                
             </div>
             @include('doctor.sections.leftmenu')
             <div class="col-lg-9">                
-                <form role="form" action="{{ route('doctor.profile.update', Auth::user()->id) }}" method="post">
+                <form role="form" action="{{ route('doctor.profile.update', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    <input type="hidden" name="profPhoto" id="profPhoto" value="" />
+                    <input type="hidden" name="user_id" value="{{ ($doctor && $doctor->user_id) ? $doctor->user_id : Auth::user()->id }}" />
+                    <input type="hidden" name="photo" id="profPhoto" value="{{ ($doctor && $doctor->photo) ? base64_encode(file_get_contents(storage_path('app/public/doctor/photo/'.$doctor->photo))) : base64_encode(file_get_contents(storage_path('app/public/doctor/photo/avatar.png'))) }}" />
+                    <input type="hidden" name="doctor_id" value="{{ ($doctor && $doctor->doctor_id) ? $doctor->doctor_id : NULL }}" />
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Full Name <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
@@ -37,7 +40,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Mobile Number <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="mobile" maxlength="10" placeholder="Mobile Number">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="mobile" maxlength="10" value="{{ ($doctor && $doctor->doctor_id) ? $doctor->mobile : '' }}" placeholder="Mobile Number">
                         </div>
                         @error('mobile')
                         <small class="text-danger">{{ $errors->first('mobile') }}</small>
@@ -46,37 +49,37 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Date of Birth</label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="date" name="dob">
+                            <input class="form-control text-3 h-auto py-2" type="date" value="{{ ($doctor && $doctor->dob) ? $doctor->dob : NULL }}" name="dob">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Communication Address</label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="communication_address" value="" placeholder="Communication Address">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="communication_address" value="{{ ($doctor && $doctor->communication_address) ? $doctor->communication_address : '' }}" placeholder="Communication Address">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>
                         <div class="col-lg-6">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="com_city" value="" placeholder="City">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="com_city" value="{{ ($doctor && $doctor->com_city) ? $doctor->com_city : '' }}" placeholder="City">
                         </div>
                         <div class="col-lg-3">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="com_state" value="" placeholder="State">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="com_state" value="{{ ($doctor && $doctor->com_state) ? $doctor->com_state : '' }}" placeholder="State">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Address</label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" value="" placeholder="Consultation Address">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : '' }}" placeholder="Consultation Address">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>
                         <div class="col-lg-6">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="con_city" value="" placeholder="City">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="con_city" value="{{ ($doctor && $doctor->con_city) ? $doctor->con_city : '' }}" placeholder="City">
                         </div>
                         <div class="col-lg-3">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="con_state" value="" placeholder="State">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="con_state" value="{{ ($doctor && $doctor->con_state) ? $doctor->con_state : '' }}" placeholder="State">
                         </div>
                     </div>
                     <div class="form-group row">
@@ -85,7 +88,7 @@
                             <select class="form-control" name="branch">
                                 <option value="">Select</option>
                                 @forelse($branches as $key => $branch)
-                                <option value="{{ $branch->id }}">{{ $branch->name }}</option>
+                                <option value="{{ $branch->id }}" {{ ($doctor && $doctor->branch == $branch->id) ? 'selected' : '' }}>{{ $branch->name }}</option>
                                 @empty
                                 @endforelse
                             </select>
@@ -100,7 +103,7 @@
                             <select class="form-control" name="spec">
                                 <option value="">Select</option>
                                 @forelse($specializations as $key => $spec)
-                                <option value="{{ $spec->id }}">{{ $spec->name }}</option>
+                                <option value="{{ $spec->id }}" {{ ($doctor && $doctor->spec == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
                                 @empty
                                 @endforelse
                             </select>
@@ -110,10 +113,13 @@
                         @enderror
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Designation</label>
+                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Designation <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="designation">
+                            <input class="form-control text-3 h-auto py-2" type="text" value="{{ ($doctor && $doctor->designation) ? $doctor->designation : '' }}" name="designation">
                         </div>
+                        @error('designation')
+                        <small class="text-danger">{{ $errors->first('designation') }}</small>
+                        @enderror
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-lg-9">
