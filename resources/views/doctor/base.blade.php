@@ -89,7 +89,7 @@
 		<!-- Vendor -->
 		<script src="{{ public_path().'/vendor/plugins/js/plugins.min.js' }}"></script>
 
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrJEonq51ry8B-bgcrPgxKS8l_b197B5o&libraries=places">
+		<script src="https://maps.googleapis.com/maps/api/js?key={{config('app.google_api_key')}}&libraries=places">
 		</script>
 
 		<!-- Theme Base, Components and Settings -->

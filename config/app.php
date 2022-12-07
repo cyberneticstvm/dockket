@@ -15,6 +15,8 @@ return [
     |
     */
 
+    'google_api_key' => env('GOOGLE_API_KEY', 'AIzaSyBrJEonq51ry8B-bgcrPgxKS8l_b197B5o'),
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
