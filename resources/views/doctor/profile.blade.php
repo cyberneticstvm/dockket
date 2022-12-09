@@ -9,8 +9,7 @@
                     <div class="alert alert-success">
                         {{ session()->get('success') }}
                     </div>
-                @endif
-                
+                @endif                
             </div>
             @include('doctor.sections.leftmenu')
             <div class="col-lg-9">                
@@ -72,8 +71,8 @@
                         <div class="col-lg-9">
                             <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" id="address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : '' }}" placeholder="Consultation Address">
                         </div>
-                        <input type="hidden" name="" id="latitude" />
-                        <input type="hidden" name="" id="longitude" />
+                        <input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : '' }}" />
+                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : '' }}" />
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>

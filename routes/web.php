@@ -17,6 +17,9 @@ use App\Http\Controllers\DoctorController;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/appointment/', function () {
+    return view('appointment');
+});
 Route::get('/login', function () {
     return view('doctor.login');
 })->name('login');
@@ -28,11 +31,17 @@ Route::post('/doctor/login/', [DoctorController::class, 'login'])->name('doctor.
 
 Route::group(['middleware' => ['auth', 'doctor']], function(){
     Route::get('/doctor/profile/', [DoctorController::class, 'profile'])->name('doctor.profile');
-    Route::post('/doctor/profile/{id}/', [DoctorController::class, 'update'])->name('doctor.profile.update');
+    Route::post('/doctor/profile/{id}/', [DoctorController::class, 'profileupdate'])->name('doctor.profile.update');
+
+    Route::get('/doctor/settings/', [DoctorController::class, 'settings'])->name('doctor.settings');
+    Route::post('/doctor/settings/{id}/', [DoctorController::class, 'settingsupdate'])->name('doctor.settings.update');
+
+    Route::get('/doctor/leaves/', [DoctorController::class, 'leaves'])->name('doctor.leaves');
+    Route::post('/doctor/leaves/{id}/', [DoctorController::class, 'leavesupdate'])->name('doctor.leaves.update');
 
     Route::get('/doctor/appointments/', [DoctorController::class, 'appointments'])->name('doctor.appointments');
-    Route::get('/doctor/leaves/', [DoctorController::class, 'leaves'])->name('doctor.leaves');
-    Route::get('/doctor/settings/', [DoctorController::class, 'settings'])->name('doctor.settings');
+    
+    
     Route::get('/doctor/reports/', [DoctorController::class, 'reports'])->name('doctor.reports');
     Route::get('/doctor/logout/', [DoctorController::class, 'logout'])->name('doctor.logout');
     

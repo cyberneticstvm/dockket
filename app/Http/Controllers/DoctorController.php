@@ -6,9 +6,12 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\DoctorSettings;
 use App\Models\Branch;
 use App\Models\Specialization;
+use App\Models\Appointment;
 use App\Models\Doctor;
+use Carbon\Carbon;
 use Hash;
 use Session;
 use DB;
@@ -68,30 +71,12 @@ class DoctorController extends Controller
         Session::flush();
         Auth::logout();  
         return Redirect('/doctor/login/');
-    }
-
-    public function profile(){
-        $branches = DB::table('branches')->get();
-        $specializations = Specialization::all();
-        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        return view('doctor.profile', compact('branches', 'specializations', 'doctor'));
-    }
+    }    
 
     public function appointments(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
         return view('doctor.appointments', compact('doctor'));
-    }
-
-    public function leaves(){
-        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        return view('doctor.leaves', compact('doctor'));
-    }
-
-    public function settings(){
-        $start = strtotime("06:00"); $end = strtotime("22:00");
-        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        return view('doctor.settings', compact('start', 'end', 'doctor'));
-    }
+    }   
 
     public function reports(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
@@ -143,8 +128,14 @@ class DoctorController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function profile(){
+        $branches = DB::table('branches')->get();
+        $specializations = Specialization::all();
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.profile', compact('branches', 'specializations', 'doctor'));
+    }
+
+    public function profileupdate(Request $request, $id){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
         $did = ($doctor && $doctor->id) ? 'required|unique:doctors,mobile,'.$doctor->id : 'required|unique:doctors,mobile';
         $this->validate($request, [
@@ -172,6 +163,63 @@ class DoctorController extends Controller
             throw $e;
         }        
         return redirect()->route('doctor.profile')->with('success','Profile updated successfully');
+    }
+
+    public function settings(){
+        $start = strtotime("06:00"); $end = strtotime("22:00");
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        $settings = DoctorSettings::selectRaw("*, TIME_FORMAT(appointment_start_time, '%h:%i %p') AS stime")->where('doctor_id', $doctor->id)->first();
+        return view('doctor.settings', compact('start', 'end', 'doctor', 'settings'));
+    }
+
+    public function settingsupdate(Request $request, $id){
+        $this->validate($request, [
+            'fee' => 'required',
+            'slots' => 'required',
+            'time_per_appointment' => 'required',
+            'appointment_start_time' => 'required',
+            'appointment_open_days' => 'required',
+        ]);
+        $pwd = ($request->password) ? Hash::make($request->password) : NULL;
+        $input = $request->except(array('_token', 'password'));
+        $input['appointment_start_time'] = Carbon::createFromFormat('h:i A', $request->appointment_start_time)->format('H:i:s');
+        $input['appointment_end_time'] = Carbon::createFromFormat('h:i A', date('h:i A', strtotime("22:30")))->format('H:i:s');
+        $input['available_for_appointment'] = isset($request->available_for_appointment) ? $request->available_for_appointment : 0;
+        try{
+            DoctorSettings::upsert($input, 'doctor_id');
+            if($pwd)
+                $upd = DB::table('users')->where('id', Auth::user()->id)->update(['password' => $pwd]);           
+        }catch(Exception $e){
+            throw $e;
+        }
+        return redirect()->route('doctor.settings')->with('success','Settings updated successfully');
+    }
+
+    public function leaves(){
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        return view('doctor.leaves', compact('doctor'));
+    }
+
+    public function leavesupdate(Request $request, $id){
+        $this->validate($request, [
+            'leave_date' => 'required',
+        ]);
+        $input = $request->all();
+        //$leave_date = Carbon::parse($request->leave_date)->toDateString();
+        try{
+            $ap = Appointment::whereDate('appointment_date', $request->leave_date)->where('doctor_id', $id)->get();
+            $ap1 = DB::table('doctor_leaves')->whereDate('leave_date', $request->leave_date)->where('doctor_id', $id)->first();
+            if($ap->isNotEmpty()):
+                return redirect()->route('doctor.leaves')->with('error','Oops! You have appointments on provided date.');
+            elseif($ap1):
+                return redirect()->route('doctor.leaves')->with('error','Oops! You have already leave marked on provided date.');
+            else:
+                DB::table('doctor_leaves')->insert(['doctor_id' => $id, 'leave_date' => $request->leave_date, 'created_at' => Carbon::now(), 'updated_at' => Carbon::now()]);
+                return redirect()->route('doctor.leaves')->with('success','Leaves updated successfully');
+            endif;      
+        }catch(Exception $e){
+            throw $e;
+        }        
     }
 
     /**

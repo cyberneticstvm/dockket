@@ -5,52 +5,73 @@
         <div class="row pt-2">
             <div class="col-lg-12">
                 <h3 class="text-center text-primary">My Settings</h3>
+                @if(session()->has('success'))
+                    <div class="alert alert-success">
+                        {{ session()->get('success') }}
+                    </div>
+                @endif
             </div>
             @include('doctor.sections.leftmenu')
             <div class="col-lg-9">                
-                <form role="form">
+                <form role="form" method="post" action="{{ route('doctor.settings.update', $doctor->id) }}">
                     @csrf
+                    <input type="hidden" name="doctor_id" value="{{ $doctor->id }}" />
                     <div class="form-group row">
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Fee</label>
-                            <input class="form-control text-3 h-auto py-2" type="number" step="1" min="1" name="fee" placeholder="0.00">
+                            <input class="form-control text-3 h-auto py-2" type="number" step="1" min="1" name="fee" value="{{ ($settings && $settings['fee']) ? $settings['fee'] : '' }}" placeholder="0.00">
+                            @error('fee')
+                            <small class="text-danger">{{ $errors->first('fee') }}</small>
+                            @enderror
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Slots per Day</label>
-                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="slot" placeholder="0">
+                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="slots" value="{{ ($settings && $settings['slots']) ? $settings['slots'] : '' }}" placeholder="0">
+                            @error('slots')
+                            <small class="text-danger">{{ $errors->first('slots') }}</small>
+                            @enderror
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Time per Cons. (In Minutes)</label>
-                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="slot" placeholder="0">
+                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="time_per_appointment" value="{{ ($settings && $settings['time_per_appointment']) ? $settings['time_per_appointment'] : '' }}" placeholder="0">
+                            @error('time_per_appointment')
+                            <small class="text-danger">{{ $errors->first('time_per_appointment') }}</small>
+                            @enderror
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Start</label>
                             @php $from = $start @endphp
-                            <select class="form-control">
+                            <select class="form-control" name="appointment_start_time">
                                 <option value="">Select</option>
                                 @while($from <= $end)                                            
-                                    <option value="{{ date('h:i A', $from) }}">{{ date('h:i A', $from) }}</option>
+                                    <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['stime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
                                     @php $from = strtotime('+60 minutes', $from); @endphp
                                 @endwhile
                             </select>
+                            @error('appointment_start_time')
+                            <small class="text-danger">{{ $errors->first('appointment_start_time') }}</small>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Appointment Open</label>
-                            <select class="form-control">
+                            <select class="form-control" name="appointment_open_days">
                                 <option value="">Select</option>
-                                <option value="0">Always</option>
-                                <option value="1">1 Day prior</option>
-                                <option value="2">2 Days prior</option>
-                                <option value="3">3 Days prior</option>
+                                <option value="0" {{ ($settings && $settings['appointment_open_days'] == 0) ? 'selected' : '' }}>Always</option>
+                                <option value="1" {{ ($settings && $settings['appointment_open_days'] == 1) ? 'selected' : '' }}>1 Day prior</option>
+                                <option value="2" {{ ($settings && $settings['appointment_open_days'] == 2) ? 'selected' : '' }}>2 Days prior</option>
+                                <option value="3" {{ ($settings && $settings['appointment_open_days'] == 3) ? 'selected' : '' }}>3 Days prior</option>
                             </select>
-                        </div>                        
+                        </div>
+                        @error('appointment_open_days')
+                        <small class="text-danger">{{ $errors->first('appointment_open_days') }}</small>
+                        @enderror                        
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-9 form-group">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" name="availability" class="custom-control-input" value="1">
+                                <input type="checkbox" name="available_for_appointment" class="custom-control-input" value="1" {{ ($settings && $settings['available_for_appointment'] == 1) ? 'checked' : '' }}>
                                 <label class="custom-control-label text-2" for="terms">Available for Consultation</label>
                                 @error('terms')
                                 <small class="text-danger">{{ $errors->first('terms') }}</small>
@@ -62,6 +83,14 @@
                         <div class="col-lg-4 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">New Password</label>
                             <input class="form-control text-3 h-auto py-2" type="password" name="password" placeholder="*****">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="form-group col-lg-9">
+
+                        </div>
+                        <div class="form-group col-lg-3">
+                            <button type="submit" class="btn-submit btn btn-primary btn-modern float-end">Update</button>
                         </div>
                     </div>
                 </form>
