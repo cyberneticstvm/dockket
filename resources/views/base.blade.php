@@ -229,7 +229,7 @@
 				<div class="container">
 					<div class="row py-5">
 						<div class="col-sm-12 pb-4 pb-lg-0 col-lg-2 mb-2 d-flex align-items-center">
-							<img src="img/demos/medical-2/logos/logo-footer.png" alt="Logo Footer">
+							<!--<img src="{{ public_path().'/img/dockket/logos/dockket-logo.png' }}" alt="Logo Footer">-->
 						</div>
 						<div class="col-sm-6 col-lg-3 footer-column footer-column-get-in-touch">
 							<h4 class="mb-4 text-uppercase">Get in Touch</h4>
