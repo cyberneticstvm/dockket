@@ -355,6 +355,9 @@
 		<!-- Vendor -->
 		<script src="{{ public_path().'/vendor/plugins/js/plugins.min.js' }}"></script>
 
+		<script src="https://maps.googleapis.com/maps/api/js?key={{config('app.google_api_key')}}&libraries=places">
+		</script>
+
 		<!-- Theme Base, Components and Settings -->
 		<script src="{{ public_path().'/js/theme.js' }}"></script>
 
@@ -366,6 +369,19 @@
 
 		<!-- Theme Initialization Files -->
 		<script src="{{ public_path().'/js/theme.init.js' }}"></script>
+
+		<script>
+			window.addEventListener('load', initialize);
+			function initialize() {
+				var input = document.getElementById('address');
+				var autocomplete = new google.maps.places.Autocomplete(input);
+				autocomplete.addListener('place_changed', function () {
+					var place = autocomplete.getPlace();
+					$('#latitude').val(place.geometry['location'].lat());
+					$('#longitude').val(place.geometry['location'].lng());
+				});
+			}
+		</script>
 
 	</body>
 </html>

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Branch;
+use Carbon\Appointment;
+use DB;
 
 class AppointmentController extends Controller
 {
@@ -13,7 +16,9 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        //
+        $specs = DB::table('specializations')->orderBy('name')->get();
+        $apps = []; $input = [];
+        return view('appointment', compact('specs', 'apps', 'input'));
     }
 
     /**
@@ -43,9 +48,16 @@ class AppointmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+        $this->validate($request, [
+            'spec' => 'required',
+            'location' => 'required',
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'radius' => 'required',
+        ]);
+        $input = array($request->spec, $request->location, $request->latitude, $request->longitude, $request->radius);
     }
 
     /**

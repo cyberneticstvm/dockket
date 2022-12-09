@@ -1,0 +1,1 @@
+SELECT u.name AS docname, d.id, d.doctor_id AS docid, DATE_ADD(CURRENT_DATE(), INTERVAL S.appointment_open_days DAY) AS next_available FROM doctors d JOIN users u ON u.id=d.user_id JOIN doctor_settings s ON d.id = s.doctor_id WHERE d.status = 'A' AND s.available_for_appointment = 1 AND d.spec = 1;

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,12 +18,12 @@ use App\Http\Controllers\DoctorController;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/appointment/', function () {
-    return view('appointment');
-});
 Route::get('/login', function () {
     return view('doctor.login');
 })->name('login');
+
+Route::get('/appointment/', [AppointmentController::class, 'index'])->name('appointment');
+Route::post('/appointment/', [AppointmentController::class, 'show'])->name('appointment.show');
 
 Route::get('/doctor/registration/', [DoctorController::class, 'showReg'])->name('doctor.show.registration');
 Route::post('/doctor/registration/', [DoctorController::class, 'reg'])->name('doctor.registration');
