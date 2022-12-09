@@ -24,6 +24,7 @@
     </div>
 </div>
 <script>
+window.onload = getLocation();
 var x = document.getElementById("demo");
 function getLocation() {
   if (navigator.geolocation) {
