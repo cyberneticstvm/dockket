@@ -67,7 +67,6 @@
                 <div class="row">
                     @forelse($apps as $key => $app)
                         <div class="col-lg-4 col-md-6 pb-2">
-                            <div class="toggle toggle-minimal toggle-primary" data-plugin-toggle>
 							<div class="card border-0 mb-4 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
 								<div class="card-body p-3 z-index-1">
 									<a href="demo-medical-2-our-doctors-detail.html" class="d-block text-center bg-color-grey">
