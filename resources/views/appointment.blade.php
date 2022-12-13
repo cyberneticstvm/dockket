@@ -71,7 +71,7 @@
 							<div class="card border-0 mb-4 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
 								<div class="card-body p-3 z-index-1">
 									<a href="demo-medical-2-our-doctors-detail.html" class="d-block text-center bg-color-grey">
-										<img alt="Doctor" class="img-fluid rounded" src="{{ ($app->photo) ? '/storage/doctor/photo/'.$app->photo : '/storage/doctor/photo/avatar.png' }}">
+										<img alt="Doctor" class="img-fluid rounded" src="{{ ($app->photo) ? public_path().'/storage/doctor/photo/'.$app->photo :  public_path().'/storage/doctor/photo/avatar.png' }}">
 									</a>
 									<strong class="font-weight-bold text-dark d-block text-5 mt-4 mb-0 text-center">
 										<a href="demo-medical-2-our-doctors-detail.html" class="text-dark">
