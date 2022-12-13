@@ -40,7 +40,7 @@
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Radius in KM <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-lg text-3 h-auto py-2" type="number" name="radius" min="1" step="1" placeholder="0 KM" value="{{ ($input && $input[4]) ? $input[4] : '' }}" required />
+                            <input class="form-control form-control-lg text-3 h-auto py-2" type="number" name="radius" min="1" max="50" step="1" placeholder="0 KM" value="{{ ($input && $input[4]) ? $input[4] : '' }}" required />
                             @error('radius')
                             <small class="text-danger">{{ $errors->first('radius') }}</small>
                             @enderror
