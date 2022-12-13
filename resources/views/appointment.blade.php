@@ -46,7 +46,7 @@
                             @enderror
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
-                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Date</label>
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Date <span class="text-danger">*</span></label>
                             <input class="form-control form-control-lg text-3 h-auto py-2" type="date" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" required />
                             @error('date')
                             <small class="text-danger">{{ $errors->first('date') }}</small>
