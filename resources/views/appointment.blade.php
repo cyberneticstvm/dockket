@@ -91,17 +91,17 @@
                                         <div id="slot_{{ $app->id }}" class="collapse">
                                             <h5 class="text-center text-success">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
                                             @php 
-                                                $from = strtotime($app->stime); $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = '';
+                                                $from = strtotime($app->stime); $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = ''; $bstime = strtotime($app->bstime); $betime = strtotime($app->betime); $c = 0;
                                                 $apps = DB::table('appointments')->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time")->where('doctor_id', $app->id)->whereDate('appointment_date', $input[5])->pluck('appointment_time')->toArray();
                                             @endphp
-                                            <div class="row">
+                                            <div class="row">                                                
                                                 @while($from <= $end)
-                                                    <div class="col slot {{ (in_array(date('h:i A', $from), $apps)) ? 'bg-danger text-white no-app' : '' }}">
+                                                    @if($c == $app->slots) @break; @endif
+                                                    <div class="col slot {{ (in_array(date('h:i A', $from), $apps) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))) ? 'bg-danger text-white no-app' : '' }}">
                                                         {{ date('h:i A', $from) }}
-                                                        <!--<input type="radio" name="appointment_time" value="{{ date('h:i A', $from) }}" class="slotradio" />-->
                                                     </div>
-                                                    @php $from = strtotime('+'.$dur.' minutes', $from); @endphp
-                                                @endwhile
+                                                    @php $from = strtotime('+'.$dur.' minutes', $from); $c++; @endphp
+                                                @endwhile                                                
                                                 <div class="row mt-3">
                                                     <div class="col-lg-12 form-group">
                                                         <label>Selected Time: </label>
