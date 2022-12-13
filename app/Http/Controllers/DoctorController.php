@@ -168,7 +168,7 @@ class DoctorController extends Controller
     public function settings(){
         $start = strtotime("06:00"); $end = strtotime("22:00");
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        $settings = DoctorSettings::selectRaw("*, TIME_FORMAT(appointment_start_time, '%h:%i %p') AS stime")->where('doctor_id', $doctor->id)->first();
+        $settings = DoctorSettings::selectRaw("*, TIME_FORMAT(appointment_start_time, '%h:%i %p') AS stime, TIME_FORMAT(break_start_time, '%h:%i %p') AS bstime, TIME_FORMAT(break_end_time, '%h:%i %p') AS betime")->where('doctor_id', $doctor->id)->first();
         return view('doctor.settings', compact('start', 'end', 'doctor', 'settings'));
     }
 
@@ -184,6 +184,8 @@ class DoctorController extends Controller
         $input = $request->except(array('_token', 'password'));
         $input['appointment_start_time'] = Carbon::createFromFormat('h:i A', $request->appointment_start_time)->format('H:i:s');
         $input['appointment_end_time'] = Carbon::createFromFormat('h:i A', date('h:i A', strtotime("22:30")))->format('H:i:s');
+        $input['break_start_time'] = Carbon::createFromFormat('h:i A', $request->break_start_time)->format('H:i:s');
+        $input['break_end_time'] = Carbon::createFromFormat('h:i A', $request->break_end_time)->format('H:i:s');
         $input['available_for_appointment'] = isset($request->available_for_appointment) ? $request->available_for_appointment : 0;
         try{
             DoctorSettings::upsert($input, 'doctor_id');
@@ -197,7 +199,8 @@ class DoctorController extends Controller
 
     public function leaves(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        return view('doctor.leaves', compact('doctor'));
+        $leaves = DB::table('doctor_leaves')->selectRaw("DATE_FORMAT(leave_date, '%d/%b/%Y') AS ldate")->where('doctor_id', $doctor->id)->orderByDesc('leave_date')->get();
+        return view('doctor.leaves', compact('doctor', 'leaves'));
     }
 
     public function leavesupdate(Request $request, $id){

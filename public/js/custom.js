@@ -25,6 +25,17 @@ $(function(){
         }
     });
 
+    $('#dataTbl').DataTable();
+
+    $(".slot").click(function(){
+        var dis = $(this);
+        $('.slot').removeClass('activeslot');
+        dis.addClass('activeslot');
+        $(".atime").val(dis.text().trim());
+    });
+
+    $(".no-app").addClass('no-app');
+
 });
 
 setTimeout(function () {

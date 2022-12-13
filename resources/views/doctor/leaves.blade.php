@@ -31,14 +31,27 @@
                         @enderror
                     </div>
                     <div class="form-group row">
-                        <div class="form-group col-lg-9">
-
-                        </div>
+                        <div class="form-group col-lg-9"></div>                        
                         <div class="form-group col-lg-3">
                             <button type="submit" class="btn-submit btn btn-primary btn-modern float-end">Update</button>
                         </div>
                     </div>
                 </form>
+                <div class="table-responsive">
+                    <table id="dataTbl" class="table table-bordered table-stripped">
+                        <thead><tr><th>SL No</th><th>Leave Date</th></tr></thead>
+                        <tbody>
+                            @php $c = 1; @endphp
+                            @forelse($leaves as $key => $leave)
+                                <tr>
+                                    <td>{{ $c++ }}</td>
+                                    <td>{{ $leave->ldate }}</td>
+                                </tr>
+                            @empty
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>                
             </div>
         </div>
     </div>

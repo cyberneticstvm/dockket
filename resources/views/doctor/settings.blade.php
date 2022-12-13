@@ -63,10 +63,32 @@
                                 <option value="2" {{ ($settings && $settings['appointment_open_days'] == 2) ? 'selected' : '' }}>2 Days prior</option>
                                 <option value="3" {{ ($settings && $settings['appointment_open_days'] == 3) ? 'selected' : '' }}>3 Days prior</option>
                             </select>
+                            @error('appointment_open_days')
+                            <small class="text-danger">{{ $errors->first('appointment_open_days') }}</small>
+                            @enderror
+                        </div>                        
+                        <div class="col-lg-3 form-group">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Break Start</label>
+                            @php $from = $start @endphp
+                            <select class="form-control" name="break_start_time">
+                                <option value="">Select</option>
+                                @while($from <= $end)                                            
+                                    <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['bstime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
+                                    @php $from = strtotime('+30 minutes', $from); @endphp
+                                @endwhile
+                            </select>
                         </div>
-                        @error('appointment_open_days')
-                        <small class="text-danger">{{ $errors->first('appointment_open_days') }}</small>
-                        @enderror                        
+                        <div class="col-lg-3 form-group">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Break End</label>
+                            @php $from = $start @endphp
+                            <select class="form-control" name="break_end_time">
+                                <option value="">Select</option>
+                                @while($from <= $end)                                            
+                                    <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['betime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
+                                    @php $from = strtotime('+30 minutes', $from); @endphp
+                                @endwhile
+                            </select>
+                        </div>                        
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-9 form-group">

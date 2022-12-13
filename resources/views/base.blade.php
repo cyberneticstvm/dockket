@@ -32,6 +32,8 @@
 		<link rel="stylesheet" href="{{ public_path().'/vendor/owl.carousel/assets/owl.theme.default.min.css' }}">
 		<link rel="stylesheet" href="{{ public_path().'/vendor/magnific-popup/magnific-popup.min.css' }}">
 
+		<link rel="stylesheet" href="{{ public_path().'/plugins/DataTables/datatables.min.css' }}">
+
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="{{ public_path().'/css/theme.css' }}">
 		<link rel="stylesheet" href="{{ public_path().'/css/theme-elements.css' }}">
@@ -49,10 +51,10 @@
 
 		<!-- Head Libs -->
 		<script src="{{ public_path().'/vendor/modernizr/modernizr.min.js' }}"></script>
+		<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
 	</head>
 	<body>
-
 		<div class="body">
 
 			<header id="header" class="header-effect-shrink" data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyChangeLogo': true, 'stickyStartAt': 120, 'stickyHeaderContainerHeight': 70}">
@@ -358,6 +360,8 @@
 		<script src="https://maps.googleapis.com/maps/api/js?key={{config('app.google_api_key')}}&libraries=places">
 		</script>
 
+		<script src="{{ public_path().'/plugins/DataTables/datatables.min.js' }}"></script>
+
 		<!-- Theme Base, Components and Settings -->
 		<script src="{{ public_path().'/js/theme.js' }}"></script>
 
@@ -371,10 +375,13 @@
 		<script src="{{ public_path().'/js/theme.init.js' }}"></script>
 
 		<script>
+			var options = {
+				componentRestrictions: {country: "in"}
+			};
 			window.addEventListener('load', initialize);
 			function initialize() {
 				var input = document.getElementById('address');
-				var autocomplete = new google.maps.places.Autocomplete(input);
+				var autocomplete = new google.maps.places.Autocomplete(input, options);
 				autocomplete.addListener('place_changed', function () {
 					var place = autocomplete.getPlace();
 					$('#latitude').val(place.geometry['location'].lat());
@@ -382,6 +389,21 @@
 				});
 			}
 		</script>
-
+		<script>
+			var lat = $("#doc_latitude").val();
+			var long = $("#doc_longitude").val();
+			var myLatlng = new google.maps.LatLng(lat,long);
+			var mapOptions = {
+			zoom: 15,
+			center: myLatlng
+			}
+			var map = new google.maps.Map(document.getElementById("doclocationmap"), mapOptions);
+			var marker = new google.maps.Marker({
+				position: myLatlng,
+				title:"Hello World!"
+			});
+			// To add the marker to the map, call setMap();
+			marker.setMap(map);
+		</script>
 	</body>
 </html>

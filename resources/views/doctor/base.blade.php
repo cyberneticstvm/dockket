@@ -32,6 +32,8 @@
 		<link rel="stylesheet" href="{{ public_path().'/vendor/owl.carousel/assets/owl.theme.default.min.css' }}">
 		<link rel="stylesheet" href="{{ public_path().'/vendor/magnific-popup/magnific-popup.min.css' }}">
 
+		<link rel="stylesheet" href="{{ public_path().'/plugins/DataTables/datatables.min.css' }}">
+
 		<!-- Theme CSS -->
 		<link rel="stylesheet" href="{{ public_path().'/css/theme.css' }}">
 		<link rel="stylesheet" href="{{ public_path().'/css/theme-elements.css' }}">
@@ -91,6 +93,8 @@
 
 		<script src="https://maps.googleapis.com/maps/api/js?key={{config('app.google_api_key')}}&libraries=places">
 		</script>
+		
+		<script src="{{ public_path().'/plugins/DataTables/datatables.min.js' }}"></script>
 
 		<!-- Theme Base, Components and Settings -->
 		<script src="{{ public_path().'/js/theme.js' }}"></script>
@@ -106,9 +110,12 @@
 
 		<script>
 			window.addEventListener('load', initialize);
+			var options = {
+				componentRestrictions: {country: "in"}
+			};
 			function initialize() {
 				var input = document.getElementById('address');
-				var autocomplete = new google.maps.places.Autocomplete(input);
+				var autocomplete = new google.maps.places.Autocomplete(input, options);
 				autocomplete.addListener('place_changed', function () {
 					var place = autocomplete.getPlace();
 					$('#latitude').val(place.geometry['location'].lat());

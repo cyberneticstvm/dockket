@@ -24,6 +24,7 @@ Route::get('/login', function () {
 
 Route::get('/appointment/', [AppointmentController::class, 'index'])->name('appointment');
 Route::post('/appointment/', [AppointmentController::class, 'show'])->name('appointment.show');
+Route::get('/appointment/locationmap/{id}/', [AppointmentController::class, 'locationmap'])->name('appointment.locationmap');
 
 Route::get('/doctor/registration/', [DoctorController::class, 'showReg'])->name('doctor.show.registration');
 Route::post('/doctor/registration/', [DoctorController::class, 'reg'])->name('doctor.registration');

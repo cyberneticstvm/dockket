@@ -1,0 +1,20 @@
+#doclocationmap{
+    height: 500px;
+}
+.slot{
+    border: 1px solid #000;
+    margin: 5px;
+    cursor: pointer;
+}
+.slot:hover{
+    color: #fff;
+    background-color: green;
+}
+.activeslot{
+    color: #fff;
+    background-color: green;
+}
+.no-app{
+    cursor: not-allowed;
+    pointer-events:none;
+}

@@ -3,7 +3,7 @@
 <div role="main" class="main">
     <div class="container">
         <div class="row">
-            <div class="col">
+            <div class="col-md-12">
                 <h3 class="text-center text-primary">Book an Appointment</h3>
                 <form role="form" method="post" action="{{ route('appointment.show') }}">
                     @csrf
@@ -21,24 +21,36 @@
                             <select class="form-control" name="spec" required>
                                 <option value="">Select</option>
                                 @forelse($specs as $key => $spec)
-                                <option value="{{ $spec->id }}">{{ $spec->name }}</option>
+                                <option value="{{ $spec->id }}" {{ ($input && $input[0] == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
                                 @empty
                                 @endforelse
                             </select>
+                            @error('spec')
+                            <small class="text-danger">{{ $errors->first('spec') }}</small>
+                            @enderror
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Location <span class="text-danger">*</span></label>
                             <input class="form-control form-control-lg text-3 h-auto py-2" type="text" id="address" name="location" placeholder="Location" required>
-                            <input type="hidden" name="latitude" id="latitude"  />
+                            <input type="hidden" name="latitude" id="latitude" />
                             <input type="hidden" name="longitude" id="longitude" />
+                            @error('location')
+                            <small class="text-danger">{{ $errors->first('location') }}</small>
+                            @enderror
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Radius in KM <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-lg text-3 h-auto py-2" type="number" name="radius" min="1" step="1" placeholder="0 KM"/>
+                            <input class="form-control form-control-lg text-3 h-auto py-2" type="number" name="radius" min="1" step="1" placeholder="0 KM" value="{{ ($input && $input[4]) ? $input[4] : '' }}" required />
+                            @error('radius')
+                            <small class="text-danger">{{ $errors->first('radius') }}</small>
+                            @enderror
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Date</label>
-                            <input class="form-control form-control-lg text-3 h-auto py-2" type="date" value="" name="date">
+                            <input class="form-control form-control-lg text-3 h-auto py-2" type="date" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" required />
+                            @error('date')
+                            <small class="text-danger">{{ $errors->first('date') }}</small>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group row">
@@ -51,6 +63,73 @@
                     </div>
                 </form>
             </div>
+            <div class="col-md-12">
+                <div class="row">
+                    @forelse($apps as $key => $app)
+                        <div class="col-lg-4 col-md-6 pb-2">
+                            <div class="toggle toggle-minimal toggle-primary" data-plugin-toggle>
+							<div class="card border-0 mb-4 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
+								<div class="card-body p-3 z-index-1">
+									<a href="demo-medical-2-our-doctors-detail.html" class="d-block text-center bg-color-grey">
+										<img alt="Doctor" class="img-fluid rounded" src="{{ ($app->photo) ? '/storage/doctor/photo/'.$app->photo : '/storage/doctor/photo/avatar.png' }}">
+									</a>
+									<strong class="font-weight-bold text-dark d-block text-5 mt-4 mb-0 text-center">
+										<a href="demo-medical-2-our-doctors-detail.html" class="text-dark">
+											{{ $app->docname }}
+										</a>
+									</strong>
+									<span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0 text-center">{{ $app->spec }}</span>
+									<p class="text-center">{{ $app->designation }}</p>
+                                    <div class="row">
+                                        <div class="col text-center text-dark">₹ {{ $app->fee }}</div>
+                                        <div class="col text-center text-dark">{{ number_format($app->distance_km, 2) }} KMs</div>
+                                        <div class="col text-center"><a href="/appointment/locationmap/{{ $app->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
+                                    </div>
+									<div class="text-center mt-2"><button data-bs-toggle="collapse" data-bs-target="#slot_{{ $app->id }}" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2">Show Slots</button></div>
+                                    <form>
+                                        @csrf                                        
+                                        <div id="slot_{{ $app->id }}" class="collapse">
+                                            <h5 class="text-center text-success">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
+                                            @php 
+                                                $from = strtotime($app->stime); $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = '';
+                                                $apps = DB::table('appointments')->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time")->where('doctor_id', $app->id)->whereDate('appointment_date', $input[5])->pluck('appointment_time')->toArray();
+                                            @endphp
+                                            <div class="row">
+                                                @while($from <= $end)
+                                                    <div class="col slot {{ (in_array(date('h:i A', $from), $apps)) ? 'bg-danger text-white no-app' : '' }}">
+                                                        {{ date('h:i A', $from) }}
+                                                        <!--<input type="radio" name="appointment_time" value="{{ date('h:i A', $from) }}" class="slotradio" />-->
+                                                    </div>
+                                                    @php $from = strtotime('+'.$dur.' minutes', $from); @endphp
+                                                @endwhile
+                                                <div class="row mt-3">
+                                                    <div class="col-lg-12 form-group">
+                                                        <label>Selected Time: </label>
+                                                        <input type="text" class="form-control from-control-sm atime" name="appointment_time" value="Selected Time" placeholder="" readonly required/>
+                                                    </div>
+                                                    <div class="col-lg-12 form-group">
+                                                        <label>Full Name: </label>
+                                                        <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" required/>
+                                                    </div>
+                                                    <div class="col-lg-12 form-group">
+                                                        <label>Mobile Number: </label>
+                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" required/>
+                                                    </div>
+                                                    <div class="col text-center">                                                        
+                                                        <button type="submit" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2">Book Now</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+								</div>
+							</div>
+						</div>
+                    @empty
+                    <div class="col-md-12"><p class="fw-bold text-danger">No Records Found! Please try again with different criteria.</p></div>
+                    @endforelse
+                </div>
+            </div>            
         </div>
     </div>
 </div>
