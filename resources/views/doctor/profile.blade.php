@@ -71,10 +71,10 @@
                         <div class="col-lg-9">
                             <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" id="address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : '' }}" placeholder="Consultation Address">
                         </div>
-                        <!--<input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : '' }}" />
-                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : '' }}" />-->
+                        <input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : '' }}" />
+                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : '' }}" />
                     </div>
-                    <div class="form-group row">
+                    <!--<div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>
                         <div class="col-lg-6">
                             <input class="form-control text-3 h-auto py-2" type="text" name="con_city" value="{{ ($doctor && $doctor->con_city) ? $doctor->con_city : '' }}" placeholder="City">
@@ -82,7 +82,7 @@
                         <div class="col-lg-3">
                             <input class="form-control text-3 h-auto py-2" type="text" name="con_state" value="{{ ($doctor && $doctor->con_state) ? $doctor->con_state : '' }}" placeholder="State">
                         </div>
-                    </div>
+                    </div>-->
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Branch</label>
                         <div class="col-lg-9">
