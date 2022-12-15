@@ -1,27 +1,17 @@
-@extends('doctor.base')
+@extends('admin.base')
 @section('content')
 <div role="main" class="main">
     <div class="container pt-3 pb-2">
         <div class="row pt-2">
-            <div class="col-lg-12">
-                <h3 class="text-center text-primary">My Profile</h3>
-                @if(session()->has('success'))
-                    <div class="alert alert-success">
-                        {{ session()->get('success') }}
-                    </div>
-                @endif                
-            </div>
-            @include('doctor.sections.leftmenu')
+            @include('admin.sections.leftmenu')
             <div class="col-lg-9">                
-                <form role="form" action="{{ route('doctor.profile.update', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
+                <form role="form" action="{{ route('admin.doctor.update', $doctor->id) }}" method="post">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{ ($doctor && $doctor->user_id) ? $doctor->user_id : Auth::user()->id }}" />
-                    <input type="hidden" name="photo" id="profPhoto" value="{{ ($doctor && $doctor->photo) ? base64_encode(file_get_contents(storage_path('app/public/doctor/photo/'.$doctor->photo))) : base64_encode(file_get_contents(storage_path('app/public/doctor/photo/avatar.png'))) }}" />
-                    <input type="hidden" name="doctor_id" value="{{ ($doctor && $doctor->doctor_id) ? $doctor->doctor_id : NULL }}" />
+                    @method("PUT")
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Full Name <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="name" value="{{ Auth::user()->name }}" required>
+                            <input class="form-control text-3 h-auto py-2" type="text" name="name" value="{{ $user->name }}" required>
                         </div>
                         @error('name')
                         <small class="text-danger">{{ $errors->first('name') }}</small>
@@ -30,7 +20,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Email <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="email" name="email" value="{{ Auth::user()->email }}" required>
+                            <input class="form-control text-3 h-auto py-2" type="email" name="email" value="{{ $user->email }}" required>
                         </div>
                         @error('email')
                         <small class="text-danger">{{ $errors->first('email') }}</small>
@@ -71,17 +61,8 @@
                         <div class="col-lg-9">
                             <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" id="address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : '' }}" placeholder="Consultation Address">
                         </div>
-                        <!--<input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : '' }}" />
-                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : '' }}" />-->
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>
-                        <div class="col-lg-6">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="con_city" value="{{ ($doctor && $doctor->con_city) ? $doctor->con_city : '' }}" placeholder="City">
-                        </div>
-                        <div class="col-lg-3">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="con_state" value="{{ ($doctor && $doctor->con_state) ? $doctor->con_state : '' }}" placeholder="State">
-                        </div>
+                        <input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : '' }}" />
+                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : '' }}" />
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Branch</label>
@@ -120,6 +101,18 @@
                         </div>
                         @error('designation')
                         <small class="text-danger">{{ $errors->first('designation') }}</small>
+                        @enderror
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Status</label>
+                        <div class="col-lg-9">
+                            <select class="form-control" name="status">
+                                <option value="A" {{ ($doctor->status == 'A') ? 'selected' : '' }}>Approved</option>
+                                <option value="P" {{ ($doctor->status == 'P') ? 'selected' : '' }}>Pending</option>
+                            </select>
+                        </div>
+                        @error('spec')
+                        <small class="text-danger">{{ $errors->first('spec') }}</small>
                         @enderror
                     </div>
                     <div class="form-group row">

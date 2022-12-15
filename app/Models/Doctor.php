@@ -27,5 +27,6 @@ class Doctor extends Model
         'photo',
         'ceritificate',
         'designation',
+        'status',
     ];
 }

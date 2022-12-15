@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 
 /*
@@ -30,6 +31,8 @@ Route::get('/doctor/registration/', [DoctorController::class, 'showReg'])->name(
 Route::post('/doctor/registration/', [DoctorController::class, 'reg'])->name('doctor.registration');
 Route::get('/doctor/login/', [DoctorController::class, 'showLogin'])->name('doctor.show.login');
 Route::post('/doctor/login/', [DoctorController::class, 'login'])->name('doctor.login');
+Route::get('/admin/login/', [AdminController::class, 'showLogin'])->name('admin.show.login');
+Route::post('/admin/login/', [AdminController::class, 'login'])->name('admin.login');
 
 Route::group(['middleware' => ['auth', 'doctor']], function(){
     Route::get('/doctor/profile/', [DoctorController::class, 'profile'])->name('doctor.profile');
@@ -47,5 +50,26 @@ Route::group(['middleware' => ['auth', 'doctor']], function(){
     Route::get('/doctor/reports/', [DoctorController::class, 'reports'])->name('doctor.reports');
     Route::get('/doctor/logout/', [DoctorController::class, 'logout'])->name('doctor.logout');
     
+});
+
+Route::group(['middleware' => ['auth', 'admin']], function(){
+    Route::get('/admin/dash/', [AdminController::class, 'dash'])->name('admin.dash');
+    Route::get('/admin/logout/', [AdminController::class, 'logout'])->name('admin.logout');
+
+    Route::get('/admin/appointments/', [AdminController::class, 'appointments'])->name('admin.appointments');
+
+    Route::get('/admin/doctor/', [AdminController::class, 'doctors'])->name('admin.doctor');
+    Route::get('/admin/doctor/edit/{id}/', [AdminController::class, 'doctoredit'])->name('admin.doctor.edit');
+    Route::put('/admin/doctor/update/{id}/', [AdminController::class, 'doctorupdate'])->name('admin.doctor.update');
+    Route::delete('/admin/doctor/delete/{id}/', [AdminController::class, 'doctordelete'])->name('admin.doctor.delete');
+
+    Route::get('/admin/specializations/', [AdminController::class, 'specialization'])->name('admin.specialization');
+    Route::post('/admin/specializations/', [AdminController::class, 'specializationsave'])->name('admin.specialization.save');
+    Route::get('/admin/specializations/edit/{id}/', [AdminController::class, 'specializationedit'])->name('admin.specialization.edit');
+    Route::put('/admin/specializations/update/{id}/', [AdminController::class, 'specializationupdate'])->name('admin.specialization.update');
+    Route::delete('/admin/specializations/delete/{id}/', [AdminController::class, 'specializationdelete'])->name('admin.specialization.delete');
+    
+    Route::get('/admin/settings/', [AdminController::class, 'settings'])->name('admin.settings');
+    Route::post('/admin/settings/', [AdminController::class, 'settingsupdate'])->name('admin.settings.update');
 });
 

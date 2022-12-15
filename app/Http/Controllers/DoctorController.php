@@ -149,6 +149,7 @@ class DoctorController extends Controller
         $input = $request->except(array('_token', 'email', 'name'));        
         $next = Doctor::selectRaw("CONCAT_WS('', 'DOC', LPAD(IFNULL(max(id)+1, 1), 4, '0')) AS docid")->first();
         $input['doctor_id'] = ($request->doctor_id) ? $request->doctor_id : $next->docid;
+        //$input['status'] = ($doctor && $doctor->status) ? $doctor->getOriginal('status') : 'P';
         if($request->photo):
             $fpath = 'doctor/photo/'.$id.'.png';
             Storage::disk('public')->put($fpath, base64_decode(str_replace(['data:image/jpeg;base64,', 'data:image/png;base64,', ' '], ['', '', '+'], $request->photo)));
@@ -182,10 +183,10 @@ class DoctorController extends Controller
         ]);
         $pwd = ($request->password) ? Hash::make($request->password) : NULL;
         $input = $request->except(array('_token', 'password'));
-        $input['appointment_start_time'] = Carbon::createFromFormat('h:i A', $request->appointment_start_time)->format('H:i:s');
+        $input['appointment_start_time'] = ($request->appointment_start_time) ? Carbon::createFromFormat('h:i A', $request->appointment_start_time)->format('H:i:s') : '00:00';
         $input['appointment_end_time'] = Carbon::createFromFormat('h:i A', date('h:i A', strtotime("22:30")))->format('H:i:s');
-        $input['break_start_time'] = Carbon::createFromFormat('h:i A', $request->break_start_time)->format('H:i:s');
-        $input['break_end_time'] = Carbon::createFromFormat('h:i A', $request->break_end_time)->format('H:i:s');
+        $input['break_start_time'] = ($request->break_start_time) ? Carbon::createFromFormat('h:i A', $request->break_start_time)->format('H:i:s') : '00:00';
+        $input['break_end_time'] = ($request->break_end_time) ? Carbon::createFromFormat('h:i A', $request->break_end_time)->format('H:i:s') : '00:00';
         $input['available_for_appointment'] = isset($request->available_for_appointment) ? $request->available_for_appointment : 0;
         try{
             DoctorSettings::upsert($input, 'doctor_id');

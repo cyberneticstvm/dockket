@@ -66,9 +66,9 @@
 									<div class="header-row">
 										<nav class="header-nav-top w-100">
 											<ul class="nav nav-pills justify-content-between w-100 h-100">
-												<li class="nav-item py-2 d-none d-xl-inline-flex">
+												<li class="nav-item py-2 d-xl-inline-flex">
 													<span class="header-top-phone py-2 d-flex align-items-center text-color-primary font-weight-semibold text-uppercase">
-														<i class="icon-user icons text-5 me-2"></i> <a href="/doctor/login/" target="_blank">Login | Register</a>
+														<i class="icon-user icons text-5 me-2"></i> <a href="/doctor/login/">Login | Register</a>
 													</span>
 													<span class="header-top-email px-0 font-weight-normal d-flex align-items-center"><i class="far fa-envelope text-4"></i>  <a class="text-color-default" href="mailto:mail@example.com">mail@example.com</a></span>
 													<span class="header-top-opening-hours px-0 font-weight-normal d-flex align-items-center"><i class="far fa-clock text-4"></i>Mon - Sat 9:00am - 6:00pm / Sunday - CLOSED</span>
