@@ -39,7 +39,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Mobile Number <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="mobile" maxlength="10" value="{{ ($doctor && $doctor->doctor_id) ? $doctor->mobile : '' }}" placeholder="Mobile Number">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="mobile" maxlength="10" value="{{ ($doctor && $doctor->doctor_id) ? $doctor->mobile : old('mobile') }}" placeholder="Mobile Number">
                         </div>
                         @error('mobile')
                         <small class="text-danger">{{ $errors->first('mobile') }}</small>
