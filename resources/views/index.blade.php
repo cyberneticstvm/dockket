@@ -7,13 +7,13 @@
 
                 <!-- Carousel Slide 1 -->
                 <div class="position-relative overflow-hidden pb-5" data-dynamic-height="['991px','991px','991px','650px','650px']" style="height: 991px;">
-                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url(img/demos/medical-2/slides/slide-medical-2-1.jpg); background-size: cover; background-position: center;"></div>
+                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/doctor-s-hand-holding-stethoscope.jpg' }}); background-size: cover; background-position: center;"></div>
                     <div class="container position-relative z-index-3 pb-5 h-100">
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-end pb-5 ms-auto">
                                 <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Urgent Care + Multi-Specialty Medical Clinic Group</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">RELIABLE MEDICAL SERVICES LOCATED IN LOS ANGELES, CA</h2>
-                                <a href="#" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">GEST STARTED</a>
+                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Online Booking for Doctors in Trivandrum, Kerala</h2>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">MAKE AN APPOINTMENT</a>
                             </div>
                         </div>
                     </div>
@@ -21,13 +21,13 @@
 
                 <!-- Carousel Slide 2 -->
                 <div class="position-relative overflow-hidden pb-5" data-dynamic-height="['991px','991px','991px','650px','650px']" style="height: 991px;">
-                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url(img/demos/medical-2/slides/slide-medical-2-2.jpg); background-size: cover; background-position: center;"></div>
+                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/appointment-schedule.jpg' }}); background-size: cover; background-position: center;"></div>
                     <div class="container position-relative z-index-3 pb-5 h-100">
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-start pb-5">
                                 <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Cardiology, Gastroenterology, Pulmonology and Dental Care</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">RELIABLE MEDICAL SERVICES LOCATED IN LOS ANGELES, CA</h2>
-                                <a href="#" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">GEST STARTED</a>
+                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Online Booking for Clinics in Trivandrum, Kerala</h2>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">MAKE AN APPOINTMENT</a>
                             </div>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
                         <img src="img/demos/medical-2/icons/icon-healthcare-center.png" alt="Healthcare Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Healthcare Center</h4>
+                        <h4 class="card-title mb-1 font-weight-bold">Doctor Consultation</h4>
                         <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
                         <img src="img/demos/medical-2/icons/icon-immediate-center.png" alt="Immediate Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Immediate Center</h4>
+                        <h4 class="card-title mb-1 font-weight-bold">Clinic Services</h4>
                         <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
                     </div>
@@ -67,7 +67,7 @@
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
                         <img src="img/demos/medical-2/icons/icon-diagnostic-center.png" alt="Diagnostic Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Diagnostic Center</h4>
+                        <h4 class="card-title mb-1 font-weight-bold">Lab Services</h4>
                         <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
                     </div>
@@ -92,7 +92,7 @@
         </div>
     </section>
 
-    <section class="more-about lazyload" data-bg-src="img/demos/medical-2/bg/bg-1.png">
+    <section class="more-about lazyload" data-bg-src="{{ public_path().'/img/dockket/scientist-with-microscope.jpg' }}">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-6 p-relative overflow-hidden col-cuttin-more-about"></div>

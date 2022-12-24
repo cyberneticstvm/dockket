@@ -84,9 +84,13 @@
                                         <div class="col text-center text-dark">{{ number_format($app->distance_km, 2) }} KMs</div>
                                         <div class="col text-center"><a href="/appointment/locationmap/{{ $app->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
                                     </div>
-									<div class="text-center mt-2"><button data-bs-toggle="collapse" data-bs-target="#slot_{{ $app->id }}" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2">Show Slots</button></div>
-                                    <form>
-                                        @csrf                                        
+									<div class="text-center mt-2"><button data-bs-toggle="collapse" data-bs-target="#slot_{{ $app->id }}" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2 slotBtn">Show Slots</button></div>
+                                    <form method="post" action="{{ route('appointment.save') }}">
+                                        @csrf                   
+                                        <input type='hidden' name='doctor_id' value="{{ $app->id }}" />                     
+                                        <input type='hidden' name='appointment_date' value="{{ $input[5] }}" />                     
+                                        <input type='hidden' name='branch' value='1' />                     
+                                        <input type='hidden' name='spec' value="{{ $input[0] }}" />                     
                                         <div id="slot_{{ $app->id }}" class="collapse">
                                             <h5 class="text-center text-success">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
                                             @php 
@@ -99,6 +103,7 @@
                                                     <div class="col slot {{ (in_array(date('h:i A', $from), $apps) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))) ? 'bg-danger text-white no-app' : '' }}">
                                                         {{ date('h:i A', $from) }}
                                                     </div>
+                                                    <input type="hidden" name="slot" value="{{ $c }}" />
                                                     @php $from = strtotime('+'.$dur.' minutes', $from); $c++; @endphp
                                                 @endwhile                                                
                                                 <div class="row mt-3">
@@ -115,7 +120,7 @@
                                                         <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" required/>
                                                     </div>
                                                     <div class="col text-center">                                                        
-                                                        <button type="submit" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2">Book Now</button>
+                                                        <button type="submit" class="btn btn-submit btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2">Book Now</button>
                                                     </div>
                                                 </div>
                                             </div>

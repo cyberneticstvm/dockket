@@ -31,7 +31,13 @@ $(function(){
         var dis = $(this);
         $('.slot').removeClass('activeslot');
         dis.addClass('activeslot');
-        $(".atime").val(dis.text().trim());
+        dis.parent('div').find(".atime").val(dis.text().trim());
+    });
+
+    $(".slotBtn").click(function(){
+        var id = $(this).data('bs-target');
+        $(".collapse").removeClass('show');
+        $("#"+id).addClass('show');
     });
 
     $(".no-app").addClass('no-app');

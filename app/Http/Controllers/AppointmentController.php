@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Branch;
 use App\Models\Doctor;
-use Carbon\Appointment;
+use App\Models\User;
+use App\Models\Appointment;
+use Carbon\Carbon;
 use DB;
 
 class AppointmentController extends Controller
@@ -40,7 +42,19 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'appointment_time' => 'required',
+            'patient_name' => 'required',
+            'mobile' => 'required',
+        ]);
+        $input = $request->all();
+        $input['appointment_time'] = ($request->appointment_time) ? Carbon::createFromFormat('h:i A', $request->appointment_time)->format('H:i:s') : '00:00';
+        $token = Appointment::where('doctor_id', $request->doctor_id)->whereDate('appointment_date', $request->appointment_date)->max('token');
+        $input['token'] = ($token > 0) ? $token+1 : 1;
+        $app = Appointment::create($input);
+        $doctor = Doctor::find($request->doctor_id); $user = User::find($doctor->user_id);
+        $token = $input['token']; $date = $request->appointment_date; $time = $request->appointment_time;
+        return view('message', compact('token', 'date', 'time', 'doctor', 'app', 'user'));
     }
 
     /**
