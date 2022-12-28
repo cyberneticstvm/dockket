@@ -1,6 +1,8 @@
 $(function(){
     "use strict";
 
+    disablePastDaysInCalendar();
+
     $('form').submit(function(){
         $(".btn-submit").attr("disabled", true);
         $(".btn-submit").html("<span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span>");
@@ -47,3 +49,17 @@ $(function(){
 setTimeout(function () {
     $(".alert").hide('slow');
 }, 3000);
+
+function disablePastDaysInCalendar(){
+    var dtToday = new Date();
+ 
+    var month = dtToday.getMonth() + 1;
+    var day = dtToday.getDate();
+    var year = dtToday.getFullYear();
+    if(month < 10)
+        month = '0' + month.toString();
+    if(day < 10)
+     day = '0' + day.toString();
+    var maxDate = year + '-' + month + '-' + day;
+    $('#inputdate').attr('min', maxDate);
+}

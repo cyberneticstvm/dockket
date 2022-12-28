@@ -19,7 +19,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Specialization <span class="text-danger">*</span></label>
                             <select class="form-control" name="spec" required>
-                                <option value="">Select</option>
+                                <option value="0">All</option>
                                 @forelse($specs as $key => $spec)
                                 <option value="{{ $spec->id }}" {{ ($input && $input[0] == $spec->id) ? 'selected' : '' }}>{{ $spec->name }}</option>
                                 @empty
@@ -31,9 +31,9 @@
                         </div>
                         <div class="col-lg-5 col-md-5 col-sm-5 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Location <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-lg text-3 h-auto py-2" type="text" id="address" name="location" placeholder="Location" required>
-                            <input type="hidden" name="latitude" id="latitude" />
-                            <input type="hidden" name="longitude" id="longitude" />
+                            <input class="form-control form-control-lg text-3 h-auto py-2" type="text" id="address" value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location" placeholder="Location" required>
+                            <input type="text" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
+                            <input type="text" name="longitude" id="longitude" value="{{ ($input && $input[3]) ? $input[3] : '' }}" />
                             @error('location')
                             <small class="text-danger">{{ $errors->first('location') }}</small>
                             @enderror
@@ -47,7 +47,7 @@
                         </div>
                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Date <span class="text-danger">*</span></label>
-                            <input class="form-control form-control-lg text-3 h-auto py-2" type="date" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" required />
+                            <input class="form-control form-control-lg text-3 h-auto py-2" type="date" id="inputdate" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" required />
                             @error('date')
                             <small class="text-danger">{{ $errors->first('date') }}</small>
                             @enderror
@@ -78,11 +78,12 @@
 										</a>
 									</strong>
 									<span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0 text-center">{{ $app->spec }}</span>
-									<p class="text-center">{{ $app->designation }}</p>
+									<p class="text-center">{{ $app->designation }}<br>Branch: {{ $app->bname }}</p>
                                     <div class="row">
                                         <div class="col text-center text-dark">₹ {{ $app->fee }}</div>
                                         <div class="col text-center text-dark">{{ number_format($app->distance_km, 2) }} KMs</div>
-                                        <div class="col text-center"><a href="/appointment/locationmap/{{ $app->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
+                                        <!--<div class="col text-center"><a href="/appointment/locationmap/{{ $app->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>-->
+                                        <div class="col text-center"><a href="geo:{{ $app->con_latitude }},{{ $app->con_longitude }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
                                     </div>
 									<div class="text-center mt-2"><button data-bs-toggle="collapse" data-bs-target="#slot_{{ $app->id }}" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2 slotBtn">Show Slots</button></div>
                                     <form method="post" action="{{ route('appointment.save') }}">
