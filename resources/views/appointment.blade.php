@@ -32,8 +32,8 @@
                         <div class="col-lg-5 col-md-5 col-sm-5 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Location <span class="text-danger">*</span></label>
                             <input class="form-control form-control-lg text-3 h-auto py-2" type="text" id="address" value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location" placeholder="Location" required>
-                            <input type="text" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
-                            <input type="text" name="longitude" id="longitude" value="{{ ($input && $input[3]) ? $input[3] : '' }}" />
+                            <input type="hidden" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
+                            <input type="hidden" name="longitude" id="longitude" value="{{ ($input && $input[3]) ? $input[3] : '' }}" />
                             @error('location')
                             <small class="text-danger">{{ $errors->first('location') }}</small>
                             @enderror
@@ -150,8 +150,19 @@ function getLocation() {
 function showPosition(position) {
     var lat = document.getElementById("latitude");
     var long = document.getElementById("longitude");
-    lat.value = position.coords.latitude;
-    long.value = position.coords.longitude;
+    var addr = document.getElementById("address");
+    var google_map_pos = new google.maps.LatLng( lat, long );
+    //lat.value = position.coords.latitude;
+    //long.value = position.coords.longitude;
+    var google_maps_geocoder = new google.maps.Geocoder();
+    google_maps_geocoder.geocode(
+        { 'latLng': google_map_pos },
+        function( results, status ) {
+            if ( status == google.maps.GeocoderStatus.OK && results[0] ) {
+                addr.value = results[0].formatted_address;
+            }
+        }
+    );
 }
 </script>
 @endsection

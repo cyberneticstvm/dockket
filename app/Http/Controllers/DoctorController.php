@@ -193,14 +193,18 @@ class DoctorController extends Controller
         $input['break_start_time'] = ($request->break_start_time) ? Carbon::createFromFormat('h:i A', $request->break_start_time)->format('H:i:s') : '00:00';
         $input['break_end_time'] = ($request->break_end_time) ? Carbon::createFromFormat('h:i A', $request->break_end_time)->format('H:i:s') : '00:00';
         $input['available_for_appointment'] = isset($request->available_for_appointment) ? $request->available_for_appointment : 0;
-        try{
-            DoctorSettings::upsert($input, 'doctor_id');
-            if($pwd)
-                $upd = DB::table('users')->where('id', Auth::user()->id)->update(['password' => $pwd]);           
-        }catch(Exception $e){
-            throw $e;
-        }
-        return redirect()->route('doctor.settings')->with('success','Settings updated successfully');
+        if($input['break_start_time'] > $input['break_end_time']):
+            return redirect()->route('doctor.settings')->with('error','Break end time should not be greater than Break start time')->withInput($request->all());
+        else:
+            try{
+                DoctorSettings::upsert($input, 'doctor_id');
+                if($pwd)
+                    $upd = DB::table('users')->where('id', Auth::user()->id)->update(['password' => $pwd]);           
+            }catch(Exception $e){
+                throw $e;
+            }
+            return redirect()->route('doctor.settings')->with('success','Settings updated successfully');
+        endif;
     }
 
     public function leaves(){

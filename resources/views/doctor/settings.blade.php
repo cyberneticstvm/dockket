@@ -10,6 +10,11 @@
                         {{ session()->get('success') }}
                     </div>
                 @endif
+                @if(session()->has('error'))
+                    <div class="alert alert-warning">
+                        {{ session()->get('error') }}
+                    </div>
+                @endif
             </div>
             @include('doctor.sections.leftmenu')
             <div class="col-lg-9">                
