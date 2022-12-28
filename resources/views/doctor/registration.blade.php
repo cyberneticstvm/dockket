@@ -33,7 +33,7 @@
                                     <div class="row">
                                         <div class="form-group col">
                                             <label class="form-label">E-mail Address <span class="text-danger">*</span></label>
-                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="E-mail Address">
+                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="E-mail Address" required>
                                             @error('email')
                                             <small class="text-danger">{{ $errors->first('email') }}</small>
                                             @enderror
@@ -69,11 +69,11 @@
                                             <button type="submit" class="btn-submit btn btn-primary btn-modern float-end">Register</button>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <!--<div class="row">
                                         <div class="col-md-12 text-center">
                                             <a href="/doctor/login/">Login</a>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </form>
                             </div>
                         </div>

@@ -48,31 +48,31 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Date of Birth</label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="date" value="{{ ($doctor && $doctor->dob) ? $doctor->dob : NULL }}" name="dob">
+                            <input class="form-control text-3 h-auto py-2" type="date" value="{{ ($doctor && $doctor->dob) ? $doctor->dob : old('dob') }}" name="dob">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Communication Address</label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="communication_address" value="{{ ($doctor && $doctor->communication_address) ? $doctor->communication_address : '' }}" placeholder="Communication Address">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="communication_address" value="{{ ($doctor && $doctor->communication_address) ? $doctor->communication_address : old('communication_address') }}" placeholder="Communication Address">
                         </div>
                     </div>
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>
                         <div class="col-lg-6">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="com_city" value="{{ ($doctor && $doctor->com_city) ? $doctor->com_city : '' }}" placeholder="City">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="com_city" value="{{ ($doctor && $doctor->com_city) ? $doctor->com_city : old('com_city') }}" placeholder="City">
                         </div>
                         <div class="col-lg-3">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="com_state" value="{{ ($doctor && $doctor->com_state) ? $doctor->com_state : '' }}" placeholder="State">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="com_state" value="{{ ($doctor && $doctor->com_state) ? $doctor->com_state : old('com_state') }}" placeholder="State">
                         </div>
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Address</label>
+                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Address <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" id="address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : '' }}" placeholder="Consultation Address">
+                            <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" id="address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : old('consultation_address') }}" placeholder="Consultation Address">
                         </div>
-                        <input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : '' }}" />
-                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : '' }}" />
+                        <input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : old('con_latitude') }}" />
+                        <input type="hidden" name="con_longitude" id="longitude" value="{{ ($doctor && $doctor->con_longitude) ? $doctor->con_longitude : old('con_longitude') }}" />
                     </div>
                     <!--<div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2"></label>
@@ -84,7 +84,7 @@
                         </div>
                     </div>-->
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Branch</label>
+                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Branch <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
                             <select class="form-control" name="branch">
                                 <option value="">Select</option>
@@ -99,7 +99,7 @@
                         @enderror
                     </div>
                     <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Specialization</label>
+                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Specialization <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
                             <select class="form-control" name="spec">
                                 <option value="">Select</option>
@@ -116,7 +116,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Designation <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
-                            <input class="form-control text-3 h-auto py-2" type="text" value="{{ ($doctor && $doctor->designation) ? $doctor->designation : '' }}" name="designation">
+                            <input class="form-control text-3 h-auto py-2" type="text" value="{{ ($doctor && $doctor->designation) ? $doctor->designation : old('designation') }}" name="designation">
                         </div>
                         @error('designation')
                         <small class="text-danger">{{ $errors->first('designation') }}</small>

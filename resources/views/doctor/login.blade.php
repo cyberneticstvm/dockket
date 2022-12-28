@@ -25,7 +25,7 @@
                                     <div class="row">
                                         <div class="form-group col">
                                             <label class="form-label">E-mail Address <span class="text-danger">*</span></label>
-                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="E-mail Address">
+                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="E-mail Address" required>
                                             @error('email')
                                             <small class="text-danger">{{ $errors->first('email') }}</small>
                                             @enderror

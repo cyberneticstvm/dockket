@@ -40,14 +40,14 @@ class DoctorController extends Controller
     public function reg(Request $request){
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email:filter|unique:users,email',
             'password' => 'required|confirmed|min:6',
             'terms' => 'required',
         ]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
         User::create($input);
-        return redirect()->route('doctor.registration')
+        return redirect()->route('doctor.login')
                         ->with('success','Doctor Registered successfully');
     }
 
@@ -57,7 +57,7 @@ class DoctorController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            'email' => 'required|email',
+            'email' => 'required|email:filter',
             'password' => 'required|min:6',
         ]);
         $credentials = $request->only('email', 'password');
@@ -137,11 +137,12 @@ class DoctorController extends Controller
 
     public function profileupdate(Request $request, $id){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        $did = ($doctor && $doctor->id) ? 'required|unique:doctors,mobile,'.$doctor->id : 'required|unique:doctors,mobile';
+        $did = ($doctor && $doctor->id) ? 'required|numeric|digits:10|unique:doctors,mobile,'.$doctor->id : 'required|numeric|digits:10|unique:doctors,mobile';
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,'.$id,
             'mobile' => $did,
+            'consultation_address' => 'required',
             'branch' => 'required',
             'spec' => 'required',
             'designation' => 'required',
@@ -168,9 +169,13 @@ class DoctorController extends Controller
 
     public function settings(){
         $start = strtotime("06:00"); $end = strtotime("22:00");
-        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        $settings = DoctorSettings::selectRaw("*, TIME_FORMAT(appointment_start_time, '%h:%i %p') AS stime, TIME_FORMAT(break_start_time, '%h:%i %p') AS bstime, TIME_FORMAT(break_end_time, '%h:%i %p') AS betime")->where('doctor_id', $doctor->id)->first();
-        return view('doctor.settings', compact('start', 'end', 'doctor', 'settings'));
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();        
+        if($doctor):
+            $settings = DoctorSettings::selectRaw("*, TIME_FORMAT(appointment_start_time, '%h:%i %p') AS stime, TIME_FORMAT(break_start_time, '%h:%i %p') AS bstime, TIME_FORMAT(break_end_time, '%h:%i %p') AS betime")->where('doctor_id', $doctor->id)->first();
+            return view('doctor.settings', compact('start', 'end', 'doctor', 'settings'));
+        else:
+            return redirect()->route('doctor.profile')->with('success','Please update profile first to view settings.');
+        endif;
     }
 
     public function settingsupdate(Request $request, $id){
@@ -200,8 +205,12 @@ class DoctorController extends Controller
 
     public function leaves(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        $leaves = DB::table('doctor_leaves')->selectRaw("DATE_FORMAT(leave_date, '%d/%b/%Y') AS ldate")->where('doctor_id', $doctor->id)->orderByDesc('leave_date')->get();
-        return view('doctor.leaves', compact('doctor', 'leaves'));
+        if($doctor):
+            $leaves = DB::table('doctor_leaves')->selectRaw("DATE_FORMAT(leave_date, '%d/%b/%Y') AS ldate")->where('doctor_id', $doctor->id)->orderByDesc('leave_date')->get();
+            return view('doctor.leaves', compact('doctor', 'leaves'));
+        else:
+            return redirect()->route('doctor.profile')->with('success','Please update profile first to view settings.');
+        endif;
     }
 
     public function leavesupdate(Request $request, $id){

@@ -18,28 +18,28 @@
                     <input type="hidden" name="doctor_id" value="{{ $doctor->id }}" />
                     <div class="form-group row">
                         <div class="col-lg-3 form-group">
-                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Fee</label>
-                            <input class="form-control text-3 h-auto py-2" type="number" step="1" min="1" name="fee" value="{{ ($settings && $settings['fee']) ? $settings['fee'] : '' }}" placeholder="0.00">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Fee <span class="text-danger">*</span></label>
+                            <input class="form-control text-3 h-auto py-2" type="number" step="1" min="1" name="fee" value="{{ ($settings && $settings['fee']) ? $settings['fee'] : old('fee') }}" placeholder="0.00">
                             @error('fee')
                             <small class="text-danger">{{ $errors->first('fee') }}</small>
                             @enderror
                         </div>
                         <div class="col-lg-3 form-group">
-                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Slots per Day</label>
-                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="slots" value="{{ ($settings && $settings['slots']) ? $settings['slots'] : '' }}" placeholder="0">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Slots per Day <span class="text-danger">*</span></label>
+                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="slots" value="{{ ($settings && $settings['slots']) ? $settings['slots'] : old('slots') }}" placeholder="0">
                             @error('slots')
                             <small class="text-danger">{{ $errors->first('slots') }}</small>
                             @enderror
                         </div>
                         <div class="col-lg-3 form-group">
-                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Time per Cons. (In Minutes)</label>
-                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="time_per_appointment" value="{{ ($settings && $settings['time_per_appointment']) ? $settings['time_per_appointment'] : '' }}" placeholder="0">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Time per Cons. (In Minutes) <span class="text-danger">*</span></label>
+                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="time_per_appointment" value="{{ ($settings && $settings['time_per_appointment']) ? $settings['time_per_appointment'] : old('time_per_appointment') }}" placeholder="0">
                             @error('time_per_appointment')
                             <small class="text-danger">{{ $errors->first('time_per_appointment') }}</small>
                             @enderror
                         </div>
                         <div class="col-lg-3 form-group">
-                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Start</label>
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Start <span class="text-danger">*</span></label>
                             @php $from = $start @endphp
                             <select class="form-control" name="appointment_start_time">
                                 <option value="">Select</option>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-lg-3 form-group">
-                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Appointment Open</label>
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Appointment Open <span class="text-danger">*</span></label>
                             <select class="form-control" name="appointment_open_days">
                                 <option value="">Select</option>
                                 <option value="0" {{ ($settings && $settings['appointment_open_days'] == 0) ? 'selected' : '' }}>Always</option>
