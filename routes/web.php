@@ -49,6 +49,7 @@ Route::group(['middleware' => ['auth', 'doctor']], function(){
     
     
     Route::get('/doctor/reports/', [DoctorController::class, 'reports'])->name('doctor.reports');
+    Route::post('/doctor/reports/', [DoctorController::class, 'getAppointmentSummary'])->name('doctor.report.appointments');
     Route::get('/doctor/logout/', [DoctorController::class, 'logout'])->name('doctor.logout');
     
 });
@@ -63,6 +64,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::get('/admin/doctor/edit/{id}/', [AdminController::class, 'doctoredit'])->name('admin.doctor.edit');
     Route::put('/admin/doctor/update/{id}/', [AdminController::class, 'doctorupdate'])->name('admin.doctor.update');
     Route::delete('/admin/doctor/delete/{id}/', [AdminController::class, 'doctordelete'])->name('admin.doctor.delete');
+
+    Route::get('/admin/clinic/', [AdminController::class, 'clinics'])->name('admin.clinic');
 
     Route::get('/admin/specializations/', [AdminController::class, 'specialization'])->name('admin.specialization');
     Route::post('/admin/specializations/', [AdminController::class, 'specializationsave'])->name('admin.specialization.save');

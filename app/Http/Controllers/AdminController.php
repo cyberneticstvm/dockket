@@ -44,7 +44,8 @@ class AdminController extends Controller
     }
 
     public function appointments(){
-        return view('admin.appointments');
+        $apps = Appointment::leftJoin('doctors as d', 'd.id', '=', 'appointments.doctor_id')->leftJoin('users as u', 'u.id', '=', 'd.user_id')->selectRaw("d.doctor_id, u.name, count(appointments.id) AS acount, DATE_FORMAT(appointments.appointment_date, '%d/%b/%Y') AS adate")->whereBetween('appointments.appointment_date', [Carbon::today(), Carbon::today()])->groupBy('appointments.doctor_id')->orderBy('u.name')->get();
+        return view('admin.appointments', compact('apps'));
     }
 
     public function specialization(){
@@ -97,6 +98,11 @@ class AdminController extends Controller
         $doctor = Doctor::find($id);
         $user = User::where('id', $doctor->user_id)->first();
         return view('admin.edit-doctor', compact('branches', 'specializations', 'doctor', 'user'));
+    }
+
+    public function clinics(){
+        $clinics = [];
+        return view('admin.clinic', compact('clinics'));
     }
 
     public function doctorupdate(Request $request, $id){

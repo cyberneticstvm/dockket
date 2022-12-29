@@ -75,12 +75,28 @@ class DoctorController extends Controller
 
     public function appointments(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        return view('doctor.appointments', compact('doctor'));
+        $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
+        $apps = Appointment::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time, patient_name, mobile")->whereDate('appointment_date', Carbon::today())->get();
+        return view('doctor.appointments', compact('doctor', 'settings', 'apps'));
     }   
 
     public function reports(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        return view('doctor.reports', compact('doctor'));
+        $apps = []; $inputs = [];
+        return view('doctor.reports', compact('doctor', 'apps', 'inputs'));
+    }
+
+    public function getAppointmentSummary(Request $request){
+        $this->validate($request, [
+            'from_date' => 'required',
+            'to_date' => 'required',
+        ]);
+        $inputs = array($request->from_date, $request->to_date);
+        //$from = (!empty($request->from_date)) ? Carbon::createFromFormat('dd-mm-yyyy', $request->from_date)->format('Y-m-d') : NULL;
+        //$to = (!empty($request->to_date)) ? Carbon::createFromFormat('dd-mm-yyyy', $request->to_date)->format('Y-m-d') : NULL;
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        $apps = Appointment::selectRaw("count(id) AS acount, DATE_FORMAT(appointment_date, '%d/%b/%Y') AS adate")->where('doctor_id', $doctor->id)->whereBetween('appointment_date', [$request->from_date, $request->to_date])->groupBy('appointment_date')->orderByDesc('appointment_date')->get();
+        return view('doctor.reports', compact('doctor', 'apps', 'inputs'));
     }
 
     public function create()
