@@ -13,6 +13,7 @@ class Specialization extends Model
     protected $fillable = [
         'branch',
         'name',
+        'category',
     ];
 
     public function branch(){

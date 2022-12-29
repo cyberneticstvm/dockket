@@ -53,6 +53,11 @@ class Kernel extends HttpKernel
             'auth',
             \App\Http\Middleware\Admin::class
         ],
+
+        'clinic' => [
+            'auth',
+            \App\Http\Middleware\Clinic::class
+        ],
     ];
 
     /**

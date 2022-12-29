@@ -16,15 +16,25 @@
                 <form role="form" action="{{ route('admin.specialization.save') }}" method="post">
                     @csrf
                     <div class="form-group row">                        
-                        <div class="col-lg-6">
-                            <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Specialization <span class="text-danger">*</span></label>
-                            <input class="form-control text-3 h-auto py-2" type="text" name="name" value="{{ old('name') }}" placeholder="Specialization">
+                        <div class="col-lg-4">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Specialization / Service <span class="text-danger">*</span></label>
+                            <input class="form-control text-3 h-auto py-2" type="text" name="name" value="{{ old('name') }}" placeholder="Specialization / Service">
                             @error('name')
                             <small class="text-danger">{{ $errors->first('name') }}</small>
                             @enderror
                         </div>
-                        <div class="col-lg-6">
-                            <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Branch <span class="text-danger">*</span></label>
+                        <div class="col-lg-4">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Category<span class="text-danger">*</span></label>
+                            <select class="form-control text-3 h-auto py-2" name="category">
+                                <option value="1">Consultation</option>
+                                <option value="2">Home Care</option>
+                            </select>
+                            @error('category')
+                            <small class="text-danger">{{ $errors->first('category') }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Branch<span class="text-danger">*</span></label>
                             <select class="form-control text-3 h-auto py-2" name="branch">
                                 <option value="">Select</option>
                                 @forelse($branches as $key => $branch)
@@ -48,13 +58,14 @@
                 </form>
                 <div class="mt-3 table-responsive">
                     <table id="dataTbl" class="table table-bordered table-stripped">
-                        <thead><tr><th>SL No</th><th>Spec Name</th><th>Branch</th><th>Edit</th><th>Delete</th></tr></thead>
+                        <thead><tr><th>SL No</th><th>Spec/Service Name</th><th>Category</th><th>Branch</th><th>Edit</th><th>Delete</th></tr></thead>
                         <tbody>
                             @php $c = 1; @endphp
                             @forelse($specs as $key => $spec)
                                 <tr>
                                     <td>{{ $c++ }}</td>
                                     <td>{{ $spec->sname }}</td>
+                                    <td>{{ $spec->service }}</td>
                                     <td>{{ $spec->bname }}</td>
                                     <td><a class='btn btn-link' href="{{ route('admin.specialization.edit', $spec->id) }}"><i class="fa fa-pencil text-warning"></i></a></td>
                                     <td>

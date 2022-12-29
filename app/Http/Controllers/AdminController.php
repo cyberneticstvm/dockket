@@ -50,7 +50,7 @@ class AdminController extends Controller
 
     public function specialization(){
         $branches = DB::table('branches')->get();
-        $specs = Specialization::leftJoin('branches as b', 'b.id', '=', 'specializations.branch')->select('specializations.id', 'specializations.name as sname', 'b.name as bname')->orderBy('specializations.name', 'ASC')->get();
+        $specs = Specialization::leftJoin('branches as b', 'b.id', '=', 'specializations.branch')->select('specializations.id', 'specializations.name as sname', 'b.name as bname', DB::raw("CASE WHEN specializations.category=1 THEN 'Consultation' ELSE 'Home Care' END AS service"))->orderBy('specializations.name', 'ASC')->get();
         return view('admin.specializations', compact('branches', 'specs'));
     }
 
@@ -58,6 +58,7 @@ class AdminController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:specializations,name',
             'branch' => 'required',
+            'category' => 'required',
         ]);
         $input = $request->all();
         Specialization::create($input);
@@ -74,6 +75,7 @@ class AdminController extends Controller
         $this->validate($request, [
             'name' => 'required|unique:specializations,name,'.$id,
             'branch' => 'required',
+            'category' => 'required',
         ]);
         $input = $request->all();
         $spec = Specialization::find($id);

@@ -12,15 +12,25 @@
                     @csrf
                     @method("PUT")
                     <div class="form-group row">                        
-                        <div class="col-lg-6">
-                            <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Specialization <span class="text-danger">*</span></label>
+                        <div class="col-lg-4">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Specialization / Service <span class="text-danger">*</span></label>
                             <input class="form-control text-3 h-auto py-2" type="text" name="name" value="{{ $spec->name }}" placeholder="Specialization">
                             @error('name')
                             <small class="text-danger">{{ $errors->first('name') }}</small>
                             @enderror
                         </div>
-                        <div class="col-lg-6">
-                            <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Branch <span class="text-danger">*</span></label>
+                        <div class="col-lg-4">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Category<span class="text-danger">*</span></label>
+                            <select class="form-control text-3 h-auto py-2" name="category">
+                                <option value="1" {{ ($spec->category == 1) ? 'selected' : '' }}>Consultation</option>
+                                <option value="2" {{ ($spec->category == 2) ? 'selected' : '' }}>Home Care</option>
+                            </select>
+                            @error('category')
+                            <small class="text-danger">{{ $errors->first('category') }}</small>
+                            @enderror
+                        </div>
+                        <div class="col-lg-4">
+                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Branch <span class="text-danger">*</span></label>
                             <select class="form-control text-3 h-auto py-2" name="branch">
                                 <option value="">Select</option>
                                 @forelse($branches as $key => $branch)

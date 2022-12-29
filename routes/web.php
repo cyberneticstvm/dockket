@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AppointmentController;
 
@@ -32,6 +33,12 @@ Route::get('/doctor/registration/', [DoctorController::class, 'showReg'])->name(
 Route::post('/doctor/registration/', [DoctorController::class, 'reg'])->name('doctor.registration');
 Route::get('/doctor/login/', [DoctorController::class, 'showLogin'])->name('doctor.show.login');
 Route::post('/doctor/login/', [DoctorController::class, 'login'])->name('doctor.login');
+
+Route::get('/clinic/registration/', [ClinicController::class, 'showReg'])->name('clinic.show.registration');
+Route::post('/clinic/registration/', [ClinicController::class, 'reg'])->name('clinic.registration');
+Route::get('/clinic/login/', [ClinicController::class, 'showLogin'])->name('clinic.show.login');
+Route::post('/clinic/login/', [ClinicController::class, 'login'])->name('clinic.login');
+
 Route::get('/admin/login/', [AdminController::class, 'showLogin'])->name('admin.show.login');
 Route::post('/admin/login/', [AdminController::class, 'login'])->name('admin.login');
 
@@ -52,6 +59,18 @@ Route::group(['middleware' => ['auth', 'doctor']], function(){
     Route::post('/doctor/reports/', [DoctorController::class, 'getAppointmentSummary'])->name('doctor.report.appointments');
     Route::get('/doctor/logout/', [DoctorController::class, 'logout'])->name('doctor.logout');
     
+});
+
+Route::group(['middleware' => ['auth', 'clinic']], function(){
+    Route::get('/clinic/profile/', [ClinicController::class, 'index'])->name('clinic.profile');
+    Route::post('/clinic/profile/{id}/', [ClinicController::class, 'profileupdate'])->name('clinic.profile.update');
+
+    Route::get('/clinic/requests/', [ClinicController::class, 'requests'])->name('clinic.requests');
+
+    Route::get('/clinic/services/', [ClinicController::class, 'services'])->name('clinic.services');
+    Route::post('/clinic/services/', [ClinicController::class, 'servicesUpdate'])->name('clinic.services.update');
+
+    Route::get('/clinic/logout/', [ClinicController::class, 'logout'])->name('clinic.logout');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
