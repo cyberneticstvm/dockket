@@ -381,11 +381,18 @@
 			window.addEventListener('load', initialize);
 			function initialize() {
 				var input = document.getElementById('address');
+				var input1 = document.getElementById('haddress');
 				var autocomplete = new google.maps.places.Autocomplete(input, options);
+				var autocomplete1 = new google.maps.places.Autocomplete(input1, options);
 				autocomplete.addListener('place_changed', function () {
 					var place = autocomplete.getPlace();
 					$('#latitude').val(place.geometry['location'].lat());
 					$('#longitude').val(place.geometry['location'].lng());
+				});
+				autocomplete1.addListener('place_changed', function () {
+					var place = autocomplete.getPlace();
+					$('#hlatitude').val(place.geometry['location'].lat());
+					$('#hlongitude').val(place.geometry['location'].lng());
 				});
 			}
 		</script>
