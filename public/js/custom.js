@@ -61,5 +61,5 @@ function disablePastDaysInCalendar(){
     if(day < 10)
      day = '0' + day.toString();
     var maxDate = year + '-' + month + '-' + day;
-    $('#inputdate').attr('min', maxDate);
+    $('.inputdate').attr('min', maxDate);
 }

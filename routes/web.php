@@ -26,7 +26,9 @@ Route::get('/login', function () {
 
 Route::get('/appointment/', [AppointmentController::class, 'index'])->name('appointment');
 Route::post('/appointment/', [AppointmentController::class, 'show'])->name('appointment.show');
-Route::post('/service/request/', [AppointmentController::class, 'serviceRequest'])->name('appointment.service.request');
+Route::get('/service-request/', [AppointmentController::class, 'showserviceRequest'])->name('appointment.service');
+Route::post('/service-request/', [AppointmentController::class, 'serviceRequest'])->name('appointment.service.request');
+Route::post('/service-request/create/', [AppointmentController::class, 'saveService'])->name('service.save');
 Route::post('/appointment/create/', [AppointmentController::class, 'store'])->name('appointment.save');
 Route::get('/appointment/locationmap/{id}/', [AppointmentController::class, 'locationmap'])->name('appointment.locationmap');
 

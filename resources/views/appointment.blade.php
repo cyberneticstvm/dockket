@@ -8,10 +8,10 @@
                 <div class="tabs">
                     <ul class="nav nav-tabs nav-justified flex-column flex-md-row" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link active" href="#consultation" data-bs-toggle="tab" aria-selected="true" role="tab">Book a Doctor</a>
+                            <a class="nav-link active" href="/appointment/">Book a Doctor</a>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <a class="nav-link" href="#hcare" data-bs-toggle="tab" aria-selected="false" tabindex="-1" role="tab">Book a Homecare</a>
+                            <a class="nav-link" href="/service-request/">Book a Homecare</a>
                         </li>
                     </ul>
                     <div class="tab-content">
@@ -60,7 +60,7 @@
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
                                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Date <span class="text-danger">*</span></label>
-                                            <input class="form-control form-control-lg text-3 h-auto py-2" type="date" id="inputdate" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" required />
+                                            <input class="form-control form-control-lg text-3 h-auto py-2 inputdate" type="date" value="{{ ($input && $input[5]) ? $input[5] : '' }}" name="date" required />
                                             @error('date')
                                             <small class="text-danger">{{ $errors->first('date') }}</small>
                                             @enderror
@@ -82,11 +82,11 @@
                                         <div class="col-lg-4 col-md-6 pb-2">
                                             <div class="card border-0 mb-4 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
                                                 <div class="card-body p-3 z-index-1">
-                                                    <a href="demo-medical-2-our-doctors-detail.html" class="d-block text-center bg-color-grey">
+                                                    <a href="#" class="d-block text-center bg-color-grey">
                                                         <img alt="Doctor" class="img-fluid rounded" src="{{ ($app->photo) ? public_path().'/storage/doctor/photo/'.$app->photo :  public_path().'/storage/doctor/photo/avatar.png' }}">
                                                     </a>
                                                     <strong class="font-weight-bold text-dark d-block text-5 mt-4 mb-0 text-center">
-                                                        <a href="demo-medical-2-our-doctors-detail.html" class="text-dark">
+                                                        <a href="#" class="text-dark">
                                                             {{ $app->docname }}
                                                         </a>
                                                     </strong>
@@ -150,58 +150,7 @@
                             </div>
                         </div>
                         <div id="hcare" class="tab-pane" role="tabpanel">
-                            <div class="col-md-12">
-                                <h5 class="text-center text-primary">Book a Home Care</h5>
-                                <form method="post" action="{{ route('appointment.service.request') }}">
-                                    @csrf
-                                    <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-3 form-group">
-                                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Services <span class="text-danger">*</span></label>
-                                            <select class="form-control" name="serv" required>
-                                                <option value="0">All</option>
-                                                @forelse($services as $key => $serv)
-                                                <option value="{{ $serv->id }}" {{ ($input1 && $input1[0] == $serv->id) ? 'selected' : '' }}>{{ $serv->name }}</option>
-                                                @empty
-                                                @endforelse
-                                            </select>
-                                            @error('serv')
-                                            <small class="text-danger">{{ $errors->first('serv') }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-5 col-md-5 col-sm-5 form-group">
-                                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Location <span class="text-danger">*</span></label>
-                                            <input class="form-control form-control-lg text-3 h-auto py-2" type="text" id="haddress" value="{{ ($input1 && $input1[1]) ? $input1[1] : old('location') }}" name="location" placeholder="Location" required>
-                                            <input type="hidden" name="latitude" id="hlatitude" value="{{ ($input1 && $input1[2]) ? $input1[2] : '' }}" />
-                                            <input type="hidden" name="longitude" id="hlongitude" value="{{ ($input1 && $input1[3]) ? $input1[3] : '' }}" />
-                                            @error('location')
-                                            <small class="text-danger">{{ $errors->first('location') }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 form-group">
-                                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Radius in KM <span class="text-danger">*</span></label>
-                                            <input class="form-control form-control-lg text-3 h-auto py-2" type="number" name="radius" min="1" max="50" step="1" placeholder="0 KM" value="{{ ($input1 && $input1[4]) ? $input1[4] : '' }}" required />
-                                            @error('radius')
-                                            <small class="text-danger">{{ $errors->first('radius') }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-sm-2 form-group">
-                                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Date <span class="text-danger">*</span></label>
-                                            <input class="form-control form-control-lg text-3 h-auto py-2" type="date" id="inputdate" value="{{ ($input1 && $input1[5]) ? $input1[5] : '' }}" name="date" required />
-                                            @error('date')
-                                            <small class="text-danger">{{ $errors->first('date') }}</small>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group row">
-                                            <div class="form-group col-lg-9">
 
-                                            </div>
-                                            <div class="form-group col-lg-3">
-                                                <button type="submit" class="btn-submit btn btn-primary btn-modern float-end">Search</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
                         </div>
                     </div>
                 </div>
