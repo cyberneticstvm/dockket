@@ -3,6 +3,15 @@ $(function(){
 
     disablePastDaysInCalendar();
 
+    $("#log").click(function(){
+        var dis = $(this);
+        if(dis.is(":checked")){
+            dis.parent().parent().find('#pin').prop('required', true);
+        }else{
+            dis.parent().parent().find('#pin').prop('required', false);
+        }
+    });
+
     $('form').submit(function(){
         $(".btn-submit").attr("disabled", true);
         $(".btn-submit").html("<span class='spinner-grow spinner-grow-sm' role='status' aria-hidden='true'></span>");

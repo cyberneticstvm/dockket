@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\ClinicController;
 use App\Http\Controllers\AdminController;
@@ -41,6 +42,9 @@ Route::get('/clinic/registration/', [ClinicController::class, 'showReg'])->name(
 Route::post('/clinic/registration/', [ClinicController::class, 'reg'])->name('clinic.registration');
 Route::get('/clinic/login/', [ClinicController::class, 'showLogin'])->name('clinic.show.login');
 Route::post('/clinic/login/', [ClinicController::class, 'login'])->name('clinic.login');
+
+Route::get('/patient/login/', [PatientController::class, 'showLogin'])->name('patient.show.login');
+Route::post('/patient/login/', [PatientController::class, 'login'])->name('patient.login');
 
 Route::get('/admin/login/', [AdminController::class, 'showLogin'])->name('admin.show.login');
 Route::post('/admin/login/', [AdminController::class, 'login'])->name('admin.login');
@@ -97,5 +101,9 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     
     Route::get('/admin/settings/', [AdminController::class, 'settings'])->name('admin.settings');
     Route::post('/admin/settings/', [AdminController::class, 'settingsupdate'])->name('admin.settings.update');
+});
+
+Route::group(['middleware' => ['auth', 'patient']], function(){
+    //
 });
 

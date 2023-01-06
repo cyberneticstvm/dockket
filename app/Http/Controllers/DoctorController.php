@@ -46,8 +46,9 @@ class DoctorController extends Controller
         ]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        User::create($input);
-        return redirect()->route('doctor.login')
+        $user = User::create($input);
+        Auth::login($user);
+        return redirect()->route('doctor.profile')
                         ->with('success','Doctor Registered successfully');
     }
 
@@ -62,7 +63,7 @@ class DoctorController extends Controller
         ]);
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials, $request->has('remember'))):            
-            return redirect()->intended(route('doctor.profile'))->withSuccess('You have Successfully loggedin');
+            return redirect()->intended(route('doctor.profile'))->withSuccess('You have Successfully logged in');
         endif;
         return redirect()->back()->withErrors('Oops! You have entered invalid credentials')->withInput($request->all());
     }
@@ -75,9 +76,13 @@ class DoctorController extends Controller
 
     public function appointments(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
-        $apps = Appointment::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time, patient_name, mobile")->whereDate('appointment_date', Carbon::today())->get();
-        return view('doctor.appointments', compact('doctor', 'settings', 'apps'));
+        if($doctor):
+            $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
+            $apps = Appointment::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time, patient_name, mobile")->whereDate('appointment_date', Carbon::today())->get();
+            return view('doctor.appointments', compact('doctor', 'settings', 'apps'));
+        else:
+            return redirect()->route('doctor.profile')->with('success','Please update profile first to view settings.');
+        endif;
     }   
 
     public function reports(){
@@ -209,8 +214,8 @@ class DoctorController extends Controller
         $input['break_start_time'] = ($request->break_start_time) ? Carbon::createFromFormat('h:i A', $request->break_start_time)->format('H:i:s') : '00:00';
         $input['break_end_time'] = ($request->break_end_time) ? Carbon::createFromFormat('h:i A', $request->break_end_time)->format('H:i:s') : '00:00';
         $input['available_for_appointment'] = isset($request->available_for_appointment) ? $request->available_for_appointment : 0;
-        if($input['break_start_time'] > $input['break_end_time']):
-            return redirect()->route('doctor.settings')->with('error','Break end time should not be greater than Break start time')->withInput($request->all());
+        if(($input['break_start_time'] > $input['break_end_time']) || ($input['break_start_time'] < $input['appointment_start_time'])):
+            return redirect()->route('doctor.settings')->with('error','Break end time should not be greater than Break start time or Appointment start time')->withInput($request->all());
         else:
             try{
                 DoctorSettings::upsert($input, 'doctor_id');

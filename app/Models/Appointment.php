@@ -19,6 +19,7 @@ class Appointment extends Model
         'appointment_time',
         'slot',
         'token',
+        'user_id',
         'created_by',
     ];
 }

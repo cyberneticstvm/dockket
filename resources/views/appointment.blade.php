@@ -127,12 +127,22 @@
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Full Name: </label>
-                                                                        <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" required/>
+                                                                        <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (Auth::user()->user_type && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Mobile Number: </label>
-                                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" required/>
+                                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" value="{{ (Auth::user()->user_type && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" placeholder="Mobile Number" required/>
                                                                     </div>
+                                                                    @if(!isset(Auth::user()->id))
+                                                                    <div class="col-lg-12 form-group">
+                                                                        <input type="checkbox" name="log" id="log" class="custom-control-input" value="1" data-bs-toggle="collapse" data-bs-target="#log_{{ $app->id }}">
+                                                                        <label class="custom-control-label text-2" for="terms">Remember Details</a></label>
+                                                                    </div>
+                                                                    <div class="col-lg-12 form-group collapse" id="log_{{ $app->id }}">
+                                                                        <label>4 Digits PIN: </label>
+                                                                        <input type="text" maxlength="4" id="pin" class="form-control from-control-sm" name="pin" placeholder="0000"/>
+                                                                    </div>
+                                                                    @endif
                                                                     <div class="col text-center">                                                        
                                                                         <button type="submit" class="btn btn-submit btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2">Book Now</button>
                                                                     </div>

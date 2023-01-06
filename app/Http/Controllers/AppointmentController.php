@@ -13,6 +13,7 @@ use App\Models\ServiceRequest;
 use App\Models\Specialization;
 use Carbon\Carbon;
 use DB;
+use Hash;
 
 class AppointmentController extends Controller
 {
@@ -57,10 +58,19 @@ class AppointmentController extends Controller
             'patient_name' => 'required',
             'mobile' => 'required',
         ]);
-        $input = $request->all();
+        $input = $request->all(); $input['user_id'] = 0;
         $input['appointment_time'] = ($request->appointment_time) ? Carbon::createFromFormat('h:i A', $request->appointment_time)->format('H:i:s') : '00:00';
         $token = Appointment::where('doctor_id', $request->doctor_id)->whereDate('appointment_date', $request->appointment_date)->max('token');
         $input['token'] = ($token > 0) ? $token+1 : 1;
+        if($request->log == 1):
+            $patient['name'] = $input['patient_name'];
+            $patient['email'] = $input['mobile'];
+            $patient['password'] = Hash::make($input['pin']);
+            $patient['user_type'] = 'P'; // Patient
+            $patient['user_status'] = 'A';
+            $p = User::create($patient); $input['user_id'] = $p->id;
+            //Auth::login($p);
+        endif;
         $app = Appointment::create($input);
         $doctor = Doctor::find($request->doctor_id); $user = User::find($doctor->user_id);
         $token = $input['token']; $date = $request->appointment_date; $time = $request->appointment_time; $type = 'A';
@@ -85,7 +95,7 @@ class AppointmentController extends Controller
         ]);
         $specs = DB::table('specializations')->where('category', 1)->orderBy('name')->get();
         $input = array($request->spec, $request->location, $request->latitude, $request->longitude, $request->radius, $request->date);
-        $apps = DB::select("SELECT u.name AS docname, d.id, d.doctor_id AS docid, d.photo, d.designation, d.con_latitude, d.con_longitude, z.name AS spec, d.consultation_address, b.name AS bname, DATE_ADD(CURRENT_DATE(), INTERVAL s.appointment_open_days DAY) AS next_available, s.fee, s.slots, s.time_per_appointment, TIME_FORMAT(s.appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(s.appointment_end_time, '%H:%i') AS etime, s.break_start_time AS bstime, s.break_end_time AS betime, 6371 * acos( cos( radians(?) ) * cos( radians( d.con_latitude ) ) * cos( radians( d.con_longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( d.con_latitude ) ) ) AS distance_km FROM doctors d JOIN users u ON u.id=d.user_id JOIN doctor_settings s ON d.id = s.doctor_id LEFT JOIN specializations as z ON z.id = d.spec LEFT JOIN branches AS b ON b.id = d.branch WHERE d.status = 'A' AND s.available_for_appointment = 1 AND IF(? = 0, 1, d.spec = ?) AND d.id NOT IN(SELECT DISTINCT(doctor_id) FROM doctor_leaves WHERE leave_date=?) HAVING next_available <= ? AND distance_km <= ?", [$request->latitude, $request->longitude, $request->latitude, $request->spec, $request->spec, $request->date, $request->date, $request->radius]);
+        $apps = DB::select("SELECT u.name AS docname, d.id, d.doctor_id AS docid, d.photo, d.designation, d.con_latitude, d.con_longitude, z.name AS spec, d.consultation_address, b.name AS bname, DATE_ADD(CURRENT_DATE(), INTERVAL s.appointment_open_days DAY) AS next_available, s.fee, s.slots, s.time_per_appointment, TIME_FORMAT(s.appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(s.appointment_end_time, '%H:%i') AS etime, s.break_start_time AS bstime, s.break_end_time AS betime, 6371 * acos( cos( radians(?) ) * cos( radians( d.con_latitude ) ) * cos( radians( d.con_longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( d.con_latitude ) ) ) AS distance_km FROM doctors d JOIN users u ON u.id=d.user_id JOIN doctor_settings s ON d.id = s.doctor_id LEFT JOIN specializations as z ON z.id = d.spec LEFT JOIN branches AS b ON b.id = d.branch WHERE d.status = 'A' AND s.available_for_appointment = 1 AND IF(? = 0, 1, d.spec = ?) AND d.id NOT IN(SELECT DISTINCT(doctor_id) FROM doctor_leaves WHERE leave_date=?) HAVING next_available <= ? AND distance_km <= ? ORDER BY distance_km ASC", [$request->latitude, $request->longitude, $request->latitude, $request->spec, $request->spec, $request->date, $request->date, $request->radius]);
         return view('appointment', compact('apps', 'input', 'specs'));
     }
 
@@ -106,7 +116,7 @@ class AppointmentController extends Controller
         ]);
         $input = array($request->serv, $request->location, $request->latitude, $request->longitude, $request->radius, $request->date);
         $services = DB::table('specializations')->where('category', 2)->orderBy('name')->get();
-        $clinics = DB::select("SELECT cs.clinic_id, cs.service_id, u.name, u.email, c.mobile, c.latitude, c.longitude, c.address, 6371 * acos( cos( radians(?) ) * cos( radians( c.latitude ) ) * cos( radians( c.longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( c.latitude ) ) ) AS distance_km FROM clinic_services cs JOIN clinics c ON c.id = cs.clinic_id LEFT JOIN users u ON u.id = c.user_id WHERE IF(? = 0, 1, cs.service_id = ?) AND c.status = 'A' GROUP BY cs.clinic_id", [$request->latitude, $request->longitude, $request->latitude, $request->serv, $request->serv]);
+        $clinics = DB::select("SELECT cs.clinic_id, cs.service_id, u.name, u.email, c.mobile, c.latitude, c.longitude, c.address, 6371 * acos( cos( radians(?) ) * cos( radians( c.latitude ) ) * cos( radians( c.longitude ) - radians(?) ) + sin( radians(?) ) * sin( radians( c.latitude ) ) ) AS distance_km FROM clinic_services cs JOIN clinics c ON c.id = cs.clinic_id LEFT JOIN users u ON u.id = c.user_id WHERE IF(? = 0, 1, cs.service_id = ?) AND c.status = 'A' GROUP BY cs.clinic_id HAVING distance_km <= ? ORDER BY distance_km ASC", [$request->latitude, $request->longitude, $request->latitude, $request->serv, $request->serv, $request->radius]);
         return view('service', compact('services', 'input', 'clinics'));
     }
 
