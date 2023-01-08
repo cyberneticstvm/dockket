@@ -76,12 +76,12 @@ class DoctorController extends Controller
 
     public function appointments(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        if($doctor):
-            $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
+        $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
+        if($doctor && $settings):
             $apps = Appointment::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time, patient_name, mobile")->whereDate('appointment_date', Carbon::today())->get();
             return view('doctor.appointments', compact('doctor', 'settings', 'apps'));
         else:
-            return redirect()->route('doctor.profile')->with('success','Please update profile first to view settings.');
+            return redirect()->route('doctor.profile')->with('success','Please update profile and settings first to view settings.');
         endif;
     }   
 
