@@ -17,5 +17,6 @@ class ServiceRequest extends Model
         'service_date',
         'notes',
         'status',
+        'user_id',
     ];
 }

@@ -58,7 +58,7 @@ class AppointmentController extends Controller
             'patient_name' => 'required',
             'mobile' => 'required',
         ]);
-        $input = $request->all(); $input['user_id'] = 0;
+        $input = $request->all();
         $input['appointment_time'] = ($request->appointment_time) ? Carbon::createFromFormat('h:i A', $request->appointment_time)->format('H:i:s') : '00:00';
         $token = Appointment::where('doctor_id', $request->doctor_id)->whereDate('appointment_date', $request->appointment_date)->max('token');
         $input['token'] = ($token > 0) ? $token+1 : 1;
@@ -126,6 +126,15 @@ class AppointmentController extends Controller
             'mobile' => 'required',
         ]);
         $input = $request->all();
+        if($request->log == 1):
+            $patient['name'] = $input['patient_name'];
+            $patient['email'] = $input['mobile'];
+            $patient['password'] = Hash::make($input['pin']);
+            $patient['user_type'] = 'P'; // Patient
+            $patient['user_status'] = 'A';
+            $p = User::create($patient); $input['user_id'] = $p->id;
+            //Auth::login($p);
+        endif;
         $service = ServiceRequest::create($input);
         $clinic = Clinic::find($request->clinic_id); $user = User::find($clinic->user_id);
         $date = $request->service_date; $type = 'S';

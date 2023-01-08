@@ -94,17 +94,18 @@
                                                         <input type="hidden" name="clinic_id" value="{{ $clinic->clinic_id }}" />
                                                         <input type="hidden" name="service_id" value="{{ $input[0] }}" />
                                                         <input type="hidden" name="service_date" value="{{ $input[5] }}" />
+                                                        <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : 0 }}" />
                                                         
                                                         <div id="clinic_{{ $clinic->clinic_id }}" class="collapse">
                                                             <h5 class="text-center text-success">Booking Available on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
                                                             <div class="row">
                                                                 <div class="col-lg-12 form-group">
                                                                     <label>Full Name: </label>
-                                                                    <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (Auth::user()->user_type && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
+                                                                    <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
                                                                 </div>
                                                                 <div class="col-lg-12 form-group">
                                                                     <label>Mobile Number: </label>
-                                                                    <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" value="{{ (Auth::user()->user_type && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" required/>
+                                                                    <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" required/>
                                                                 </div>
                                                                 <div class="col-lg-12 form-group">
                                                                     <label>Special instructions: </label>

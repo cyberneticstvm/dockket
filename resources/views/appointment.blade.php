@@ -104,7 +104,8 @@
                                                         <input type='hidden' name='doctor_id' value="{{ $app->id }}" />                     
                                                         <input type='hidden' name='appointment_date' value="{{ $input[5] }}" />                     
                                                         <input type='hidden' name='branch' value='1' />                     
-                                                        <input type='hidden' name='spec' value="{{ $input[0] }}" />                     
+                                                        <input type='hidden' name='spec' value="{{ $input[0] }}" />
+                                                        <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : 0 }}" />                     
                                                         <div id="slot_{{ $app->id }}" class="collapse">
                                                             <h5 class="text-center text-success">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
                                                             @php 
@@ -127,11 +128,11 @@
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Full Name: </label>
-                                                                        <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (Auth::user()->user_type && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
+                                                                        <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Mobile Number: </label>
-                                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" value="{{ (Auth::user()->user_type && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" placeholder="Mobile Number" required/>
+                                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" placeholder="Mobile Number" required/>
                                                                     </div>
                                                                     @if(!isset(Auth::user()->id))
                                                                     <div class="col-lg-12 form-group">
