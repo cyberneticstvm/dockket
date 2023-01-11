@@ -8,7 +8,7 @@
 
 		<title>Dockket | Online Doctor Booking App</title>	
 
-		<meta name="keywords" content="doctor booking, online doctor booing" />
+		<meta name="keywords" content="doctor booking, online doctor booing, Find a Doctor" />
 		<meta name="description" content="Dockket - Online Doctor Booking App">
 		<meta name="author" content="eniecoitsolutions.com">
 		<meta name="csrf-token" content="{{ csrf_token() }}">
@@ -67,28 +67,12 @@
 										<nav class="header-nav-top w-100">
 											<ul class="nav nav-pills justify-content-between w-100 h-100">
 												<li class="nav-item py-2 d-xl-inline-flex">
-													<span class="header-top-phone py-2 d-flex align-items-center text-color-primary font-weight-semibold text-uppercase">
-														<i class="icon-user icons text-5 me-2"></i> <a href="/doctor/login/">Sign in | Create New Account</a>
-													</span>
-													<span class="header-top-email px-0 font-weight-normal d-flex align-items-center"><i class="far fa-envelope text-4"></i>  <a class="text-color-default" href="mailto:mail@example.com">mail@example.com</a></span>
-													<span class="header-top-opening-hours px-0 font-weight-normal d-flex align-items-center"><i class="far fa-clock text-4"></i>Mon - Sat 9:00am - 6:00pm / Sunday - CLOSED</span>
+													<span class="header-top-email px-0 font-weight-normal d-flex align-items-center"><i class="far fa-envelope text-4"></i>  <a class="text-color-default" href="mailto:mail@dockket.in">mail@dockket.in</a></span>
+													<span class="header-top-opening-hours px-0 font-weight-normal d-flex align-items-center"><i class="far fa-clock text-4"></i>Mon - Sun 9:00am - 7:00pm</span>
 												</li>
 												<li class="nav-item nav-item-header-top-socials d-flex justify-content-between">
-													<span class="header-top-socials p-0 h-100">
-														<ul class="d-flex align-items-center h-100 p-0">
-															<li class="list-unstyled">
-																<a href="#"><i class="fab fa-instagram text-color-quaternary text-hover-primary"></i></a>
-															</li>
-															<li class="list-unstyled">
-																<a href="#"><i class="fab fa-facebook-f text-color-quaternary text-hover-primary"></i></a>
-															</li>
-															<li class="list-unstyled">
-																<a href="#"><i class="fab fa-twitter text-color-quaternary text-hover-primary"></i></a>
-															</li>
-														</ul>
-													</span>
 													<span class="header-top-button-make-as-appoitment d-inline-flex align-items-center justify-content-center h-100 p-0 align-top">
-														<a href="/appointment/" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none">MAKE AN APPOINTMENT</a>
+														<a href="/doctor/login/" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none">Doctor Login</a>
 													</span>
 												</li>
 											</ul>
@@ -131,60 +115,8 @@
 														</a>
 													</li>
 													<li class="dropdown dropdown-secondary">
-														<a class="nav-link dropdown-toggle" class="dropdown-toggle" href="demo-medical-2-departments.html">
+														<a class="nav-link" href="demo-medical-2-departments.html">
 															Departments
-														</a>
-														<ul class="dropdown-menu">
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments.html">
-																	Overview
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Cardiology
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Gastroenterology
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Pulmonology
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Dental Care
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Gynecology
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Hepatology
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Gastroenterology
-																</a>
-															</li>
-															<li>
-																<a class="dropdown-item font-weight-normal" href="demo-medical-2-departments-detail.html">
-																	Pulmonology
-																</a>
-															</li>
-														</ul>
-													</li>
-													<li class="dropdown-secondary">
-														<a class="nav-link" href="demo-medical-2-blog.html">
-															Blog
 														</a>
 													</li>
 													<li class="dropdown-secondary">
@@ -236,21 +168,17 @@
 						<div class="col-sm-6 col-lg-3 footer-column footer-column-get-in-touch">
 							<h4 class="mb-4 text-uppercase">Get in Touch</h4>
 							<div class="info custom-info mb-4">
-								<div class="custom-info-block custom-info-block-address">
-									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-address">Address</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-address">123 Street Name, City, England</span>
-								</div>
 								<div class="custom-info-block custom-info-block-phone">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-phone">Phone</span>
 									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-phone">Toll Free <a href="tel:+1234567890" class="text-color-light">(123) 456-7890</a></span>
 								</div>
 								<div class="custom-info-block custom-info-block-email">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-email">Email</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-email"><a class="text-color-light" href="mailto:mail@example.com">mail@example.com</a></span>
+									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-email"><a class="text-color-light" href="mailto:mail@dockket.in">mail@dockket.in</a></span>
 								</div>
 								<div class="custom-info-block custom-info-block-working-days">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-working-days">Working Days/Hours</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block text-custom-info-block-working-days">Mon - Sun / 9:00AM - 8:00PM</span>
+									<span class="font-weight-normal text-color-light text-custom-info-block text-custom-info-block-working-days">Mon - Sun / 9:00AM - 7:00PM</span>
 								</div>
 							</div>
 							<ul class="social-icons">
@@ -273,81 +201,95 @@
 						</div>
 						<div class="col-sm-6 pt-5 pt-md-0 col-lg-4">
 							<div class="nav-footer-container">
-								<h4 class="mb-4 text-uppercase">Medical Services</h4>
+								<h4 class="mb-4 text-uppercase">Medical Categories</h4>
 								<div class="nav-footer d-flex">
 									<ul>
 										<li>
-											<a href="#">Home</a>
+											<a href="#">Active Ageing</a>
 										</li>
 										<li>
-											<a href="#">About Us</a>
+											<a href="#">Aesthetic Medicine</a>
 										</li>
 										<li>
-											<a href="#">Our Doctors</a>
+											<a href="#">Bones and Joints</a>
 										</li>
 										<li>
-											<a href="#">Departments</a>
+											<a href="#">Brain Health</a>
 										</li>
 										<li>
-											<a href="#">Overview</a>
+											<a href="#">Cancer</a>
 										</li>
 										<li>
-											<a href="#">Cardiology</a>
+											<a href="#">Children's Health</a>
 										</li>
 										<li>
-											<a href="#">Gastroenterology</a>
+											<a href="#">Dental Health</a>
 										</li>
 										<li>
-											<a href="#">Pulmonology</a>
+											<a href="#">Diabetes</a>
 										</li>
 										<li>
-											<a href="#">Dental Care</a>
+											<a href="#">Digestive System</a>
 										</li>
 										<li>
-											<a href="#">Gynecology</a>
+											<a href="#">ENT</a>
 										</li>										
 									</ul>
 									<ul class="ps-4">
 										<li>
-											<a href="#">Hepatology</a>
+											<a href="#">General Medicine</a>
 										</li>
 										<li>
-											<a href="#">Gastroenterology</a>
+											<a href="#">Infections</a>
 										</li>
 										<li>
-											<a href="#">Pulmonology</a>
+											<a href="#">Nutrition</a>
 										</li>
 										<li>
-											<a href="#">Blog</a>
+											<a href="#">Skin Health</a>
 										</li>
 										<li>
-											<a href="#">Contact Us</a>
+											<a href="#">Mental Health</a>
 										</li>
 									</ul>
 								</div>
 							</div>
 						</div>
 						<div class="col-sm-12 pt-4 pt-lg-0 col-lg-3 text-start ms-lg-auto footer-column footer-column-opening-hours">
-							<h4 class="mb-4 text-uppercase">Opening Hours</h4>
-							<div class="info custom-info pt-0">
-								<span>Mon-Fri</span>
-								<span>8:30 am to 5:00 pm</span>
-							</div>
-							<div class="info custom-info">
-								<span>Saturday</span>
-								<span>9:30 am to 1:00 pm</span>
-							</div>
-							<div class="info custom-info pb-0 border-bottom-0">
-								<span>Sunday</span>
-								<span>Closed</span>
-							</div>
+							<h4 class="mb-4 text-uppercase">Useful Links</h4>
+								<ul class="ps-4">
+									<li>
+										<a href="/appointment/">Doctor Appointment</a>
+									</li>
+									<li>
+										<a href="/patient/login/">Patient Login</a>
+									</li>
+									<li>
+										<a href="/appointment/">Clinc Appointment</a>
+									</li>
+									<li>
+										<a href="/doctor/registration/">Doctor Registration</a>
+									</li>
+									<li>
+										<a href="/clinic/registration/">Clinic Registration</a>
+									</li>
+									<li>
+										<a href="/sitemap/">Sitemap</a>
+									</li>
+									<li>
+										<a href="/terms-of-service/">Terms of Service</a>
+									</li>
+									<li>
+										<a href="/contact/">Contact Us</a>
+									</li>
+								</ul>
 						</div>
 					</div>
 				</div>
 				<div class="footer-copyright pt-3 pb-3 container bg-color-quaternary">
 					<div class="row">
 						<div class="col-lg-12 text-center m-0 pb-4">
-							<p class="text-color-default">Porto Medical. ©  2022.  All Rights Reserved</p>
+							<p class="text-color-default">Dockket.in ©  {{ date('Y') }}.  All Rights Reserved</p>
 						</div>
 					</div>
 				</div>

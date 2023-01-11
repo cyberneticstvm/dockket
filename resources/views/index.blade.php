@@ -13,7 +13,7 @@
                             <div class="col-md-10 col-lg-6 text-center text-md-end pb-5 ms-auto">
                                 <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Urgent Care + Multi-Specialty Medical Clinic Group</h1>
                                 <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Online Booking for Doctors in Trivandrum, Kerala</h2>
-                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">MAKE AN APPOINTMENT</a>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Find a Doctor</a>
                             </div>
                         </div>
                     </div>
@@ -27,7 +27,7 @@
                             <div class="col-md-10 col-lg-6 text-center text-md-start pb-5">
                                 <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Cardiology, Gastroenterology, Pulmonology and Dental Care</h1>
                                 <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Online Booking for Clinics in Trivandrum, Kerala</h2>
-                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">MAKE AN APPOINTMENT</a>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Find a Doctor</a>
                             </div>
                         </div>
                     </div>
@@ -46,9 +46,9 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="img/demos/medical-2/icons/icon-healthcare-center.png" alt="Healthcare Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Doctor Consultation</h4>
-                        <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
+                        <img src="{{ public_path().'img/dockket/doc-says.png' }}" alt="Healthcare Center">
+                        <h4 class="card-title mb-1 font-weight-bold">Dockket Says</h4>
+                        <p class="card-text text-center">Get the Latest Medical Information and tips for Healthy Living.</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
                     </div>
                 </div>
@@ -56,9 +56,9 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="img/demos/medical-2/icons/icon-immediate-center.png" alt="Immediate Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Clinic Services</h4>
-                        <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
+                        <img src="{{ public_path().'img/dockket/android-app.png' }}" alt="Immediate Center">
+                        <h4 class="card-title mb-1 font-weight-bold">Dockket App</h4>
+                        <p class="card-text text-center">Make appointment with your doctor on the go. <a href="/appointment/">Make an Appointment</a></p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
                     </div>
                 </div>
@@ -66,9 +66,9 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="img/demos/medical-2/icons/icon-diagnostic-center.png" alt="Diagnostic Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Lab Services</h4>
-                        <p class="card-text text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
+                        <img src="{{ public_path().'img/dockket/health.png' }}" alt="Diagnostic Center">
+                        <h4 class="card-title mb-1 font-weight-bold">Health A-Z</h4>
+                        <p class="card-text text-center">Authoritative guide to conditions, symptoms, causes & treatments.</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-4 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
-                    <h3 class="text-color-quaternary mb-3 font-weight-semibold text-capitalize pe-5">The Highest Standard Of Health Care Medical Clinic</h3>
-                    <p class="text-uppercase mb-3">John Doe - Main Doctor</p>
-                    <img src="img/demos/medical-2/others/signature.png" alt="Signature">
+                    <h3 class="text-color-quaternary mb-3 font-weight-semibold text-capitalize pe-5">With Dockket, we bring health and happiness.</h3>
+                    <p class="text-uppercase mb-3">Team Dockket</p>
+                    <!--<img src="" alt="Signature">-->
                 </div>
                 <div class="col-xs-12 col-lg-8 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                     <p class="p-relative bottom-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc. In nibh ipsum, blandit id faucibus ac, finibus vitae dui.</p>
@@ -98,13 +98,13 @@
                 <div class="col-xs-12 col-lg-6 p-relative overflow-hidden col-cuttin-more-about"></div>
                 <div class="col-xs-12 col-lg-6 p-relative py-5 bg-color-light z-index-1 ps-lg-5 ps-xl-0">
                     <p class="text-uppercase mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Who We Are</p>
-                    <h3 class="text-color-quaternary font-weight-bold text-capitalize mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">More About Porto Medical</h3>
+                    <h3 class="text-color-quaternary font-weight-bold text-capitalize mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">More About Dockket</h3>
                     <p class="font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut tellus ante. Nam suscipit urna risus, fermentum commodo ipsum porta id.</p>
                     <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc.</p>
                     <div class="row counters mb-4 flex-nowrap flex-sm-wrap">
                         <div class="col-xs-4 col-sm-4 col-lg-4 mb-0 d-flex">
                             <div class="counter counter-primary appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="500">
-                                <strong class="number-counter text-10" data-to="35" data-append="+">0</strong>
+                                <strong class="number-counter text-10" data-to="2" data-append="+">0</strong>
                                 <label class="number-counter-text text-4 text-color-primary font-weight-semibold negative-ls-1">Business Year</label>
                             </div>
                         </div>
@@ -116,22 +116,24 @@
                         </div>
                         <div class="col-xs-4 col-sm-4 col-lg-4 mb-0 d-flex justify-content-center">
                             <div class="counter counter-primary appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="1000">
-                                <strong class="number-counter text-10" data-to="200" data-append="+">0</strong>
-                                <label class="number-counter-text text-4 text-color-primary font-weight-semibold negative-ls-1">Modern Rooms</label>
+                                <strong class="number-counter text-10" data-to="20" data-append="+">0</strong>
+                                <label class="number-counter-text text-4 text-color-primary font-weight-semibold negative-ls-1">Clinics</label>
                             </div>
                         </div>
                     </div>
-                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc. In nibh ipsum, blandit id faucibus ac.</p>
+                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Top categories of serach till now.</p>
                     <div class="d-flex justify-content-start flex-column flex-xl-row">
                         <ul class="list list-icons list-icons-style-2 list-icons-sm custom-list-icons mb-1 mb-xl-3">
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100"><i class="fas fa-check text-color-quaternary"></i>Pellentesque ultricies nibh</li>
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><i class="fas fa-check text-color-quaternary"></i>Ultricies nibh pellen</li>
-                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300"><i class="fas fa-check text-color-quaternary"></i>Pellentesque ultricies nibh</li>
+                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100"><i class="fas fa-check text-color-quaternary"></i>Active Ageing</li>
+                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><i class="fas fa-check text-color-quaternary"></i>Aesthetic Medicine</li>
+                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300"><i class="fas fa-check text-color-quaternary"></i>Bones and Joints</li>
+                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300"><i class="fas fa-check text-color-quaternary"></i>Dental Health</li>
                         </ul>
                         <ul class="list list-icons list-icons-style-2 list-icons-sm custom-list-icons">
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400"><i class="fas fa-check text-color-quaternary"></i>Ultricies nibh pellen</li>
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500"><i class="fas fa-check text-color-quaternary"></i>Pellentesque ultricies nibh</li>
-                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600"><i class="fas fa-check text-color-quaternary"></i>Ultricies nibh pellen</li>
+                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400"><i class="fas fa-check text-color-quaternary"></i>Brain Health</li>
+                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500"><i class="fas fa-check text-color-quaternary"></i>Cancer</li>
+                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600"><i class="fas fa-check text-color-quaternary"></i>Children's Health</li>
+                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600"><i class="fas fa-check text-color-quaternary"></i>Diabetes</li>
                         </ul>
                     </div>
                 </div>
@@ -144,79 +146,26 @@
             <div class="row">
                 <div class="col">
                     <p class="text-uppercase mb-0">Our Specialists</p>
-                    <h3 class="font-weight-bold mb-2 text-capitalize">Meet Our Doctors</h3>
+                    <h3 class="font-weight-bold mb-2 text-capitalize">Meet Our Top Doctors</h3>
                     <p class="mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper.</p>
                     <div class="owl-carousel owl-theme custom-owl-carousel stage-margin nav-style-1" data-plugin-options="{'items': 6, 'margin': 10, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 40}">
+                        @forelse($doctors as $key => $doctor)
                         <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-1.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">John Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Cardiology</span>
+                            <a href="#" class="text-decoration-none">
+                                <img alt="{{ $doctor->dname }}" class="img-fluid rounded" src="{{ ($doctor && $doctor->photo) ? public_path().'/storage/doctor/photo/'.$doctor->photo : public_path().'/storage/doctor/photo/avatar.png' }}">
+                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">{{ $doctor->dname }}</strong>
+                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">{{ $doctor->spec }}</span>
                             </a>
                         </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-2.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Robert Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Gastroenterology</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-3.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Jessica Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Pulmonology</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-4.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Janice Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Dental Care</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-5.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Judie Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Gynecology</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-6.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Josh Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Hepatology</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-1.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">John Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Cardiology</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-2.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Robert Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Gastroenterology</span>
-                            </a>
-                        </div>
-                        <div class="text-center">
-                            <a href="demo-medical-2-our-doctors-detail.html" class="text-decoration-none">
-                                <img alt="Doctor" class="img-fluid rounded" src="img/demos/medical-2/doctors/doctor-3.png">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">Jessica Smith</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">Pulmonology</span>
-                            </a>
-                        </div>
+                        @empty
+                        @endforelse
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="patient-reviews p-relative overflow-hidden lazyload m-0" data-bg-src="img/demos/medical-2/bg/bg-2.png">
+    <section class="patient-reviews p-relative overflow-hidden lazyload m-0" data-bg-src="{{ public_path().'/img/dockket/review.jpg' }}">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-xl-6 p-relative bg-color-light z-index-1">
@@ -248,62 +197,62 @@
         </div>
     </section>
 
-    <section class="medical-services py-5 p-relative overflow-hidden lazyload" data-bg-src="img/demos/medical-2/bg/bg-3.png">
+    <section class="medical-services py-5 p-relative overflow-hidden lazyload" data-bg-src="{{ public_path().'/img/dockket/3d-plexus-dna-strand-bg.jpg' }}">
         <div class="container">
             <div class="row">
                 <div class="col pt-4">
-                    <p class="text-uppercase mb-0 text-color-light appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Departments</p>
-                    <h3 class="text-color-quaternary mb-2 text-color-light font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Our Medical Services</h3>
-                    <p class="mb-5 text-color-light appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper.</p>        
+                    <p class="text-uppercase mb-0 text-color-dark appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Departments</p>
+                    <h3 class="text-color-quaternary mb-2 text-color-dark font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">Our Medical Services</h3>
+                    <p class="mb-5 text-color-dark appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper.</p>        
                 </div>
             </div>
             <div class="row">
                 <div class="col">
                     <div class="cards-medical-services row flex-wrap justify-content-center">
                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
-                            <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                <img src="img/demos/medical-2/icons/icon-cardiology.png" class="img-fluid mb-5" alt="Cardiology">
-                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary">Cardiology</h4>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
+                                <i class="fa-solid fa-heart-pulse fa-2xl text-warning"></i>
+                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary mt-5">Cardiology</h4>
                                 <p class="card-text mb-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                                 <a href="demo-medical-2-departments-detail.html" class="font-weight-semibold text-uppercase text-decoration-none">read more +</a>
                             </div>
                         </div>
                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">
-                            <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                <img src="img/demos/medical-2/icons/icon-gastroenterology.png" class="img-fluid mb-5" alt="Gastroenterology">
-                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary">Gastroenterology</h4>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
+                                <i class="fa-solid fa-lungs fa-2xl text-success"></i>
+                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary mt-5">Pulmonology</h4>
                                 <p class="card-text mb-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                                 <a href="demo-medical-2-departments-detail.html" class="font-weight-semibold text-uppercase text-decoration-none">read more +</a>
                             </div>
                         </div>
                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">
-                            <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                <img src="img/demos/medical-2/icons/icon-pulmonology.png" class="img-fluid mb-5" alt="Pulmonology">
-                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary">Pulmonology</h4>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
+                                <i class="fa-solid fa-person-cane fa-2xl text-info"></i>
+                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary mt-5">Orthopaedic</h4>
                                 <p class="card-text mb-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                                 <a href="demo-medical-2-departments-detail.html" class="font-weight-semibold text-uppercase text-decoration-none">read more +</a>
                             </div>
                         </div>
                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1100">
-                            <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                <img src="img/demos/medical-2/icons/icon-dental.png" class="img-fluid mb-5" alt="Dental Care">
-                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary">Dental Care</h4>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
+                                <i class="fa-solid fa-tooth fa-2xl text-primary"></i>
+                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary mt-5">Dental Care</h4>
                                 <p class="card-text mb-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                                 <a href="demo-medical-2-departments-detail.html" class="font-weight-semibold text-uppercase text-decoration-none">read more +</a>
                             </div>
                         </div>
                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200">
-                            <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                <img src="img/demos/medical-2/icons/icon-gynecology.png" class="img-fluid mb-5" alt="Gynecology">
-                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary">Gynecology</h4>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
+                                <i class="fa-solid fa-person-breastfeeding fa-2xl text-success"></i>
+                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary mt-5">Gynecology</h4>
                                 <p class="card-text mb-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                                 <a href="demo-medical-2-departments-detail.html" class="font-weight-semibold text-uppercase text-decoration-none">read more +</a>
                             </div>
                         </div>
                         <div class="card border-0 border-radius-0 col-xs-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 bg-transparent appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1400">
-                            <div class="card-body py-5 d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
-                                <img src="img/demos/medical-2/icons/icon-hepatology.png" class="img-fluid mb-5" alt="Hepatology">
-                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary">Hepatology</h4>
+                            <div class="card-body d-flex flex-column justify-content-center align-items-center bg-color-light hover-effect-1">
+                                <i class="fa-solid fa-hand-holding-medical fa-2xl text-info"></i>
+                                <h4 class="card-title mb-2 text-5 font-weight-bold text-color-quaternary mt-5">General Medicine</h4>
                                 <p class="card-text mb-2 text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra erat orci, ac auctor lacus tincidunt ut...</p>
                                 <a href="demo-medical-2-departments-detail.html" class="font-weight-semibold text-uppercase text-decoration-none">read more +</a>
                             </div>
@@ -316,9 +265,9 @@
         <div class="container">
             <div class="row">
                 <div class="col text-center pb-lg-5 mb-lg-5">
-                    <p class="text-uppercase text-color-light d-block text-center mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Need a Speciallist?</p>
-                    <h3 class="text-color-quaternary mb-4 text-color-light d-block text-center font-weight-semibold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Get Better Now! Just Make An Appointment</h3>
-                    <a href="demo-medical-2-contact-us.html" class="btn btn-outline btn-light bg-hover-light text-hover-dark text-color-light border-color-light text-uppercase rounded-0 px-5 py-3 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">make an appointment</a>
+                    <p class="text-uppercase text-color-dark d-block text-center mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Need a Speciallist?</p>
+                    <h3 class="text-color-quaternary mb-4 text-color-dark d-block text-center font-weight-semibold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Get Better Now! Just Make An Appointment</h3>
+                    <a href="/appointment/" class="btn btn-outline btn-light bg-hover-light text-hover-dark text-color-dark border-color-dark text-uppercase rounded-0 px-5 py-3 mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">make an appointment</a>
                 </div>
             </div>
         </div>
@@ -333,63 +282,32 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <p class="text-uppercase mb-0 d-block text-center text-uppercase appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">our blog</p>
-                    <h3 class="text-color-quaternary mb-2 d-block text-center font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Recent Articles and News</h3>
+                    <p class="text-uppercase mb-0 d-block text-center text-uppercase appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Home Care</p>
+                    <h3 class="text-color-quaternary mb-2 d-block text-center font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Top Clinics and Home Care Service Providers</h3>
                     <p class="mb-4 d-block text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod.</p>           
                 </div>
             </div>
             <div class="row justify-content-center justify-lg-content-between">
+                @forelse($clinics as $key => $clinic)
                 <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
                     <article>
                         <div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
                             <div class="card-body p-4 z-index-1">
-                                <a href="demo-medical-2-blog-post.html">
-                                    <img class="card-img-top border-radius-0" src="img/demos/medical-2/blog/blog-1.png" alt="Card Image">
+                                <a href="/appointment/">
+                                    <img class="card-img-top border-radius-0" src="{{ public_path().'img/dockket/clinic.jpg' }}" alt="Card Image">
                                 </a>
-                                <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><time pubdate datetime="2022-01-10">10 Jan 2022</time> <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span> John Doe</p>
-                                <div class="card-body p-0">
-                                    <h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="demo-medical-2-blog-post.html">Everyday Health Special Report</a></h4>
-                                    <p class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor lacus tincidunt ut...</p>
-                                    <a href="demo-medical-2-blog-post.html" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Read More +</a>
+                                <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><a href="javascript:void(0)">Rate & Review</a> <span class="opacity-3 d-inline-block px-2">|</span> {{ rand(1, 10) }} Reviews <span class="opacity-3 d-inline-block px-2">|</span> {{ rand(10, 50) }} Total Bookings</p>
+                                <div class="card-body p-0 text-center">
+                                    <h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="/appointment/">{{ $clinic->name }}</a></h4>
+                                    <p class="card-text mb-3"></p>
+                                    <a href="/appointment/" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Book Now</a>
                                 </div>
                             </div>
                         </div>
                     </article>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <article>
-                        <div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="700">
-                            <div class="card-body p-4 z-index-1">
-                                <a href="demo-medical-2-blog-post.html">
-                                    <img class="card-img-top border-radius-0" src="img/demos/medical-2/blog/blog-2.png" alt="Card Image">
-                                </a>
-                                <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><time pubdate datetime="2022-01-10">10 Jan 2022</time> <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span> John Doe</p>
-                                <div class="card-body p-0">
-                                    <h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="demo-medical-2-blog-post.html">Natural Flu Remedies That Actually Work</a></h4>
-                                    <p class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor lacus tincidunt ut...</p>
-                                    <a href="demo-medical-2-blog-post.html" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Read More +</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <article>
-                        <div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="900">
-                            <div class="card-body p-4 z-index-1">
-                                <a href="demo-medical-2-blog-post.html">
-                                    <img class="card-img-top border-radius-0" src="img/demos/medical-2/blog/blog-3.png" alt="Card Image">
-                                </a>
-                                <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><time pubdate datetime="2022-01-10">10 Jan 2022</time> <span class="opacity-3 d-inline-block px-2">|</span> 3 Comments <span class="opacity-3 d-inline-block px-2">|</span> John Doe</p>
-                                <div class="card-body p-0">
-                                    <h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="demo-medical-2-blog-post.html">Can Weight Loss Surgery Reverse Type 2 Diabetes?</a></h4>
-                                    <p class="card-text mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc viverra lorem ipsum erat orci, ac auctor lacus tincidunt ut...</p>
-                                    <a href="demo-medical-2-blog-post.html" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Read More +</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div> 
+                @empty
+                @endforelse
             </div>
         </div>
     </section>
@@ -405,19 +323,19 @@
             </div>
             <div class="row align-items-center justify-content-center">
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
-                    <img class="img-fluid" src="img/demos/medical-2/logos/provider-1.png" alt="Provider">
+                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                    <img class="img-fluid" src="img/demos/medical-2/logos/provider-2.png" alt="Provider">
+                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-                    <img class="img-fluid" src="img/demos/medical-2/logos/provider-3.png" alt="Provider">
+                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-                    <img class="img-fluid" src="img/demos/medical-2/logos/provider-4.png" alt="Provider">
+                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
                 </div>
                 <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
-                    <img class="img-fluid" src="img/demos/medical-2/logos/provider-5.png" alt="Provider">
+                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
                 </div>
             </div>
         </div>
