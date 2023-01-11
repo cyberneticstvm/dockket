@@ -46,7 +46,7 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'img/dockket/doc-says.png' }}" alt="Healthcare Center">
+                        <img src="{{ public_path().'/img/dockket/doc-says.png' }}" alt="Healthcare Center">
                         <h4 class="card-title mb-1 font-weight-bold">Dockket Says</h4>
                         <p class="card-text text-center">Get the Latest Medical Information and tips for Healthy Living.</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
@@ -56,7 +56,7 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'img/dockket/android-app.png' }}" alt="Immediate Center">
+                        <img src="{{ public_path().'/img/dockket/android-app.png' }}" alt="Immediate Center">
                         <h4 class="card-title mb-1 font-weight-bold">Dockket App</h4>
                         <p class="card-text text-center">Make appointment with your doctor on the go. <a href="/appointment/">Make an Appointment</a></p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
@@ -66,7 +66,7 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'img/dockket/health.png' }}" alt="Diagnostic Center">
+                        <img src="{{ public_path().'/img/dockket/health.png' }}" alt="Diagnostic Center">
                         <h4 class="card-title mb-1 font-weight-bold">Health A-Z</h4>
                         <p class="card-text text-center">Authoritative guide to conditions, symptoms, causes & treatments.</p>
                         <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
@@ -294,7 +294,7 @@
                         <div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
                             <div class="card-body p-4 z-index-1">
                                 <a href="/appointment/">
-                                    <img class="card-img-top border-radius-0" src="{{ public_path().'img/dockket/clinic.jpg' }}" alt="Card Image">
+                                    <img class="card-img-top border-radius-0" src="{{ public_path().'/img/dockket/clinic.jpg' }}" alt="Card Image">
                                 </a>
                                 <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><a href="javascript:void(0)">Rate & Review</a> <span class="opacity-3 d-inline-block px-2">|</span> {{ rand(1, 10) }} Reviews <span class="opacity-3 d-inline-block px-2">|</span> {{ rand(10, 50) }} Total Bookings</p>
                                 <div class="card-body p-0 text-center">
