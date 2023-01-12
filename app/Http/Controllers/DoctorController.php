@@ -74,6 +74,16 @@ class DoctorController extends Controller
         return Redirect('/doctor/login/');
     }    
 
+    public function getBreakTime(Request $request){
+        $from = strtotime($request->cstart); $dur = $request->dur;
+        $end = strtotime("22:00"); $op = "<option value=''>Select</option>";
+        while($from <= $end):                                           
+            $op .= "<option value='".date('h:i A', $from)."'>".date('h:i A', $from)."</option>";
+            $from = strtotime('+'.$dur.' minutes', $from);
+        endwhile;
+        echo $op;
+    }
+
     public function appointments(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
         $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
@@ -84,6 +94,34 @@ class DoctorController extends Controller
             return redirect()->route('doctor.profile')->with('success','Please update profile and settings first to view settings.');
         endif;
     }   
+
+    public function saveappointments(Request $request){
+        $this->validate($request, [
+            'appointments' => 'present|array'
+        ]);
+        $doctor = Doctor::where('user_id', Auth::user()->id)->first();
+        foreach($request->appointments as $key => $app):
+            $token = Appointment::where('doctor_id', $doctor->id)->whereDate('appointment_date', Carbon::today())->max('token');
+            $atime = ($app) ? Carbon::createFromFormat('h:i A', $app)->format('H:i:s') : '00:00';
+            $data = [
+                'patient_name' => Auth::user()->name,
+                'mobile' => $doctor->mobile,
+                'branch' => 1,
+                'spec' => $doctor->spec,
+                'doctor_id' => $doctor->id,
+                'appointment_date' => Carbon::today(),
+                'appointment_time' => $atime,
+                'slot' => 0,
+                'token' => ($token > 0) ? $token+1 : 1,
+                'user_id' => $doctor->user_id,
+                'created_by' => Auth::user()->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ];
+            Appointment::create($data);
+        endforeach;
+        return redirect()->route('doctor.appointments')->with('success','Slots blocked successfully!');
+    }
 
     public function reports(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();

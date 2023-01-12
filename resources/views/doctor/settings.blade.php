@@ -31,14 +31,14 @@
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Slots per Day <span class="text-danger">*</span></label>
-                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="slots" value="{{ ($settings && $settings['slots']) ? $settings['slots'] : old('slots') }}" placeholder="0">
+                            <input class="form-control text-3 h-auto py-2 totslot" step="1" type="number" min="1" name="slots" value="{{ ($settings && $settings['slots']) ? $settings['slots'] : old('slots') }}" placeholder="0">
                             @error('slots')
                             <small class="text-danger">{{ $errors->first('slots') }}</small>
                             @enderror
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Time per Cons. (In Minutes) <span class="text-danger">*</span></label>
-                            <input class="form-control text-3 h-auto py-2" step="1" type="number" min="1" name="time_per_appointment" value="{{ ($settings && $settings['time_per_appointment']) ? $settings['time_per_appointment'] : old('time_per_appointment') }}" placeholder="0">
+                            <input class="form-control text-3 h-auto py-2 dur" step="1" type="number" min="1" name="time_per_appointment" value="{{ ($settings && $settings['time_per_appointment']) ? $settings['time_per_appointment'] : old('time_per_appointment') }}" placeholder="0">
                             @error('time_per_appointment')
                             <small class="text-danger">{{ $errors->first('time_per_appointment') }}</small>
                             @enderror
@@ -46,7 +46,7 @@
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Start <span class="text-danger">*</span></label>
                             @php $from = $start @endphp
-                            <select class="form-control" name="appointment_start_time">
+                            <select class="form-control cstart" name="appointment_start_time">
                                 <option value="">Select</option>
                                 @while($from <= $end)                                            
                                     <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['stime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
@@ -75,23 +75,23 @@
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Break Start</label>
                             @php $from = $start @endphp
-                            <select class="form-control" name="break_start_time">
+                            <select class="form-control bstart" name="break_start_time">
                                 <option value="">Select</option>
-                                @while($from <= $end)                                            
+                                <!--@while($from <= $end)                                            
                                     <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['bstime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
                                     @php $from = strtotime('+30 minutes', $from); @endphp
-                                @endwhile
+                                @endwhile-->
                             </select>
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Break End</label>
                             @php $from = $start @endphp
-                            <select class="form-control" name="break_end_time">
+                            <select class="form-control bend" name="break_end_time">
                                 <option value="">Select</option>
-                                @while($from <= $end)                                            
+                                <!--@while($from <= $end)                                            
                                     <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['betime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
                                     @php $from = strtotime('+30 minutes', $from); @endphp
-                                @endwhile
+                                @endwhile-->
                             </select>
                         </div>                        
                     </div>

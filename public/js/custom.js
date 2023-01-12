@@ -53,6 +53,24 @@ $(function(){
 
     $(".no-app").addClass('no-app');
 
+    $(".cstart").change(function(){
+        var cstart = $(this).val();
+        var slots = $(".totslot").val();
+        var dur = $(".dur").val();
+        $.ajax({
+            type: 'GET',
+            url: '/getBreakTime/',
+            data: {'cstart': cstart, 'slots': slots, 'dur': dur},
+            success: function(data){
+                $(".bstart, .bend").html(data)
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+        return false;
+    });
+
 });
 
 setTimeout(function () {
