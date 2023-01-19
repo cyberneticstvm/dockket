@@ -27,8 +27,8 @@
                                 {{ date('h:i A', $from) }}<br>
                                 @if(in_array(date('h:i A', $from), $atimes) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))))
                                     @php $index = array_search(date('h:i A', $from), $atimes); @endphp
-                                    Patient Name: {{ $apps[$index]->patient_name }}<br>
-                                    Contact No: {{ $apps[$index]->mobile }}
+                                    Patient Name: {{ ($apps[$index]->patient_name) ? $apps[$index]->patient_name : 'Break Time' }}<br>
+                                    Contact No: {{ ($apps[$index]->mobile) ? $apps[$index]->mobile : '' }}
                                 @else
                                     <input type="checkbox" name="appointments[]" value="{{ date('h:i A', $from) }}" />
                                 @endif
