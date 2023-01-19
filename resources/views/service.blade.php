@@ -132,7 +132,7 @@
                                             </div>
                                         </div>
                                     @empty
-                                    <div class="col-md-12"><p class="fw-bold text-danger">No Records Found! Please try again with different criteria.</p></div>
+                                    <div class="col-md-12">@if($input && empty($clinics))<p class="fw-bold text-danger">No Records Found! Please try again with different criteria.</p>@endif</div>
                                     @endforelse
                                 </div>
                             </div>
