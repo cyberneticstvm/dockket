@@ -128,7 +128,7 @@ class ClinicController extends Controller
             endforeach;
             DB::transaction(function() use ($data, $clinic) {
                 DB::table("clinic_services")->where('clinic_id', $clinic->id)->delete();
-                DB::table('clinic_services')->insert($data);
+                //DB::table('clinic_services')->insert($data);
             });
             return redirect()->route('clinic.services')->with('success','Services updated successfully.');        
         }catch(Exception $e){
