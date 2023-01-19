@@ -147,6 +147,10 @@ class AppointmentController extends Controller
         $doctor = Doctor::find($id);
         return view('location-map', compact('doctor'));
     }
+    public function locationmapc($id){
+        $clinic = Clinic::find($id);
+        return view('location-map-clinic', compact('clinic'));
+    }
 
     /**
      * Show the form for editing the specified resource.

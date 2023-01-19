@@ -31,6 +31,7 @@ Route::post('/service-request/', [AppointmentController::class, 'serviceRequest'
 Route::post('/service-request/create/', [AppointmentController::class, 'saveService'])->name('service.save');
 Route::post('/appointment/create/', [AppointmentController::class, 'store'])->name('appointment.save');
 Route::get('/appointment/locationmap/{id}/', [AppointmentController::class, 'locationmap'])->name('appointment.locationmap');
+Route::get('/clinic/locationmap/{id}/', [AppointmentController::class, 'locationmapc'])->name('clinic.locationmap');
 
 Route::get('/doctor/registration/', [DoctorController::class, 'showReg'])->name('doctor.show.registration');
 Route::post('/doctor/registration/', [DoctorController::class, 'reg'])->name('doctor.registration');

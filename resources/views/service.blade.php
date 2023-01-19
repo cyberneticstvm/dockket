@@ -86,7 +86,8 @@
                                                     <div class="row">
                                                         <div class="col text-center text-dark">₹ xxx</div>
                                                         <div class="col text-center text-dark">{{ number_format($clinic->distance_km, 2) }} KMs</div>
-                                                        <div class="col text-center"><a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
+                                                        <div class="col text-center"><a href="/appointment/locationmap/{{ $clinic->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
+                                                        <!--<div class="col text-center"><a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>-->
                                                     </div>
                                                     <div class="text-center mt-2"><button data-bs-toggle="collapse" data-bs-target="#clinic_{{ $clinic->clinic_id }}" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2 slotBtn">Book Now</button></div>
                                                     <form method="post" action="{{ route('service.save') }}">
