@@ -91,12 +91,12 @@
                                                         </a>
                                                     </strong>
                                                     <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0 text-center">{{ $app->spec }}</span>
-                                                    <p class="text-center">{{ $app->designation }}<br>Branch: {{ $app->bname }}</p>
+                                                    <p class="text-center text-dark">{{ $app->designation }}<br>Branch: {{ $app->bname }}<br>Address: {{ $app->consultation_address }}</p>
                                                     <div class="row">
                                                         <div class="col text-center text-dark">₹ {{ $app->fee }}</div>
                                                         <div class="col text-center text-dark">{{ number_format($app->distance_km, 2) }} KMs</div>
-                                                        <!--<div class="col text-center"><a href="/appointment/locationmap/{{ $app->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>-->
-                                                        <div class="col text-center"><a href="https://maps.google.com/maps?daddr={{ $app->con_latitude }},{{ $app->con_longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
+                                                        <div class="col text-center"><a href="/appointment/locationmap/{{ $app->id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
+                                                        <!--<div class="col text-center"><a href="https://maps.google.com/maps?daddr={{ $app->con_latitude }},{{ $app->con_longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>-->
                                                     </div>
                                                     <div class="text-center mt-2"><button data-bs-toggle="collapse" data-bs-target="#slot_{{ $app->id }}" class="btn btn-outline btn-light bg-hover-light text-dark text-hover-primary border-color-grey border-color-active-primary border-color-hover-primary text-uppercase rounded-0 px-4 py-2 mb-4 text-2 slotBtn">Show Slots</button></div>
                                                     <form method="post" action="{{ route('appointment.save') }}">
@@ -109,7 +109,9 @@
                                                         <div id="slot_{{ $app->id }}" class="collapse">
                                                             <h5 class="text-center text-success">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
                                                             @php 
-                                                                $from = strtotime($app->stime); $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = ''; $bstime = strtotime($app->bstime); $betime = strtotime($app->betime); $c = 0;
+                                                                $from = strtotime($app->stime); $now = strtotime($app->curtime);
+                                                                $from = ($from > $now) ? $from : ceil($now);
+                                                                $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = ''; $bstime = strtotime($app->bstime); $betime = strtotime($app->betime); $c = 0;
                                                                 $apps = DB::table('appointments')->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time")->where('doctor_id', $app->id)->whereDate('appointment_date', $input[5])->pluck('appointment_time')->toArray();
                                                             @endphp
                                                             <div class="row">                                                
@@ -127,7 +129,7 @@
                                                                         <input type="text" class="form-control from-control-sm atime" name="appointment_time" value="Selected Time" placeholder="" readonly required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
-                                                                        <label>Full Name: </label>
+                                                                        <label>Full Name: {{ $app->curtime }}</label>
                                                                         <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
