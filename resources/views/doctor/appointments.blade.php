@@ -25,7 +25,7 @@
                             @if($c == $settings->slots) @break; @endif
                             <div class="col-sm-3 slot1 {{ (in_array(date('h:i A', $from), $atimes)) ? 'bg-success text-white no-app' : '' }}">
                                 {{ date('h:i A', $from) }}<br>
-                                @if(in_array(date('h:i A', $from), $atimes))
+                                @if(in_array(date('h:i A', $from), $atimes) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))))
                                     @php $index = array_search(date('h:i A', $from), $atimes); @endphp
                                     Patient Name: {{ $apps[$index]->patient_name }}<br>
                                     Contact No: {{ $apps[$index]->mobile }}
