@@ -53,7 +53,7 @@ $(function(){
 
     $(".no-app").addClass('no-app');
 
-    $(".cstart, .bstart").change(function(){
+    $(".cstart").change(function(){
         var cstart = $(".cstart").val();
         var bstart = $(".bstart").val();
         var slots = $(".totslot").val();
@@ -62,8 +62,30 @@ $(function(){
             type: 'GET',
             url: '/getBreakTime/',
             data: {'cstart': cstart, 'bstart': bstart, 'slots': slots, 'dur': dur},
-            success: function(data){alert(data)
-                $(".bstart, .bend").html(data)
+            success: function(response){
+                //$(".bstart, .bend").html(data)
+                var data = JSON.parse(response);
+                $(".bstart").html(data.bs);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
+        return false;
+    });
+    $(".bstart").change(function(){
+        var cstart = $(".cstart").val();
+        var bstart = $(".bstart").val();
+        var slots = $(".totslot").val();
+        var dur = $(".dur").val();
+        $.ajax({
+            type: 'GET',
+            url: '/getBreakTime/',
+            data: {'cstart': cstart, 'bstart': bstart, 'slots': slots, 'dur': dur},
+            success: function(response){
+                //$(".bstart, .bend").html(data)
+                var data = JSON.parse(response);
+                $(".bend").html(data.be);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 console.log(XMLHttpRequest);

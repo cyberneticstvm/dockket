@@ -78,13 +78,17 @@ class DoctorController extends Controller
         $from = strtotime($request->cstart); $dur = $request->dur;
         $mins = $request->slots*$request->dur; //$end = strtotime("22:00");
         $end = Carbon::createFromFormat('h:i A', $request->cstart)->addMinutes($mins)->format('H:i');
-        $end = strtotime($end);
-        $op = "<option value=''>Select</option>";
+        $end = strtotime($end); $bstart = strtotime($request->bstart);
+        $op = "<option value=''>Select</option>"; $op1 = "<option value=''>Select</option>";
         while($from <= $end):                                           
             $op .= "<option value='".date('h:i A', $from)."'>".date('h:i A', $from)."</option>";
             $from = strtotime('+'.$dur.' minutes', $from);
         endwhile;
-        echo $op;
+        while($bstart <= $end):                                           
+            $op1 .= "<option value='".date('h:i A', $bstart)."'>".date('h:i A', $bstart)."</option>";
+            $bstart = strtotime('+'.$dur.' minutes', $bstart);
+        endwhile;
+        echo json_encode(array("bs" => $op, "be" => $op1));
     }
 
     public function appointments(){
