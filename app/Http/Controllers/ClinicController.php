@@ -103,7 +103,7 @@ class ClinicController extends Controller
 
     public function services(){
         $clinic = Clinic::where('user_id', Auth::user()->id)->first();
-        $services = ($clinic) ? DB::select("SELECT s.id, s.name, CASE WHEN c.clinic_id = ? THEN 'Y' ELSE 'N' END AS checked FROM specializations s LEFT JOIN clinic_services c ON c.service_id = s.id WHERE s.category = 2 HAVING checked = 'Y'", [$clinic->id]) : [];
+        $services = ($clinic) ? DB::select("SELECT DISTINCT(s.name), s.id, CASE WHEN c.clinic_id = ? THEN 'Y' ELSE 'N' END AS checked FROM specializations s LEFT JOIN clinic_services c ON c.service_id = s.id WHERE s.category = 2", [$clinic->id]) : [];
         if($clinic):
             return view('clinic.services', compact('services'));
         else:
