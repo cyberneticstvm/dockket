@@ -114,7 +114,7 @@
                                                                 $apps = DB::table('appointments')->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time")->where('doctor_id', $app->id)->whereDate('appointment_date', $input[5])->pluck('appointment_time')->toArray();
                                                             @endphp
                                                             <div class="row">                                                
-                                                                @while($c <= $app->slots)
+                                                                @while($from <= $end)
                                                                     @if($c == $app->slots) @break; @endif
                                                                     <div class="col slot {{ (in_array(date('h:i A', $from), $apps) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime))) ? 'bg-danger text-white no-app' : '' }}">
                                                                         {{ date('h:i A', $from) }}

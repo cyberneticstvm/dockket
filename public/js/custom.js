@@ -61,7 +61,7 @@ $(function(){
             type: 'GET',
             url: '/getBreakTime/',
             data: {'cstart': cstart, 'slots': slots, 'dur': dur},
-            success: function(data){
+            success: function(data){alert(data)
                 $(".bstart, .bend").html(data)
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){

@@ -86,7 +86,7 @@ class DoctorController extends Controller
 
     public function appointments(){
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
-        $settings = DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first();
+        $settings = ($doctor) ? DoctorSettings::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_start_time, '%H:%i') AS stime, TIME_FORMAT(appointment_end_time, '%H:%i') AS etime, time_per_appointment, slots, break_start_time AS bstime, break_end_time AS betime")->first() : [];
         if($doctor && $settings):
             $apps = Appointment::where('doctor_id', $doctor->id)->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time, patient_name, mobile")->whereDate('appointment_date', Carbon::today())->get();
             return view('doctor.appointments', compact('doctor', 'settings', 'apps'));
@@ -245,10 +245,11 @@ class DoctorController extends Controller
             'appointment_start_time' => 'required',
             'appointment_open_days' => 'required',
         ]);
-        $pwd = ($request->password) ? Hash::make($request->password) : NULL;
+        $pwd = ($request->password) ? Hash::make($request->password) : NULL; $mins = $request->slots*$request->time_per_appointment;
         $input = $request->except(array('_token', 'password'));
         $input['appointment_start_time'] = ($request->appointment_start_time) ? Carbon::createFromFormat('h:i A', $request->appointment_start_time)->format('H:i:s') : '00:00';
-        $input['appointment_end_time'] = Carbon::createFromFormat('h:i A', date('h:i A', strtotime("22:30")))->format('H:i:s');
+        //$input['appointment_end_time'] = Carbon::createFromFormat('h:i A', date('h:i A', strtotime("22:30")))->format('H:i:s');
+        $input['appointment_end_time'] = Carbon::createFromFormat('h:i A', $request->appointment_start_time)->addMinutes($mins)->format('H:i:s');
         $input['break_start_time'] = ($request->break_start_time) ? Carbon::createFromFormat('h:i A', $request->break_start_time)->format('H:i:s') : '00:00';
         $input['break_end_time'] = ($request->break_end_time) ? Carbon::createFromFormat('h:i A', $request->break_end_time)->format('H:i:s') : '00:00';
         $input['available_for_appointment'] = isset($request->available_for_appointment) ? $request->available_for_appointment : 0;

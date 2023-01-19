@@ -74,24 +74,24 @@
                         </div>                        
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Break Start</label>
-                            @php $from = $start @endphp
+                            @php $from = ($settings && $settings['bstime']) ? strtotime($settings['bstime']) : $start; @endphp
                             <select class="form-control bstart" name="break_start_time">
                                 <option value="">Select</option>
-                                <!--@while($from <= $end)                                            
+                                @while($from <= $end)                                            
                                     <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['bstime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
                                     @php $from = strtotime('+30 minutes', $from); @endphp
-                                @endwhile-->
+                                @endwhile
                             </select>
                         </div>
                         <div class="col-lg-3 form-group">
                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Break End</label>
-                            @php $from = $start @endphp
+                            @php $from = ($settings && $settings['betime']) ? strtotime($settings['betime']) : $start; @endphp
                             <select class="form-control bend" name="break_end_time">
                                 <option value="">Select</option>
-                                <!--@while($from <= $end)                                            
+                                @while($from <= $end)                                            
                                     <option value="{{ date('h:i A', $from) }}" {{ ($settings && $settings['betime'] == date('h:i A', $from)) ? 'selected' : '' }}>{{ date('h:i A', $from) }}</option>
                                     @php $from = strtotime('+30 minutes', $from); @endphp
-                                @endwhile-->
+                                @endwhile
                             </select>
                         </div>                        
                     </div>
