@@ -4,7 +4,7 @@
     <div class="container pt-3 pb-2">
         <div class="row pt-2">
             <div class="col-lg-12">
-                <h3 class="text-center text-primary">Clinic Services</h3>
+                <h3 class="text-center text-primary">Clinic Services {{ Auth::user()->id }}</h3>
                 @if(session()->has('success'))
                     <div class="alert alert-success">
                         {{ session()->get('success') }}
