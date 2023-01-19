@@ -80,6 +80,8 @@ Route::group(['middleware' => ['auth', 'clinic']], function(){
     Route::post('/clinic/services/', [ClinicController::class, 'servicesUpdate'])->name('clinic.services.update');
 
     Route::get('/clinic/logout/', [ClinicController::class, 'logout'])->name('clinic.logout');
+
+    Route::get('/updateClinicRequestStatus/', [ClinicController::class, 'updateClinicRequestStatus']);
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
@@ -110,6 +112,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
 });
 
 Route::group(['middleware' => ['auth', 'patient']], function(){
-    //
+    Route::get('/patient/', [PatientController::class, 'myappointments'])->name('admin.myappointments');
+
+    Route::get('/patient/logout/', [PatientController::class, 'logout'])->name('patient.logout');
 });
 

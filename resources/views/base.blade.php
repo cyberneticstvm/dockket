@@ -124,6 +124,13 @@
 															Contact Us
 														</a>
 													</li>
+													@if(Auth::user() && Auth::user()->user_type == 'P')
+													<li class="dropdown-secondary">
+														<a class="nav-link" href="/patient/">
+															My Appointments
+														</a>
+													</li>
+													@endif
 												</ul>
 											</nav>
 										</div>

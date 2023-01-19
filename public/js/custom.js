@@ -36,7 +36,7 @@ $(function(){
         }
     });
 
-    $('#dataTbl').DataTable();
+    $('#dataTbl, #dataTbl1').DataTable();
     $('#dataTblDoc, #dataTblClinic').DataTable({
         'columnDefs': [ {
             'targets': [5,6], // column index (start from 0)
@@ -98,6 +98,25 @@ $(function(){
             }
         });
         return false;
+    });
+
+    $(".chkClinicStatus").click(function(){
+        var rid = $(this).closest('tr').attr('id');
+        var val = 'P';
+        if($(this).is(":checked")){
+            val = 'C';
+        };
+        $.ajax({
+            type: 'GET',
+            url: '/updateClinicRequestStatus/',
+            data: {'rid': rid, 'val': val},
+            success: function(response){
+                alert(response);
+            },
+            error: function(XMLHttpRequest, textStatus, errorThrown){
+                console.log(XMLHttpRequest);
+            }
+        });
     });
 
 });

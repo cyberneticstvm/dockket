@@ -18,6 +18,12 @@ class ClinicController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function updateClinicRequestStatus(Request $request){
+        $rid = $request->rid; $val = $request->val;
+        DB::table('service_requests')->where('id', $rid)->update(['status' => $val]);
+        echo "Status Updated Successfully!";
+    }
+
     public function showReg(){
         return view('clinic.registration');
     }
@@ -88,7 +94,8 @@ class ClinicController extends Controller
     public function requests(){
         $clinic = Clinic::where('user_id', Auth::user()->id)->first();
         if($clinic):
-            return view('clinic.requests');
+            $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st")->whereDate('service_date', Carbon::today())->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
+            return view('clinic.requests', compact('requests'));
         else:
             return redirect()->route('clinic.profile')->with('success','Please update profile first to view requests.');
         endif;
