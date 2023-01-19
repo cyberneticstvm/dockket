@@ -109,8 +109,7 @@
                                                         <div id="slot_{{ $app->id }}" class="collapse">
                                                             <h5 class="text-center text-success">Available Slots on {{ date('d-M-Y', strtotime($input[5])) }}</h5>
                                                             @php 
-                                                                $from = strtotime($app->stime); $now = strtotime($app->curtime);
-                                                                $from = ($from > $now) ? $from : ceil($now);
+                                                                $from = strtotime($app->stime);
                                                                 $end = strtotime($app->etime); $dur = $app->time_per_appointment; $bg = ''; $bstime = strtotime($app->bstime); $betime = strtotime($app->betime); $c = 0;
                                                                 $apps = DB::table('appointments')->selectRaw("TIME_FORMAT(appointment_time, '%h:%i %p') AS appointment_time")->where('doctor_id', $app->id)->whereDate('appointment_date', $input[5])->pluck('appointment_time')->toArray();
                                                             @endphp
