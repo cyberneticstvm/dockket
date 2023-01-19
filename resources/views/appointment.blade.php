@@ -129,7 +129,7 @@
                                                                         <input type="text" class="form-control from-control-sm atime" name="appointment_time" value="Selected Time" placeholder="" readonly required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
-                                                                        <label>Full Name: {{ $app->curtime }}</label>
+                                                                        <label>Full Name: </label>
                                                                         <input type="text" class="form-control from-control-sm" name="patient_name" placeholder="Full Name" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->name : '' }}" required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
