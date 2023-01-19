@@ -73,8 +73,7 @@ class ClinicController extends Controller
             'mobile' => $did,
             'address' => 'required',
         ]);
-        $input = $request->except(array('_token', 'email', 'name'));
-        
+        $input = $request->except(array('_token', 'email', 'name'));        
         try{
             DB::transaction(function () use ($input, $request, $id) {
                 Clinic::upsert($input, 'user_id');
@@ -97,7 +96,7 @@ class ClinicController extends Controller
 
     public function services(){
         $clinic = Clinic::where('user_id', Auth::user()->id)->first();
-        $services = DB::select("SELECT s.id, s.name, CASE WHEN c.clinic_id = ? THEN 'Y' ELSE 'N' END AS checked FROM specializations s LEFT JOIN clinic_services c ON c.service_id = s.id WHERE s.category = 2", [$clinic->id]);
+        $services = ($clinic) ? DB::select("SELECT s.id, s.name, CASE WHEN c.clinic_id = ? THEN 'Y' ELSE 'N' END AS checked FROM specializations s LEFT JOIN clinic_services c ON c.service_id = s.id WHERE s.category = 2", [$clinic->id]) : [];
         if($clinic):
             return view('clinic.services', compact('services'));
         else:

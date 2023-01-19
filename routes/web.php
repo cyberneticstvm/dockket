@@ -94,6 +94,10 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::delete('/admin/doctor/delete/{id}/', [AdminController::class, 'doctordelete'])->name('admin.doctor.delete');
 
     Route::get('/admin/clinic/', [AdminController::class, 'clinics'])->name('admin.clinic');
+    Route::get('/admin/clinic/edit/{id}/', [AdminController::class, 'clinicedit'])->name('admin.clinic.edit');
+    Route::put('/admin/clinic/update/{id}/', [AdminController::class, 'clinicupdate'])->name('admin.clinic.update');
+    Route::delete('/admin/clinic/delete/{id}/', [AdminController::class, 'clinicdelete'])->name('admin.clinic.delete');
+
 
     Route::get('/admin/specializations/', [AdminController::class, 'specialization'])->name('admin.specialization');
     Route::post('/admin/specializations/', [AdminController::class, 'specializationsave'])->name('admin.specialization.save');

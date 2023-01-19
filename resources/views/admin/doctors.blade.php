@@ -13,7 +13,7 @@
             </div>
             @include('admin.sections.leftmenu')
             <div class="col-lg-9 table-responsive">                
-                <table id="dataTbl" class="table table-bordered table-stripped">
+                <table id="dataTblDoc" class="table table-bordered table-stripped">
                     <thead><tr><th>SL No</th><th>Doctor Name</th><th>Doctor ID</th><th>Email</th><th>Status</th><th>Edit</th><th>Delete</th></tr></thead>
                     <tbody>
                         @php $c = 1; @endphp

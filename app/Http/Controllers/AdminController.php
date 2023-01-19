@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Clinic;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -90,7 +91,7 @@ class AdminController extends Controller
     }
 
     public function doctors(){
-        $doctors = Doctor::leftJoin('users as u', 'u.id', 'doctors.user_id')->select('doctors.id', 'u.name', 'u.email', 'doctors.doctor_id', DB::raw("CASE WHEN doctors.status = 'P' THEN 'Pending' ELSE 'Approved' END AS status"))->orderBy('u.name', 'ASC')->get();
+        $doctors = Doctor::leftJoin('users as u', 'u.id', 'doctors.user_id')->select('doctors.id', 'u.name', 'u.email', 'doctors.doctor_id', DB::raw("CASE WHEN doctors.status = 'P' THEN 'Pending' ELSE 'Approved' END AS status"))->orderByDesc('doctors.status')->get();
         return view('admin.doctors', compact('doctors'));
     }
 
@@ -100,12 +101,7 @@ class AdminController extends Controller
         $doctor = Doctor::find($id);
         $user = User::where('id', $doctor->user_id)->first();
         return view('admin.edit-doctor', compact('branches', 'specializations', 'doctor', 'user'));
-    }
-
-    public function clinics(){
-        $clinics = [];
-        return view('admin.clinic', compact('clinics'));
-    }
+    }    
 
     public function doctorupdate(Request $request, $id){
         $doctor = Doctor::find($id);
@@ -134,6 +130,44 @@ class AdminController extends Controller
         User::where('id', $doctor->user_id)->delete();
         $doctor->delete();
         return redirect()->route('admin.doctor')
+                        ->with('success','Record deleted successfully');
+    }
+
+    public function clinics(){
+        $clinics = DB::table('clinics as c')->leftJoin('users as u', 'u.id', 'c.user_id')->select('c.id', 'u.name', 'u.email', 'c.mobile', DB::raw("CASE WHEN c.status = 'P' THEN 'Pending' ELSE 'Approved' END AS status"), 'c.address')->orderByDesc('c.status')->get();
+        return view('admin.clinic', compact('clinics'));
+    }
+
+    public function clinicedit($id){
+        $clinic = DB::table('clinics')->where('id', $id)->first();
+        $user = User::where('id', $clinic->user_id)->first();
+        return view('admin.edit-clinic', compact('clinic', 'user'));
+    }  
+
+    public function clinicupdate(Request $request, $id){
+        $clinic = DB::table('clinics')->where('id', $id)->first();
+        $this->validate($request, [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,'.$clinic->user_id,
+            'mobile' => 'required|numeric|digits:10|unique:clinics,mobile,'.$id,
+            'address' => 'required',
+        ]);
+        try{
+            DB::transaction(function () use ($clinic, $request, $id) {
+                DB::table('clinics')->where('id', $id)->update(['mobile' => $request->mobile, 'address' => $request->address, 'latitude' => $request->latitude, 'longitude' => $request->longitude, 'status' => $request->status]);
+                User::where('id', $clinic->user_id)->update(['name' => $request->name, 'email' => $request->email]);
+            });            
+        }catch(Exception $e){
+            throw $e;
+        }        
+        return redirect()->route('admin.clinic')->with('success','Clinic profile updated successfully');
+    }
+
+    public function clinicdelete($id){
+        $clinic = Clinic::find($id);
+        User::where('id', $clinic->user_id)->delete();
+        $clinic->delete();
+        return redirect()->route('admin.clinic')
                         ->with('success','Record deleted successfully');
     }
 
