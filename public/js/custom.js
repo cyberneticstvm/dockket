@@ -53,14 +53,15 @@ $(function(){
 
     $(".no-app").addClass('no-app');
 
-    $(".cstart").change(function(){
-        var cstart = $(this).val();
+    $(".cstart, .bstart").change(function(){
+        var cstart = $(".cstart").val();
+        var bstart = $(".bstart").val();
         var slots = $(".totslot").val();
         var dur = $(".dur").val();
         $.ajax({
             type: 'GET',
             url: '/getBreakTime/',
-            data: {'cstart': cstart, 'slots': slots, 'dur': dur},
+            data: {'cstart': cstart, 'bstart': bstart, 'slots': slots, 'dur': dur},
             success: function(data){alert(data)
                 $(".bstart, .bend").html(data)
             },

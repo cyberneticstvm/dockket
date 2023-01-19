@@ -76,7 +76,10 @@ class DoctorController extends Controller
 
     public function getBreakTime(Request $request){
         $from = strtotime($request->cstart); $dur = $request->dur;
-        $end = strtotime("22:00"); $op = "<option value=''>Select</option>";
+        $mins = $request->slots*$request->dur; //$end = strtotime("22:00");
+        $end = Carbon::createFromFormat('h:i A', $request->cstart)->addMinutes($mins)->format('H:i');
+        $end = strtotime($end);
+        $op = "<option value=''>Select</option>";
         while($from <= $end):                                           
             $op .= "<option value='".date('h:i A', $from)."'>".date('h:i A', $from)."</option>";
             $from = strtotime('+'.$dur.' minutes', $from);
