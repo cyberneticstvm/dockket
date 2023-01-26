@@ -18,5 +18,6 @@ class Clinic extends Model
         'latitude',
         'longitude',
         'status',
+        'photo',
     ];
 }

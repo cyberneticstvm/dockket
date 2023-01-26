@@ -37,7 +37,7 @@
                                             @enderror
                                         </div>
                                         <div class="col-lg-5 col-md-5 col-sm-5 form-group">
-                                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Location <span class="text-danger">*</span></label>
+                                            <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Location <span class="text-danger">*</span>&nbsp;&nbsp;&nbsp;<a href="javascript:pickmylocation()">Pick My Location</a></label>
                                             <input class="form-control form-control-lg text-3 h-auto py-2" type="text" id="address" value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location" placeholder="Location" required>
                                             <input type="hidden" name="latitude" id="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
                                             <input type="hidden" name="longitude" id="longitude" value="{{ ($input && $input[3]) ? $input[3] : '' }}" />
@@ -47,7 +47,7 @@
                                         </div>
                                         <div class="col-lg-2 col-md-2 col-sm-2 form-group">
                                             <label class="col-form-label form-control-label line-height-9 pt-2 text-2">Radius in KM <span class="text-danger">*</span></label>
-                                            <input class="form-control form-control-lg text-3 h-auto py-2" type="number" name="radius" min="1" max="50" step="1" placeholder="0 KM" value="{{ ($input && $input[4]) ? $input[4] : '' }}" required />
+                                            <input class="form-control form-control-lg text-3 h-auto py-2" type="text" name="radius" maxlength="2" placeholder="0 KM" value="{{ ($input && $input[4]) ? $input[4] : '' }}" required />
                                             @error('radius')
                                             <small class="text-danger">{{ $errors->first('radius') }}</small>
                                             @enderror

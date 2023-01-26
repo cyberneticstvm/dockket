@@ -13,7 +13,7 @@
             </div>
             @include('clinic.sections.leftmenu')
             <div class="col-lg-9">                
-                <form role="form" action="{{ route('clinic.profile.update', Auth::user()->id) }}" method="post">
+                <form role="form" action="{{ route('clinic.profile.update', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="user_id" value="{{ ($clinic && $clinic->user_id) ? $clinic->user_id : Auth::user()->id }}" />
                     <input type="hidden" name="city" value="" />
@@ -55,6 +55,13 @@
                         @enderror
                         <input type="hidden" name="latitude" id="latitude" value="{{ ($clinic && $clinic->latitude) ? $clinic->latitude : old('latitude') }}" />
                         <input type="hidden" name="longitude" id="longitude" value="{{ ($clinic && $clinic->longitude) ? $clinic->longitude : old('longitude') }}" />
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Profile Photo / Logo</label>
+                        <div class="col-lg-9">
+                            <input type="file" id="" name="photo" class="form-control profile-image-input">
+                            <small>Profile Photo: @if($clinic && $clinic->photo) <a href="{{ public_path().'/storage/clinic/photo/'.$clinic->id.'/'.$clinic->photo }}" target="_blank">View</a> @endif</small>
+                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-lg-9">

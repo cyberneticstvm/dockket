@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -38,8 +39,9 @@ class ClinicController extends Controller
         ]);
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
-        User::create($input);
-        return redirect()->route('clinic.login')
+        $user = User::create($input);
+        Auth::login($user);
+        return redirect()->route('clinic.profile')
                         ->with('success','Clinic Registered successfully');
     }
 
@@ -80,7 +82,13 @@ class ClinicController extends Controller
             'mobile' => $did,
             'address' => 'required',
         ]);
-        $input = $request->except(array('_token', 'email', 'name'));        
+        $input = $request->except(array('_token', 'email', 'name'));
+        if($request->photo):
+            $doc = $request->file('photo');
+            $fname = 'clinic/photo/'.$clinic->id.'/'.$doc->getClientOriginalName();
+            Storage::disk('public')->putFileAs($fname, $doc, '');
+            $input['photo'] = $doc->getClientOriginalName();
+        endif;        
         try{
             DB::transaction(function () use ($input, $request, $id) {
                 Clinic::upsert($input, 'user_id');
@@ -96,7 +104,8 @@ class ClinicController extends Controller
         $clinic = Clinic::where('user_id', Auth::user()->id)->first();
         if($clinic):
             $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st")->whereDate('service_date', Carbon::today())->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
-            return view('clinic.requests', compact('requests'));
+            $inputs = [];
+            return view('clinic.requests', compact('requests', 'inputs'));
         else:
             return redirect()->route('clinic.profile')->with('success','Please update profile first to view requests.');
         endif;
@@ -202,5 +211,16 @@ class ClinicController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function fetchappointments(Request $request){
+        $clinic = Clinic::where('user_id', Auth::user()->id)->first();
+        $this->validate($request, [
+            'from_date' => 'required',
+            'to_date' => 'required',
+        ]);
+        $inputs = array($request->from_date, $request->to_date);
+        $apps = $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st")->whereBetween('service_date', [$request->from_date, $request->to_date])->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
+        return view('clinic.requests', compact('requests', 'inputs'));
     }
 }

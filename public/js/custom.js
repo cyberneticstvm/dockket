@@ -138,3 +138,17 @@ function disablePastDaysInCalendar(){
     var maxDate = year + '-' + month + '-' + day;
     $('.inputdate').attr('min', maxDate);
 }
+
+var options = {
+    componentRestrictions: {country: "in"}
+};
+window.addEventListener('load', initialize);
+function initialize() {
+    var input = document.getElementById('address');
+    var autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.addListener('place_changed', function () {
+        var place = autocomplete.getPlace();
+        $('#latitude').val(place.geometry['location'].lat());
+        $('#longitude').val(place.geometry['location'].lng());
+    });
+}

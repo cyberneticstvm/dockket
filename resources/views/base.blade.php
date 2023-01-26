@@ -266,13 +266,13 @@
 							<h4 class="mb-4 text-uppercase">Useful Links</h4>
 								<ul class="ps-4">
 									<li>
-										<a href="/appointment/">Doctor Appointment</a>
+										<a href="/appointment/">Doctor/Clinic Appointment</a>
 									</li>
 									<li>
 										<a href="/patient/login/">Patient Login</a>
 									</li>
 									<li>
-										<a href="/appointment/">Clinc Appointment</a>
+										<a href="/clinic/login/">Clinic Login</a>
 									</li>
 									<li>
 										<a href="/doctor/registration/">Doctor Registration</a>
@@ -324,18 +324,29 @@
 		<script src="{{ public_path().'/js/theme.init.js' }}"></script>
 
 		<script>
-			var options = {
-				componentRestrictions: {country: "in"}
-			};
-			window.addEventListener('load', initialize);
-			function initialize() {
-				var input = document.getElementById('address');
-				var autocomplete = new google.maps.places.Autocomplete(input, options);
-				autocomplete.addListener('place_changed', function () {
-					var place = autocomplete.getPlace();
-					$('#latitude').val(place.geometry['location'].lat());
-					$('#longitude').val(place.geometry['location'].lng());
-				});
+			function pickmylocation(){
+				navigator.geolocation.getCurrentPosition(
+					function (position) {
+						var addr = getUserAddressBy(position.coords.latitude, position.coords.longitude);
+					},
+					function errorCallback(error) {
+					console.log(error)
+					}
+				);
+			}
+			function getUserAddressBy(lat, long) {
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function () {
+					if (this.readyState == 4 && this.status == 200) {
+						var address = JSON.parse(this.responseText)
+						var addr = address.results[0].formatted_address;
+						document.getElementById('address').value = addr;
+						$('#latitude').val(lat);
+        				$('#longitude').val(long);
+					}
+				};
+				xhttp.open("GET", "https://maps.googleapis.com/maps/api/geocode/json?latlng="+lat+","+long+"&key={{config('app.google_api_key')}}", true);
+				xhttp.send();
 			}
 		</script>
 		<script>

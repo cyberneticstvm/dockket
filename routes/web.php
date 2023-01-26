@@ -82,6 +82,8 @@ Route::group(['middleware' => ['auth', 'clinic']], function(){
     Route::get('/clinic/logout/', [ClinicController::class, 'logout'])->name('clinic.logout');
 
     Route::get('/updateClinicRequestStatus/', [ClinicController::class, 'updateClinicRequestStatus']);
+
+    Route::post('/clinic/appointments/fetch', [ClinicController::class, 'fetchappointments'])->name('clinic.appointments.fetch');
 });
 
 Route::group(['middleware' => ['auth', 'admin']], function(){
@@ -109,6 +111,8 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     
     Route::get('/admin/settings/', [AdminController::class, 'settings'])->name('admin.settings');
     Route::post('/admin/settings/', [AdminController::class, 'settingsupdate'])->name('admin.settings.update');
+
+    Route::post('/admin/appointments/fetch', [AdminController::class, 'fetchappointments'])->name('admin.appointments.fetch');
 });
 
 Route::group(['middleware' => ['auth', 'patient']], function(){

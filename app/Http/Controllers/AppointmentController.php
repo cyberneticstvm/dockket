@@ -98,7 +98,7 @@ class AppointmentController extends Controller
             'location' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
-            'radius' => 'required',
+            'radius' => 'required|numeric',
             'date' => 'required',
         ]);
         $specs = DB::table('specializations')->where('category', 1)->orderBy('name')->get();
@@ -119,7 +119,7 @@ class AppointmentController extends Controller
             'location' => 'required',
             'latitude' => 'required',
             'longitude' => 'required',
-            'radius' => 'required',
+            'radius' => 'required|numeric',
             'date' => 'required',
         ]);
         $input = array($request->serv, $request->location, $request->latitude, $request->longitude, $request->radius, $request->date);

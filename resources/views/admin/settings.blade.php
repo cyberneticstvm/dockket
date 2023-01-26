@@ -16,13 +16,13 @@
             <form role="form" action="{{ route('admin.settings.update') }}" method="post">
                     @csrf
                     <div class="form-group row">                        
-                        <div class="col-lg-6">
+                        <!--<div class="col-lg-6">
                             <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Pay Days <span class="text-danger">*</span></label>
                             <input class="form-control text-3 h-auto py-2" type="number" name="default_pay_days" value="{{ ($settings && $settings->default_pay_days) ? $settings->default_pay_days : 0 }}" placeholder="Specialization">
                             @error('default_pay_days')
                             <small class="text-danger">{{ $errors->first('default_pay_days') }}</small>
                             @enderror
-                        </div>
+                        </div>-->
                         <div class="col-lg-6">
                             <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Password <span class="text-danger">*</span></label>
                             <input class="form-control text-3 h-auto py-2" type="password" name="password"  placeholder="*****">
