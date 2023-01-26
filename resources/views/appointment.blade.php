@@ -125,7 +125,7 @@
                                                                 <div class="row mt-3">
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Selected Time: </label>
-                                                                        <input type="text" class="form-control from-control-sm atime" name="appointment_time" value="Selected Time" placeholder="" readonly required/>
+                                                                        <input type="text" class="form-control from-control-sm atime" name="appointment_time" placeholder="Selected Time" readonly required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Full Name: </label>

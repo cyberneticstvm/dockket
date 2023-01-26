@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Branch;
 use App\Models\Doctor;
@@ -68,8 +69,15 @@ class AppointmentController extends Controller
             $patient['password'] = Hash::make($input['pin']);
             $patient['user_type'] = 'P'; // Patient
             $patient['user_status'] = 'A';
-            $p = User::create($patient); $input['user_id'] = $p->id;
-            //Auth::login($p);
+            $p = User::upsert($patient, 'email');
+            if($p > 0):
+                $input['user_id'] = $p;
+                $patient = User::where('email', $patient['email'])->first();
+            else:
+                $input['user_id'] = $p->id;
+                $patient = $p;
+            endif;
+            Auth::login($patient);            
         endif;
         $app = Appointment::create($input);
         $doctor = Doctor::find($request->doctor_id); $user = User::find($doctor->user_id);
@@ -132,8 +140,15 @@ class AppointmentController extends Controller
             $patient['password'] = Hash::make($input['pin']);
             $patient['user_type'] = 'P'; // Patient
             $patient['user_status'] = 'A';
-            $p = User::create($patient); $input['user_id'] = $p->id;
-            //Auth::login($p);
+            $p = User::upsert($patient, 'email');
+            if($p > 0):
+                $input['user_id'] = $p;
+                $patient = User::where('email', $patient['email'])->first();
+            else:
+                $input['user_id'] = $p->id;
+                $patient = $p;
+            endif;
+            Auth::login($patient);
         endif;
         $service = ServiceRequest::create($input);
         $clinic = Clinic::find($request->clinic_id); $user = User::find($clinic->user_id);
