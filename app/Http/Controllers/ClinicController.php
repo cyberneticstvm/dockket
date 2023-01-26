@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Clinic;
+use App\Models\Specialization;
 use Carbon\Carbon;
 use Hash;
 use Session;
@@ -103,9 +104,10 @@ class ClinicController extends Controller
 
     public function services(){
         $clinic = Clinic::where('user_id', Auth::user()->id)->first();
-        $services = ($clinic) ? DB::select("SELECT DISTINCT(s.name), s.id, CASE WHEN c.clinic_id = ? THEN 'Y' ELSE 'N' END AS checked FROM specializations s LEFT JOIN clinic_services c ON c.service_id = s.id WHERE s.category = ? GROUP BY s.id", [$clinic->id, 2]) : [];
+        $services = Specialization::where('category', 2)->get();
+        $clinic_services = ($clinic) ? DB::table('clinic_services')->where('clinic_id', $clinic->id)->get() : [];
         if($clinic):
-            return view('clinic.services', compact('services'));
+            return view('clinic.services', compact('services', 'clinic_services'));
         else:
             return redirect()->route('clinic.profile')->with('success','Please update profile first to view services.');
         endif;

@@ -19,13 +19,22 @@
                         @error('service')
                         <small class="text-danger">{{ $errors->first('service') }}</small>
                         @enderror
+                        @php $checked = '' @endphp
                         @forelse($services as $key => $service)
-                        <div class="col-lg-2">
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="service[]" value="{{ $service->id }}" {{ ($service->checked == 'Y') ? 'checked' : '' }}>
-                                <label class="form-check-label" for="inlineCheckbox1">{{ $service->name }}</label>
+                            @foreach($clinic_services as $k => $c)
+                                @if($service->id == $c->service_id)
+                                    @php $checked = 'checked'; @endphp
+                                    @break
+                                @else
+                                    @php $checked = ''; @endphp
+                                @endif
+                            @endforeach
+                            <div class="col-lg-2">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="checkbox" name="service[]" value="{{ $service->id }}" {{ $checked }}>
+                                    <label class="form-check-label" for="inlineCheckbox1">{{ $service->name }}</label>
+                                </div>
                             </div>
-                        </div>
                         @empty
                         @endforelse
                     </div>
