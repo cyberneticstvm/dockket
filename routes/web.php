@@ -49,6 +49,12 @@ Route::post('/patient/login/', [PatientController::class, 'login'])->name('patie
 Route::get('/admin/login/', [AdminController::class, 'showLogin'])->name('admin.show.login');
 Route::post('/admin/login/', [AdminController::class, 'login'])->name('admin.login');
 
+Route::get('/forgot', [HelperController::class, 'forgot'])->name('forgot');
+Route::post('/forgot', [HelperController::class, 'forgotemail'])->name('forgot.email');
+Route::get('/resetpassword/{token}', [HelperController::class, 'resetpassword'])->name('resetpassword');
+Route::post('/resetpassword', [HelperController::class, 'updatepassword'])->name('updatepassword');
+Route::get('/error', [HelperController::class, 'error'])->name('error');
+
 Route::group(['middleware' => ['auth', 'doctor']], function(){
     Route::get('/doctor/profile/', [DoctorController::class, 'profile'])->name('doctor.profile');
     Route::post('/doctor/profile/{id}/', [DoctorController::class, 'profileupdate'])->name('doctor.profile.update');

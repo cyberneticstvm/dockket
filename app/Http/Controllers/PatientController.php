@@ -15,10 +15,10 @@ class PatientController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            'email' => 'required|numeric|digits:10',
+            'mobile' => 'required|numeric|digits:10',
             'password' => 'required|min:4',
         ]);
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('mobile', 'password');
         if (Auth::attempt($credentials, $request->has('remember'))):            
             return redirect()->intended(route('appointment'))->withSuccess('You have Successfully logged in');
         endif;

@@ -66,6 +66,7 @@ class AppointmentController extends Controller
         if($request->log == 1):
             $patient['name'] = $input['patient_name'];
             $patient['email'] = $input['mobile'];
+            $patient['mobile'] = $input['mobile'];
             $patient['password'] = Hash::make($input['pin']);
             $patient['user_type'] = 'P'; // Patient
             $patient['user_status'] = 'A';
@@ -137,6 +138,7 @@ class AppointmentController extends Controller
         if($request->log == 1):
             $patient['name'] = $input['patient_name'];
             $patient['email'] = $input['mobile'];
+            $patient['mobile'] = $input['mobile'];
             $patient['password'] = Hash::make($input['pin']);
             $patient['user_type'] = 'P'; // Patient
             $patient['user_status'] = 'A';

@@ -25,9 +25,9 @@
                                     <div class="row">
                                         <div class="form-group col">
                                             <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                            <input type="text" name="email" maxlength="10" value="{{ old('email') }}" class="form-control" placeholder="Mobile Number" required>
-                                            @error('email')
-                                            <small class="text-danger">{{ $errors->first('email') }}</small>
+                                            <input type="text" name="mobile" maxlength="10" value="{{ old('mobile') }}" class="form-control" placeholder="Mobile Number" required>
+                                            @error('mobile')
+                                            <small class="text-danger">{{ $errors->first('mobile') }}</small>
                                             @enderror
                                         </div>
                                     </div>
@@ -44,6 +44,11 @@
                                         <div class="form-group col-lg-9"></div>
                                         <div class="form-group col-lg-3">
                                             <button type="submit" class="btn-submit btn btn-primary btn-modern float-end">Login</button>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12 text-center">
+                                            <a href="/forgot">Forgot PIN?</a>
                                         </div>
                                     </div>
                                 </form>

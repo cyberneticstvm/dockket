@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Clinic;
 use App\Models\Specialization;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Hash;
 use Session;
 use DB;
@@ -38,7 +39,9 @@ class ClinicController extends Controller
             'terms' => 'required',
         ]);
         $input = $request->all();
+        $token = Str::random(64);
         $input['password'] = Hash::make($input['password']);
+        $input['email_token'] = $token;
         $user = User::create($input);
         Auth::login($user);
         return redirect()->route('clinic.profile')
@@ -83,7 +86,7 @@ class ClinicController extends Controller
             'address' => 'required',
         ]);
         $input = $request->except(array('_token', 'email', 'name'));
-        if($request->photo):
+        if($request->photo && $clinic->id):
             $doc = $request->file('photo');
             $fname = 'clinic/photo/'.$clinic->id.'/'.$doc->getClientOriginalName();
             Storage::disk('public')->putFileAs($fname, $doc, '');

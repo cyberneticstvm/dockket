@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <a href="/clinic/registration/">Register</a>
+                                            <a href="/clinic/registration/">Register</a> | <a href="/forgot">Forgot password?</a>
                                         </div>
                                     </div>
                                 </form>

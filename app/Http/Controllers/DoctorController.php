@@ -12,6 +12,7 @@ use App\Models\Specialization;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Hash;
 use Session;
 use DB;
@@ -45,7 +46,9 @@ class DoctorController extends Controller
             'terms' => 'required',
         ]);
         $input = $request->all();
+        $token = Str::random(64);
         $input['password'] = Hash::make($input['password']);
+        $input['email_token'] = $token;
         $user = User::create($input);
         Auth::login($user);
         return redirect()->route('doctor.profile')
