@@ -100,27 +100,17 @@
 											<nav class="collapse">
 												<ul class="nav nav-pills" id="mainNav">
 													<li class="dropdown-secondary">
-														<a class="nav-link active" href="demo-medical-2.html">
+														<a class="nav-link active" href="/">
 															Home
 														</a>
 													</li>
 													<li class="dropdown-secondary">
-														<a class="nav-link" href="demo-medical-2-about-us.html">
+														<a class="nav-link" href="/about">
 															About Us
 														</a>
 													</li>
 													<li class="dropdown-secondary">
-														<a class="nav-link" href="demo-medical-2-our-doctors.html">
-															Our Doctors
-														</a>
-													</li>
-													<li class="dropdown dropdown-secondary">
-														<a class="nav-link" href="demo-medical-2-departments.html">
-															Departments
-														</a>
-													</li>
-													<li class="dropdown-secondary">
-														<a class="nav-link" href="demo-medical-2-contact-us.html">
+														<a class="nav-link" href="/contact">
 															Contact Us
 														</a>
 													</li>

@@ -4,16 +4,29 @@
     <section class="section section-funnel border-0 m-0 p-0">
         <div class="owl-carousel-wrapper" style="height: 991px;">
             <div class="owl-carousel dots-inside dots-horizontal-center custom-dots-style-1 show-dots-hover show-dots-xs nav-style-1 nav-inside nav-inside-plus nav-dark nav-lg nav-font-size-lg show-nav-hover mb-0" data-plugin-options="{'responsive': {'0': {'items': 1, 'dots': true, 'nav': false}, '479': {'items': 1, 'dots': true}, '768': {'items': 1, 'dots': true}, '979': {'items': 1}, '1199': {'items': 1}}, 'loop': false, 'autoHeight': false, 'margin': 0, 'dots': true, 'dotsVerticalOffset': '-250px', 'nav': false, 'animateIn': 'fadeIn', 'animateOut': 'fadeOut', 'mouseDrag': false, 'touchDrag': false, 'pullDrag': false, 'autoplay': true, 'autoplayTimeout': 7000, 'autoplayHoverPause': true, 'rewind': true}">
+                
+                <div class="position-relative overflow-hidden pb-5" data-dynamic-height="['991px','991px','991px','650px','650px']" style="height: 991px;">
+                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/doctor-wearing-white-robe-stethoscope.jpg' }}); background-size: cover; background-position: center;"></div>
+                    <div class="container position-relative z-index-3 pb-5 h-100">
+                        <div class="row align-items-center pb-5 h-100">
+                            <div class="col-md-10 col-lg-6 text-center text-md-start pb-5">
+                                <h1 class="text-color-info font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Time Saved is Life Saved</h1>
+                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Make an Appointment</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Carousel Slide 1 -->
                 <div class="position-relative overflow-hidden pb-5" data-dynamic-height="['991px','991px','991px','650px','650px']" style="height: 991px;">
-                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/doctor-s-hand-holding-stethoscope.jpg' }}); background-size: cover; background-position: center;"></div>
+                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/network.jpg' }}); background-size: cover; background-position: center;"></div>
                     <div class="container position-relative z-index-3 pb-5 h-100">
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-end pb-5 ms-auto">
-                                <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Urgent Care + Multi-Specialty Medical Clinic Group</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Online Booking for Doctors in Trivandrum, Kerala</h2>
-                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Find a Doctor</a>
+                                <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Networking Healthcare Providers for You</h1>
+                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Make an Appointment</a>
                             </div>
                         </div>
                     </div>
@@ -21,13 +34,13 @@
 
                 <!-- Carousel Slide 2 -->
                 <div class="position-relative overflow-hidden pb-5" data-dynamic-height="['991px','991px','991px','650px','650px']" style="height: 991px;">
-                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/appointment-schedule.jpg' }}); background-size: cover; background-position: center;"></div>
+                    <div class="background-image-wrapper position-absolute top-0 left-0 right-0 bottom-0" data-appear-animation="kenBurnsToLeft" data-appear-animation-duration="30s" data-plugin-options="{'minWindowWidth': 0}" data-carousel-onchange-show style="background-image: url({{ public_path().'/img/dockket/slides/tsils.jpg' }}); background-size: cover; background-position: center;"></div>
                     <div class="container position-relative z-index-3 pb-5 h-100">
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-start pb-5">
-                                <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Cardiology, Gastroenterology, Pulmonology and Dental Care</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Online Booking for Clinics in Trivandrum, Kerala</h2>
-                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Find a Doctor</a>
+                                <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Healthcare at your Fingertips</h1>
+                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
+                                <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Make an Appointment</a>
                             </div>
                         </div>
                     </div>
@@ -47,9 +60,8 @@
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
                         <img src="{{ public_path().'/img/dockket/doc-says.png' }}" alt="Healthcare Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Dockket Says</h4>
-                        <p class="card-text text-center">Get the Latest Medical Information and tips for Healthy Living.</p>
-                        <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
+                        <h4 class="card-title mb-1 font-weight-bold">Search.</h4>
+                        <p class="card-text text-center">Find a Doctor based on your healthcare need. Search accordingly to distance, specific illness and date.</p>
                     </div>
                 </div>
             </div>
@@ -57,9 +69,8 @@
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
                         <img src="{{ public_path().'/img/dockket/android-app.png' }}" alt="Immediate Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Dockket App</h4>
-                        <p class="card-text text-center">Make appointment with your doctor on the go. <a href="/appointment/">Make an Appointment</a></p>
-                        <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
+                        <h4 class="card-title mb-1 font-weight-bold">Select</h4>
+                        <p class="card-text text-center">View professional profile of doctors. Select on credibility, specialization profile and location criteria. It's only a few clicks away to the right doctor.</p>
                     </div>
                 </div>
             </div>
@@ -67,9 +78,8 @@
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
                         <img src="{{ public_path().'/img/dockket/health.png' }}" alt="Diagnostic Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Health A-Z</h4>
-                        <p class="card-text text-center">Authoritative guide to conditions, symptoms, causes & treatments.</p>
-                        <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
+                        <h4 class="card-title mb-1 font-weight-bold">Book</h4>
+                        <p class="card-text text-center">Book an appointment with your preferred doctor all within the Dckket App.</p>
                     </div>
                 </div>
             </div>
@@ -85,8 +95,12 @@
                     <!--<img src="" alt="Signature">-->
                 </div>
                 <div class="col-xs-12 col-lg-8 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                    <p class="p-relative bottom-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc. In nibh ipsum, blandit id faucibus ac, finibus vitae dui.</p>
-                    <a href="#" class="font-weight-bold text-uppercase text-decoration-none">read more +</a>
+                    <p class="p-relative bottom-6">Recovery is just one click away. Connect with trusted doctors in your locality.
+                    Select from a pool of specialized doctors who are committed to serve you.</p>
+                    <p>In times of urgency, finding a reliable doctor becomes a stressful challenge. It is the worst scenario to be made
+                    to go from one hospital to another without knowledge at hand. With DOCKKET, you’ll not only receive critical
+                    information during the time of need, you’ll be able to get a doctor and find yourself a clinic right away.</p>
+                    <a href="/appointment/" class="font-weight-bold text-uppercase text-decoration-none">Make an Appointment</a>
                 </div>
             </div>
         </div>
@@ -99,8 +113,13 @@
                 <div class="col-xs-12 col-lg-6 p-relative py-5 bg-color-light z-index-1 ps-lg-5 ps-xl-0">
                     <p class="text-uppercase mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Who We Are</p>
                     <h3 class="text-color-quaternary font-weight-bold text-capitalize mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">More About Dockket</h3>
-                    <p class="font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut tellus ante. Nam suscipit urna risus, fermentum commodo ipsum porta id.</p>
-                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper vestibulum. Pellentesque ultricies nibh gravida, accumsan libero luctus, molestie nunc.</p>
+                    <p class="font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Dockket
+                    provides services that allow a person with special needs to stay in their home. The care can be for
+                    people who are getting older, are chronically ill, recovering from surgery, disabled, or any person that needs in
+                    home care.</p>
+                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We have tied up with world class blood testing and other check up labs around your locality for serving you
+                    better IN THE COMFORT OF YOUR HOME.</p>
+                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We offer Home nursing, Physiotherapy to the bedridden patients. Your can trust DOCKKET and the dedicated team will take care of your elderly parents and loved ones in your absence.</p>
                     <div class="row counters mb-4 flex-nowrap flex-sm-wrap">
                         <div class="col-xs-4 col-sm-4 col-lg-4 mb-0 d-flex">
                             <div class="counter counter-primary appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="500">
@@ -140,31 +159,6 @@
             </div>
         </div>
     </section>
-
-    <section class="meet-doctors mb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p class="text-uppercase mb-0">Our Specialists</p>
-                    <h3 class="font-weight-bold mb-2 text-capitalize">Meet Our Top Doctors</h3>
-                    <p class="mt-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod, sed porta est consectetur. Vestibulum auctor felis eget orci semper.</p>
-                    <div class="owl-carousel owl-theme custom-owl-carousel stage-margin nav-style-1" data-plugin-options="{'items': 6, 'margin': 10, 'loop': false, 'nav': true, 'dots': false, 'stagePadding': 40}">
-                        @forelse($doctors as $key => $doctor)
-                        <div class="text-center">
-                            <a href="#" class="text-decoration-none">
-                                <img alt="{{ $doctor->dname }}" class="img-fluid rounded" src="{{ ($doctor && $doctor->photo) ? public_path().'/storage/doctor/photo/'.$doctor->photo : public_path().'/storage/doctor/photo/avatar.png' }}">
-                                <strong class="font-weight-bold text-dark d-block text-4 mt-3 mb-0">{{ $doctor->dname }}</strong>
-                                <span class="text-uppercase d-block text-default font-weight-semibold text-1 p-relative bottom-4 mb-0">{{ $doctor->spec }}</span>
-                            </a>
-                        </div>
-                        @empty
-                        @endforelse
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section class="patient-reviews p-relative overflow-hidden lazyload m-0" data-bg-src="{{ public_path().'/img/dockket/review.jpg' }}">
         <div class="container">
             <div class="row">
@@ -197,7 +191,7 @@
         </div>
     </section>
 
-    <section class="medical-services py-5 p-relative overflow-hidden lazyload" data-bg-src="{{ public_path().'/img/dockket/3d-plexus-dna-strand-bg.jpg' }}">
+    <!--<section class="medical-services py-5 p-relative overflow-hidden lazyload" data-bg-src="{{ public_path().'/img/dockket/3d-plexus-dna-strand-bg.jpg' }}">
         <div class="container">
             <div class="row">
                 <div class="col pt-4">
@@ -276,98 +270,6 @@
             <div class="section-funnel-layer bg-color-light"></div>
             <div class="section-funnel-layer bg-color-light"></div>
         </div>
-    </section>
-
-    <section class="our-blog pt-5 pt-lg-0 pb-lg-5 mb-5 p-relative bg-color-light">
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <p class="text-uppercase mb-0 d-block text-center text-uppercase appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Home Care</p>
-                    <h3 class="text-color-quaternary mb-2 d-block text-center font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Top Clinics and Home Care Service Providers</h3>
-                    <p class="mb-4 d-block text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod.</p>           
-                </div>
-            </div>
-            <div class="row justify-content-center justify-lg-content-between">
-                @forelse($clinics as $key => $clinic)
-                <div class="col-sm-12 col-md-6 col-lg-4 mb-4 mb-lg-0">
-                    <article>
-                        <div class="card border-0 border-radius-0 box-shadow-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
-                            <div class="card-body p-4 z-index-1">
-                                <a href="/appointment/">
-                                    <img class="card-img-top border-radius-0" src="{{ public_path().'/img/dockket/clinic.jpg' }}" alt="Card Image">
-                                </a>
-                                <p class="text-uppercase text-1 mb-3 pt-1 text-color-default"><a href="javascript:void(0)">Rate & Review</a> <span class="opacity-3 d-inline-block px-2">|</span> {{ rand(1, 10) }} Reviews <span class="opacity-3 d-inline-block px-2">|</span> {{ rand(10, 50) }} Total Bookings</p>
-                                <div class="card-body p-0 text-center">
-                                    <h4 class="card-title mb-3 text-5 font-weight-bold"><a class="text-color-secondary" href="/appointment/">{{ $clinic->name }}</a></h4>
-                                    <p class="card-text mb-3"></p>
-                                    <a href="/appointment/" class="font-weight-bold text-uppercase text-decoration-none d-block mt-3">Book Now</a>
-                                </div>
-                            </div>
-                        </div>
-                    </article>
-                </div>
-                @empty
-                @endforelse
-            </div>
-        </div>
-    </section>
-
-    <section class="insurance-providers pt-5 pb-lg-5 bg-color-grey">
-        <div class="container my-lg-3 py-lg-2">
-            <div class="row">
-                <div class="col">
-                    <p class="text-uppercase mb-0 d-block text-center text-uppercase appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">MAJOR BRANDS</p>
-                    <h3 class="text-color-quaternary mb-2 d-block text-center font-weight-bold text-capitalize appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">Insurance Providers</h3>
-                    <p class="mb-5 d-block text-center appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi euismod.</p>
-                </div>
-            </div>
-            <div class="row align-items-center justify-content-center">
-                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
-                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
-                </div>
-                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
-                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
-                </div>
-                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">
-                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
-                </div>
-                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">
-                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
-                </div>
-                <div class="col-6 col-sm-6 col-md-6 col-lg-2 d-flex align-items-center justify-content-center mb-5 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500">
-                    <img class="img-fluid" src="{{ public_path().'/img/dockket/insurance.jpg' }}" alt="Provider">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="footer-top-info">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-xs-12 col-xl-4 p-4 bg-color-secondary d-flex align-items-center justify-content-between">
-                    <div class="footer-top-info-detail">
-                        <h4 class="text-color-light mb-1 d-block font-weight-semibold text-capitalize appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="100">Emergency Cases</h4>
-                        <p class="d-block m-0 footer-top-info-desc appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="200">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <a href="#" type="button" class="btn btn-outline btn-footer-top-info btn-light rounded-0 d-block text-color-light border-color-primary text-uppercase text-center p-0 custom-btn-footer-top-info bg-transparent-hover appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">view more +</a>
-                </div>
-                <div class="col-xs-12 col-xl-4 p-4 bg-color-tertiary d-flex align-items-center justify-content-between">
-                    <div class="footer-top-info-detail">
-                        <h4 class="text-color-light mb-1 d-block font-weight-semibold text-capitalize appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="400">Doctors Timetable</h4>
-                        <p class="d-block m-0 footer-top-info-desc appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="500">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <a href="#" type="button" class="btn btn-outline btn-footer-top-info btn-light rounded-0 d-block text-color-light border-color-primary text-uppercase text-center p-0 custom-btn-footer-top-info bg-transparent-hover appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="600">view more +</a>
-                </div>
-                <div class="col-xs-12 col-xl-4 p-4 bg-color-secondary d-flex align-items-center justify-content-between">
-                    <div class="footer-top-info-detail">
-                        <h4 class="text-color-light mb-1 d-block font-weight-semibold text-capitalize appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="700">Find Us On Map</h4>
-                        <p class="d-block m-0 footer-top-info-desc appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="800">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </div>
-                    <a href="#" type="button" class="btn btn-outline btn-footer-top-info btn-light rounded-0 d-block text-color-light border-color-primary text-uppercase text-center p-0 custom-btn-footer-top-info bg-transparent-hover appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="900">view more +</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
+    </section>-->
 </div>
 @endsection
