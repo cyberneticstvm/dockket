@@ -74,7 +74,7 @@ class DoctorController extends Controller
     public function logout() {
         Session::flush();
         Auth::logout();  
-        return Redirect('/doctor/login/');
+        return Redirect('/');
     }    
 
     public function getBreakTime(Request $request){

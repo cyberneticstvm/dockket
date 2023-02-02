@@ -67,7 +67,7 @@ class ClinicController extends Controller
     public function logout() {
         Session::flush();
         Auth::logout();  
-        return Redirect('/clinic/login/');
+        return Redirect('/');
     } 
 
     public function index()

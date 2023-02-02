@@ -28,7 +28,7 @@ class PatientController extends Controller
     public function logout() {
         Session::flush();
         Auth::logout();  
-        return Redirect('/patient/login/');
+        return Redirect('/');
     } 
 
     public function myappointments(){
