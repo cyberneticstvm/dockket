@@ -20,6 +20,12 @@ use App\Http\Controllers\AppointmentController;
 */
 
 Route::get('/', [HelperController::class, 'index'])->name('index');
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
+Route::get('/contact', function () {
+    return view('contact');
+})->name('contact');
 Route::get('/login', function () {
     return view('doctor.login');
 })->name('login');
@@ -51,6 +57,7 @@ Route::post('/admin/login/', [AdminController::class, 'login'])->name('admin.log
 
 Route::get('/forgot', [HelperController::class, 'forgot'])->name('forgot');
 Route::post('/forgot', [HelperController::class, 'forgotemail'])->name('forgot.email');
+Route::post('/contact', [HelperController::class, 'contactemail'])->name('contact.email');
 Route::get('/resetpassword/{token}', [HelperController::class, 'resetpassword'])->name('resetpassword');
 Route::post('/resetpassword', [HelperController::class, 'updatepassword'])->name('updatepassword');
 Route::get('/error', [HelperController::class, 'error'])->name('error');

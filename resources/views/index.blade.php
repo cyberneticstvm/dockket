@@ -10,8 +10,8 @@
                     <div class="container position-relative z-index-3 pb-5 h-100">
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-start pb-5">
-                                <h1 class="text-color-info font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Time Saved is Life Saved</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
+                                <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Time Saved is Life Saved</h1>
+                                <h2 class="text-color-dark font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
                                 <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Make an Appointment</a>
                             </div>
                         </div>
@@ -25,7 +25,7 @@
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-end pb-5 ms-auto">
                                 <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Networking Healthcare Providers for You</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
+                                <h2 class="text-color-dark font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
                                 <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Make an Appointment</a>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="row align-items-center pb-5 h-100">
                             <div class="col-md-10 col-lg-6 text-center text-md-start pb-5">
                                 <h1 class="text-color-dark font-weight-extra-bold text-10 line-height-2 mb-3 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}">Healthcare at your Fingertips</h1>
-                                <h2 class="text-color-default font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
+                                <h2 class="text-color-dark font-weight-normal text-4-5 line-height-2 mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="750" data-plugin-options="{'minWindowWidth': 0}">Doctor Booking App</h2>
                                 <a href="/appointment/" class="btn btn-primary btn-modern font-weight-semibold text-3 btn-py-3 px-5 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1000" data-plugin-options="{'minWindowWidth': 0}">Make an Appointment</a>
                             </div>
                         </div>
@@ -59,7 +59,7 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'/img/dockket/doc-says.png' }}" alt="Healthcare Center">
+                        <img src="{{ public_path().'/img/dockket/search.png' }}" class="img-fluid" alt="Healthcare Center">
                         <h4 class="card-title mb-1 font-weight-bold">Search.</h4>
                         <p class="card-text text-center">Find a Doctor based on your healthcare need. Search accordingly to distance, specific illness and date.</p>
                     </div>
@@ -68,7 +68,7 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'/img/dockket/android-app.png' }}" alt="Immediate Center">
+                        <img src="{{ public_path().'/img/dockket/finger-pointer.png' }}" alt="Immediate Center">
                         <h4 class="card-title mb-1 font-weight-bold">Select</h4>
                         <p class="card-text text-center">View professional profile of doctors. Select on credibility, specialization profile and location criteria. It's only a few clicks away to the right doctor.</p>
                     </div>
@@ -77,7 +77,7 @@
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
                     <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'/img/dockket/health.png' }}" alt="Diagnostic Center">
+                        <img src="{{ public_path().'/img/dockket/tick.png' }}" alt="Diagnostic Center">
                         <h4 class="card-title mb-1 font-weight-bold">Book</h4>
                         <p class="card-text text-center">Book an appointment with your preferred doctor all within the Dckket App.</p>
                     </div>
@@ -85,6 +85,42 @@
             </div>
         </div>
     </div>
+
+    <section class="mb-5">
+        <div class="cards container">
+            <h3 class="text-color-quaternary mb-3 font-weight-semibold text-capitalize pe-5">What We Provide.</h3>
+            <div class="cards-container row justify-content-center justify-content-xl-between w-100">
+                <div class="col-xs-12 col-lg-6 col-xl-3 mb-4 mb-xl-0 pb-2 pb-xl-0">
+                    <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
+                        <div class="card-body bg-info d-flex align-items-center justify-content-between flex-column z-index-1">
+                            <img src="{{ public_path().'/img/dockket/medical-teleconsultation-sick-patient-home.jpg' }}" class="img-fluid rounded-circle" alt="Healthcare Center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-xl-3 mb-4 mb-xl-0 pb-2 pb-xl-0">
+                    <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
+                        <div class="card-body bg-info d-flex align-items-center justify-content-between flex-column z-index-1">
+                            <img src="{{ public_path().'/img/dockket/doctor-is-going-examine-his-patient-using-his-stethoscope-isolated-white.jpg' }}" class="img-fluid rounded-circle" alt="Immediate Center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-xl-3 mb-4 mb-xl-0 pb-2 pb-xl-0">
+                    <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
+                        <div class="card-body bg-info d-flex align-items-center justify-content-between flex-column z-index-1">
+                            <img src="{{ public_path().'/img/dockket/high-angle-female-researcher-laboratory-with-test-tubes.jpg' }}" class="img-fluid rounded-circle" alt="Diagnostic Center">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6 col-xl-3 mb-4 mb-xl-0 pb-2 pb-xl-0">
+                    <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
+                        <div class="card-body bg-info d-flex align-items-center justify-content-between flex-column z-index-1">
+                            <img src="{{ public_path().'/img/dockket/arrangement-vaccination-elements-covid19.jpg' }}" class="img-fluid rounded-circle" alt="Diagnostic Center">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="about-me mb-5">
         <div class="container">
@@ -139,21 +175,6 @@
                                 <label class="number-counter-text text-4 text-color-primary font-weight-semibold negative-ls-1">Clinics</label>
                             </div>
                         </div>
-                    </div>
-                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Top categories of serach till now.</p>
-                    <div class="d-flex justify-content-start flex-column flex-xl-row">
-                        <ul class="list list-icons list-icons-style-2 list-icons-sm custom-list-icons mb-1 mb-xl-3">
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100"><i class="fas fa-check text-color-quaternary"></i>Active Ageing</li>
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200"><i class="fas fa-check text-color-quaternary"></i>Aesthetic Medicine</li>
-                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300"><i class="fas fa-check text-color-quaternary"></i>Bones and Joints</li>
-                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300"><i class="fas fa-check text-color-quaternary"></i>Dental Health</li>
-                        </ul>
-                        <ul class="list list-icons list-icons-style-2 list-icons-sm custom-list-icons">
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400"><i class="fas fa-check text-color-quaternary"></i>Brain Health</li>
-                            <li class="text-color-quaternary font-weight-bold mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="500"><i class="fas fa-check text-color-quaternary"></i>Cancer</li>
-                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600"><i class="fas fa-check text-color-quaternary"></i>Children's Health</li>
-                            <li class="text-color-quaternary font-weight-bold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="600"><i class="fas fa-check text-color-quaternary"></i>Diabetes</li>
-                        </ul>
                     </div>
                 </div>
             </div>

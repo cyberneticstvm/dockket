@@ -68,11 +68,11 @@
 											<ul class="nav nav-pills justify-content-between w-100 h-100">
 												<li class="nav-item py-2 d-xl-inline-flex">
 													<span class="header-top-email px-0 font-weight-normal d-flex align-items-center"><i class="far fa-envelope text-4"></i>  <a class="text-color-default" href="mailto:mail@dockket.in">mail@dockket.in</a></span>
-													<span class="header-top-opening-hours px-0 font-weight-normal d-flex align-items-center"><i class="far fa-clock text-4"></i>Mon - Sun 9:00am - 7:00pm</span>
 												</li>
 												<li class="nav-item nav-item-header-top-socials d-flex justify-content-between">
 													<span class="header-top-button-make-as-appoitment d-inline-flex align-items-center justify-content-center h-100 p-0 align-top">
-														<a href="/doctor/login/" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none">Doctor Login</a>
+														<a href="/doctor/login/" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none">Doctor Login</a>&nbsp;&nbsp; 
+														<a href="/clinic/login/" class="d-flex align-items-center justify-content-center h-100 w-100 btn-primary font-weight-normal text-decoration-none">Clinic Login</a>
 													</span>
 												</li>
 											</ul>
@@ -100,17 +100,17 @@
 											<nav class="collapse">
 												<ul class="nav nav-pills" id="mainNav">
 													<li class="dropdown-secondary">
-														<a class="nav-link active" href="/">
+														<a class="nav-link {{ (request()->segment(1) == '') ? 'active' : '' }}" href="/">
 															Home
 														</a>
 													</li>
 													<li class="dropdown-secondary">
-														<a class="nav-link" href="/about">
+														<a class="nav-link {{ (request()->segment(1) == 'about') ? 'active' : '' }}" href="/about">
 															About Us
 														</a>
 													</li>
 													<li class="dropdown-secondary">
-														<a class="nav-link" href="/contact">
+														<a class="nav-link {{ (request()->segment(1) == 'contact') ? 'active' : '' }}" href="/contact">
 															Contact Us
 														</a>
 													</li>
@@ -165,17 +165,9 @@
 						<div class="col-sm-6 col-lg-3 footer-column footer-column-get-in-touch">
 							<h4 class="mb-4 text-uppercase">Get in Touch</h4>
 							<div class="info custom-info mb-4">
-								<div class="custom-info-block custom-info-block-phone">
-									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-phone">Phone</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-phone">Toll Free <a href="tel:+1234567890" class="text-color-light">(123) 456-7890</a></span>
-								</div>
 								<div class="custom-info-block custom-info-block-email">
 									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-email">Email</span>
 									<span class="font-weight-normal text-color-light text-custom-info-block p-relative bottom-6 text-custom-info-block-email"><a class="text-color-light" href="mailto:mail@dockket.in">mail@dockket.in</a></span>
-								</div>
-								<div class="custom-info-block custom-info-block-working-days">
-									<span class="text-color-default font-weight-bold text-uppercase title-custom-info-block title-custom-info-block-working-days">Working Days/Hours</span>
-									<span class="font-weight-normal text-color-light text-custom-info-block text-custom-info-block-working-days">Mon - Sun / 9:00AM - 7:00PM</span>
 								</div>
 							</div>
 							<ul class="social-icons">

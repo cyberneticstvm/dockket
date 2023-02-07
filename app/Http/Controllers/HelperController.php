@@ -39,6 +39,21 @@ class HelperController extends Controller
         endif;
     }
 
+    public function contactemail(Request $request){
+        $this->validate($request, [
+            'email' => 'required|email:filter',
+            'name' => 'required',
+            'subject' => 'required',
+            'mobile' => 'required|numeric|digits:10',
+            'subject' => 'required',
+        ]);
+        Mail::send('email.contact', ['sender' => $request], function($message){
+            $message->to('mail@dockket.in');
+            $message->subject('Dockket - New message has been received');
+        });        
+        return redirect()->route('contact')->with('success','Your message has been sent successfully.');
+    }
+
     public function resetpassword($token){
         $user = User::where('email_token', $token)->first();
         if($user):
