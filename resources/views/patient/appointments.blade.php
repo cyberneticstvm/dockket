@@ -14,11 +14,11 @@
                         @forelse($appointments as $key => $app)
                             <tr>
                                 <td>{{ $c++ }}</td>
-                                <td>{{ $req->patient_name }}</td>
-                                <td>{{ $req->mobile }}</td>
-                                <td>{{ $req->appointment_date }}</td>
-                                <td>{{ $req->spec }}</td>
-                                <td>{{ $req->doctor }}</td>
+                                <td>{{ $app->patient_name }}</td>
+                                <td>{{ $app->mobile }}</td>
+                                <td>{{ $app->appointment_date }}</td>
+                                <td>{{ $app->spec }}</td>
+                                <td>{{ $app->doctor }}</td>
                             </tr>
                         @empty
                         @endforelse

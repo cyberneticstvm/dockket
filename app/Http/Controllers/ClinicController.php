@@ -86,11 +86,16 @@ class ClinicController extends Controller
             'address' => 'required',
         ]);
         $input = $request->except(array('_token', 'email', 'name'));
-        if($request->photo && $clinic->id):
+        /*if($request->photo && $clinic->id):
             $doc = $request->file('photo');
             $fname = 'clinic/photo/'.$clinic->id.'/'.$doc->getClientOriginalName();
             Storage::disk('public')->putFileAs($fname, $doc, '');
             $input['photo'] = $doc->getClientOriginalName();
+        endif;*/
+        if($request->photo):
+            $fpath = 'clinic/photo/'.$id.'.png';
+            Storage::disk('public')->put($fpath, base64_decode(str_replace(['data:image/jpeg;base64,', 'data:image/png;base64,', ' '], ['', '', '+'], $request->photo)));
+            $input['photo'] = $id.'.png';
         endif;        
         try{
             DB::transaction(function () use ($input, $request, $id) {
@@ -108,7 +113,7 @@ class ClinicController extends Controller
         if($clinic):
             $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st")->whereDate('service_date', Carbon::today())->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
             $inputs = [];
-            return view('clinic.requests', compact('requests', 'inputs'));
+            return view('clinic.requests', compact('requests', 'inputs', 'clinic'));
         else:
             return redirect()->route('clinic.profile')->with('success','Please update profile first to view requests.');
         endif;
@@ -119,7 +124,7 @@ class ClinicController extends Controller
         $services = Specialization::where('category', 2)->get();
         $clinic_services = ($clinic) ? DB::table('clinic_services')->where('clinic_id', $clinic->id)->get() : [];
         if($clinic):
-            return view('clinic.services', compact('services', 'clinic_services'));
+            return view('clinic.services', compact('services', 'clinic_services', 'clinic'));
         else:
             return redirect()->route('clinic.profile')->with('success','Please update profile first to view services.');
         endif;

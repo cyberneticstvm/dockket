@@ -3451,7 +3451,7 @@ html.dark body .tabs .nav-tabs.nav-justified .nav-link:hover,
 html body .tabs .nav-tabs.nav-justified .nav-link:focus,
 html.dark body .tabs .nav-tabs.nav-justified .nav-link:focus {
 	border-top-color: #3467ef;
-	background-color: #ffc107;
+	background-color: #3467ef;
     color: #fff;
 }
 

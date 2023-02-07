@@ -69,6 +69,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Consultation Address <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
+                            <a href="javascript:pickmylocation()">Pick My Location</a></label>
                             <input class="form-control text-3 h-auto py-2" type="text" name="consultation_address" id="address" value="{{ ($doctor && $doctor->consultation_address) ? $doctor->consultation_address : old('consultation_address') }}" placeholder="Consultation Address">
                         </div>
                         <input type="hidden" name="con_latitude" id="latitude" value="{{ ($doctor && $doctor->con_latitude) ? $doctor->con_latitude : old('con_latitude') }}" />

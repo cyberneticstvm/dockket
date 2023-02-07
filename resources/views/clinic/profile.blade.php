@@ -15,6 +15,7 @@
             <div class="col-lg-9">                
                 <form role="form" action="{{ route('clinic.profile.update', Auth::user()->id) }}" method="post" enctype="multipart/form-data">
                     @csrf
+                    <input type="hidden" name="photo" id="profPhoto" value="{{ ($clinic && $clinic->photo) ? base64_encode(file_get_contents(storage_path('app/public/clinic/photo/'.$clinic->photo))) : base64_encode(file_get_contents(storage_path('app/public/clinic/photo/avatar.png'))) }}" />
                     <input type="hidden" name="user_id" value="{{ ($clinic && $clinic->user_id) ? $clinic->user_id : Auth::user()->id }}" />
                     <input type="hidden" name="city" value="" />
                     <input type="hidden" name="state" value="" />
@@ -48,6 +49,7 @@
                     <div class="form-group row">
                         <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Address <span class="text-danger">*</span></label>
                         <div class="col-lg-9">
+                            <a href="javascript:pickmylocation()">Pick My Location</a></label>
                             <input class="form-control text-3 h-auto py-2" type="text" name="address" id="address" value="{{ ($clinic && $clinic->address) ? $clinic->address : old('address') }}" placeholder="Consultation Address">
                         </div>
                         @error('address')
@@ -55,13 +57,6 @@
                         @enderror
                         <input type="hidden" name="latitude" id="latitude" value="{{ ($clinic && $clinic->latitude) ? $clinic->latitude : old('latitude') }}" />
                         <input type="hidden" name="longitude" id="longitude" value="{{ ($clinic && $clinic->longitude) ? $clinic->longitude : old('longitude') }}" />
-                    </div>
-                    <div class="form-group row">
-                        <label class="col-lg-3 col-form-label form-control-label line-height-9 pt-2 text-2">Profile Photo / Logo</label>
-                        <div class="col-lg-9">
-                            <input type="file" id="" name="photo" class="form-control profile-image-input">
-                            <small>Profile Photo: @if($clinic && $clinic->photo) <a href="{{ public_path().'/storage/clinic/photo/'.$clinic->id.'/'.$clinic->photo }}" target="_blank">View</a> @endif</small>
-                        </div>
                     </div>
                     <div class="form-group row">
                         <div class="form-group col-lg-9">

@@ -72,6 +72,7 @@ $(function(){
                 //$(".bstart, .bend").html(data)
                 var data = JSON.parse(response);
                 $(".bstart").html(data.bs);
+                $(".bend").html(data.bs);
             },
             error: function(XMLHttpRequest, textStatus, errorThrown){
                 console.log(XMLHttpRequest);

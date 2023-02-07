@@ -87,6 +87,7 @@ class DoctorController extends Controller
             $op .= "<option value='".date('h:i A', $from)."'>".date('h:i A', $from)."</option>";
             $from = strtotime('+'.$dur.' minutes', $from);
         endwhile;
+        $bstart = strtotime('+'.$dur.' minutes', $bstart);
         while($bstart <= $end):                                           
             $op1 .= "<option value='".date('h:i A', $bstart)."'>".date('h:i A', $bstart)."</option>";
             $bstart = strtotime('+'.$dur.' minutes', $bstart);
@@ -199,7 +200,7 @@ class DoctorController extends Controller
      */
     public function profile(){
         $branches = DB::table('branches')->get();
-        $specializations = Specialization::all();
+        $specializations = Specialization::where('category', 1)->get();
         $doctor = Doctor::where('user_id', Auth::user()->id)->first();
         return view('doctor.profile', compact('branches', 'specializations', 'doctor'));
     }
@@ -249,9 +250,9 @@ class DoctorController extends Controller
 
     public function settingsupdate(Request $request, $id){
         $this->validate($request, [
-            'fee' => 'required',
-            'slots' => 'required',
-            'time_per_appointment' => 'required',
+            'fee' => 'required|numeric',
+            'slots' => 'required|numeric',
+            'time_per_appointment' => 'required|numeric',
             'appointment_start_time' => 'required',
             'appointment_open_days' => 'required',
         ]);
