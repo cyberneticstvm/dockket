@@ -229,6 +229,6 @@ class ClinicController extends Controller
         ]);
         $inputs = array($request->from_date, $request->to_date);
         $apps = $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st")->whereBetween('service_date', [$request->from_date, $request->to_date])->where('clinic_id', $clinic->id)->orderByDesc('status')->get();
-        return view('clinic.requests', compact('requests', 'inputs'));
+        return view('clinic.requests', compact('requests', 'inputs', 'clinic'));
     }
 }

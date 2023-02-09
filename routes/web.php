@@ -126,6 +126,9 @@ Route::group(['middleware' => ['auth', 'admin']], function(){
     Route::post('/admin/settings/', [AdminController::class, 'settingsupdate'])->name('admin.settings.update');
 
     Route::post('/admin/appointments/fetch', [AdminController::class, 'fetchappointments'])->name('admin.appointments.fetch');
+
+    Route::get('/admin/requests', [AdminController::class, 'requests'])->name('admin.requests');
+    Route::post('/admin/requests', [AdminController::class, 'fetchrequests'])->name('admin.requests.fetch');
 });
 
 Route::group(['middleware' => ['auth', 'patient']], function(){

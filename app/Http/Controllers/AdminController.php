@@ -274,4 +274,20 @@ class AdminController extends Controller
         $apps = Appointment::leftJoin('doctors as d', 'd.id', '=', 'appointments.doctor_id')->leftJoin('users as u', 'u.id', '=', 'd.user_id')->selectRaw("d.doctor_id, u.name, count(appointments.id) AS acount, DATE_FORMAT(appointments.appointment_date, '%d/%b/%Y') AS adate")->whereBetween('appointments.appointment_date', [$request->from_date, $request->to_date])->groupBy('appointments.doctor_id')->orderBy('u.name')->get();
         return view('admin.appointments', compact('apps', 'inputs'));
     }
+
+    public function requests(){
+        $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->leftJoin('clinics as c', 'c.id', '=', 'sr.clinic_id')->leftjoin('users as u', 'u.id', '=', 'c.user_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st, u.name as clinic_name, DATE_FORMAT(sr.service_date, '%d%b%Y') AS serdate")->whereDate('service_date', Carbon::today())->orderByDesc('sr.service_date')->get();
+        $inputs = [];
+        return view('admin.requests', compact('requests', 'inputs'));
+    }
+
+    public function fetchrequests(Request $request){
+        $this->validate($request, [
+            'from_date' => 'required',
+            'to_date' => 'required',
+        ]);
+        $inputs = array($request->from_date, $request->to_date);
+        $requests = DB::table('service_requests as sr')->leftJoin('specializations as s', 's.id', '=', 'sr.service_id')->leftJoin('clinics as c', 'c.id', '=', 'sr.clinic_id')->leftjoin('users as u', 'u.id', '=', 'c.user_id')->selectRaw("sr.*, s.name as sname, CASE WHEN sr.status = 'P' THEN 'Pending' ELSE 'Completed' END AS st, u.name as clinic_name, DATE_FORMAT(sr.service_date, '%d%b%Y') AS serdate")->whereBetween('service_date', [$request->from_date, $request->to_date])->orderByDesc('sr.service_date')->get();
+        return view('admin.requests', compact('requests', 'inputs'));
+    }
 }

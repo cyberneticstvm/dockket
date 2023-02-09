@@ -84,7 +84,7 @@
                                                             Mobile: {{ $clinic->mobile }}
                                                     </strong>
                                                     <div class="row">
-                                                        <div class="col text-center text-dark">₹ xxx</div>
+                                                        <div class="col text-center text-dark">₹</div>
                                                         <div class="col text-center text-dark">{{ number_format($clinic->distance_km, 2) }} KMs</div>
                                                         <div class="col text-center"><a href="/clinic/locationmap/{{ $clinic->clinic_id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
                                                         <!--<div class="col text-center"><a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>-->

@@ -33,7 +33,7 @@
                                             <small class="text-danger">{{ $errors->first('email') }}</small>
                                             @enderror
                                         </div>
-                                        <small class="text-info">In case you are a patient and dont have an email regitered with us, use our android app to recover the PIN or contact support to mail@dockket.in </small>
+                                        <span class="text-dark">* In case you are a patient and dont have an email regitered with us, use our android app to recover the PIN or contact support to mail@dockket.in </span>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-lg-9"></div>

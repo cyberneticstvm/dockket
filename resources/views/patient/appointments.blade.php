@@ -1,4 +1,4 @@
-@extends('doctor.base')
+@extends('base')
 @section('content')
 <div role="main" class="main">
     <div class="container pt-3 pb-2">
