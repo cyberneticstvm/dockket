@@ -14,7 +14,7 @@
 		<meta name="csrf-token" content="{{ csrf_token() }}">
 
 		<!-- Favicon -->
-		<link rel="shortcut icon" href="{{ public_path().'/img/favicon.ico' }}" type="image/x-icon" />
+		<link rel="shortcut icon" href="{{ public_path().'/img/dockket/logos/dockket-icon.png' }}" type="image/x-icon" />
 		<link rel="apple-touch-icon" href="{{ public_path().'/img/apple-touch-icon.png' }}">
 
 		<!-- Mobile Metas -->
