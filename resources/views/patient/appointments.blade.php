@@ -18,7 +18,7 @@
                                 <td>{{ $app->mobile }}</td>
                                 <td>{{ $app->appointment_date }}</td>
                                 <td>{{ $app->spec }}</td>
-                                <td>{{ $app->doctor }}</td>
+                                <td>{{ $app->doctor()->find($app->doctor_id)->user->name }}</td>
                             </tr>
                         @empty
                         @endforelse

@@ -6,8 +6,10 @@ $(function(){
     $("#log").click(function(){
         var dis = $(this);
         if(dis.is(":checked")){
+            dis.parent().parent().find('#email').prop('required', true);
             dis.parent().parent().find('#pin').prop('required', true);
         }else{
+            dis.parent().parent().find('#email').prop('required', false);
             dis.parent().parent().find('#pin').prop('required', false);
         }
     });
@@ -49,6 +51,11 @@ $(function(){
         $('.slot').removeClass('activeslot');
         dis.addClass('activeslot');
         dis.parent('div').find(".atime").val(dis.text().trim());
+    });
+
+    $(".atime").keypress(function(e){
+        e.preventDefault();
+        return false;
     });
 
     $(".slotBtn").click(function(){

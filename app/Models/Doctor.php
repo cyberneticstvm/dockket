@@ -29,4 +29,8 @@ class Doctor extends Model
         'designation',
         'status',
     ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

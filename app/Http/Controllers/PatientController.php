@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Appointment;
 use Session;
 use DB;
 
@@ -15,10 +16,10 @@ class PatientController extends Controller
 
     public function login(Request $request){
         $this->validate($request, [
-            'mobile' => 'required|numeric|digits:10',
-            'password' => 'required|min:4',
+            'email' => 'required',
+            'password' => 'required',
         ]);
-        $credentials = $request->only('mobile', 'password');
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials, $request->has('remember'))):            
             return redirect()->intended(route('appointment'))->withSuccess('You have Successfully logged in');
         endif;
@@ -32,7 +33,7 @@ class PatientController extends Controller
     } 
 
     public function myappointments(){
-        $appointments = DB::table("appointments")->where('user_id', Auth::user()->id)->orderByDesc('appointment_date')->get();
+        $appointments = Appointment::where('user_id', Auth::user()->id)->orderByDesc('appointment_date')->get();
         $services = DB::table("service_requests")->where('user_id', Auth::user()->id)->orderByDesc('service_date')->get();
         return view('patient.appointments', compact('appointments', 'services'));
     }

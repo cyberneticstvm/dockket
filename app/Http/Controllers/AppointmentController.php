@@ -63,23 +63,18 @@ class AppointmentController extends Controller
         $input['appointment_time'] = ($request->appointment_time) ? Carbon::createFromFormat('h:i A', $request->appointment_time)->format('H:i:s') : '00:00';
         $token = Appointment::where('doctor_id', $request->doctor_id)->whereDate('appointment_date', $request->appointment_date)->max('token');
         $input['token'] = ($token > 0) ? $token+1 : 1;
-        if($request->log == 1):
+        if($request->log == 1 && $request->email):
             $patient['name'] = $input['patient_name'];
-            $patient['email'] = $input['mobile'];
+            $patient['email'] = $input['email'];
             $patient['mobile'] = $input['mobile'];
-            $patient['password'] = Hash::make($input['pin']);
+            $patient['password'] = Hash::make($input['password']);
             $patient['user_type'] = 'P'; // Patient
             $patient['user_status'] = 'A';
-            $p = User::upsert($patient, 'email');
-            if($p > 0):
-                $input['user_id'] = $p;
-                $patient = User::where('email', $patient['email'])->first();
-            else:
-                $input['user_id'] = $p->id;
-                $patient = $p;
-            endif;
-            Auth::login($patient);            
-        endif;
+            User::upsert($patient, 'email');
+            $user = User::where('email', $request->email)->first();
+            Auth::login($user);           
+        endif;        
+        $input['user_id'] = (Auth::user()) ? Auth::user()->id : 0;
         $app = Appointment::create($input);
         $doctor = Doctor::find($request->doctor_id); $user = User::find($doctor->user_id);
         $token = $input['token']; $date = $request->appointment_date; $time = $request->appointment_time; $type = 'A';
@@ -134,26 +129,20 @@ class AppointmentController extends Controller
             'patient_name' => 'required',
             'mobile' => 'required',
         ]);
-        $input = $request->all();
-        if($request->log == 1):
-            $patient['name'] = $input['patient_name'];
-            $patient['email'] = $input['mobile'];
-            $patient['mobile'] = $input['mobile'];
-            $patient['password'] = Hash::make($input['pin']);
-            $patient['user_type'] = 'P'; // Patient
-            $patient['user_status'] = 'A';
-            $p = User::upsert($patient, 'email');
-            if($p > 0):
-                $input['user_id'] = $p;
-                $patient = User::where('email', $patient['email'])->first();
-            else:
-                $input['user_id'] = $p->id;
-                $patient = $p;
-            endif;
-            Auth::login($patient);
-        endif;
-        $service = ServiceRequest::create($input);
-        $clinic = Clinic::find($request->clinic_id); $user = User::find($clinic->user_id);
+        $input = $request->only(array('mobile', 'email'));
+        $input1 = $request->all();
+        $input['name'] = $request->patient_name;
+        $input['password'] = Hash::make($request->password);
+        $input['user_type'] = 'P';
+        $input['user_status'] = 'A';
+        if($request->log == 1 && $request->email):
+            User::upsert($input, 'email');
+            $user = User::where('email', $request->email)->first();
+            Auth::login($user);            
+        endif;        
+        $input1['user_id'] = (Auth::user()) ? Auth::user()->id : 0;
+        $service = ServiceRequest::create($input1);
+        $clinic = Clinic::find($request->clinic_id);
         $date = $request->service_date; $type = 'S';
         $ss = Specialization::find($request->service_id);
         $sname = ($ss) ? $ss->name : 'All';

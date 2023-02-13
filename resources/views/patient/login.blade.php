@@ -24,17 +24,17 @@
                                     @csrf
                                     <div class="row">
                                         <div class="form-group col">
-                                            <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
-                                            <input type="text" name="mobile" maxlength="10" value="{{ old('mobile') }}" class="form-control" placeholder="Mobile Number" required>
-                                            @error('mobile')
-                                            <small class="text-danger">{{ $errors->first('mobile') }}</small>
+                                            <label class="form-label">Email <span class="text-danger">*</span></label>
+                                            <input type="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="Email" required>
+                                            @error('email')
+                                            <small class="text-danger">{{ $errors->first('email') }}</small>
                                             @enderror
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="form-group col-lg-12">
-                                            <label class="form-label">4 Digits PIN <span class="text-danger">*</span></label>
-                                            <input type="password" name="password" value="" class="form-control" placeholder="0000">
+                                            <label class="form-label">Password <span class="text-danger">*</span></label>
+                                            <input type="password" name="password" value="" class="form-control" placeholder="******">
                                             @error('password')
                                             <small class="text-danger">{{ $errors->first('password') }}</small>
                                             @enderror
@@ -48,7 +48,7 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <a href="/forgot">Forgot PIN?</a>
+                                            <a href="/forgot">Forgot Password?</a>
                                         </div>
                                     </div>
                                 </form>

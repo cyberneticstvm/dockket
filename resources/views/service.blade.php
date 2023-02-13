@@ -84,7 +84,7 @@
                                                             Mobile: {{ $clinic->mobile }}
                                                     </strong>
                                                     <div class="row">
-                                                        <div class="col text-center text-dark">₹</div>
+                                                        <div class="col text-center text-dark"></div>
                                                         <div class="col text-center text-dark">{{ number_format($clinic->distance_km, 2) }} KMs</div>
                                                         <div class="col text-center"><a href="/clinic/locationmap/{{ $clinic->clinic_id }}" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>
                                                         <!--<div class="col text-center"><a href="https://maps.google.com/maps?daddr={{ $clinic->latitude }},{{ $clinic->longitude }}&11=" target="_blank"><i class="fa fa-location-dot text-info"></i></a></div>-->
@@ -106,7 +106,7 @@
                                                                 </div>
                                                                 <div class="col-lg-12 form-group">
                                                                     <label>Mobile Number: </label>
-                                                                    <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" required/>
+                                                                    <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" placeholder="Mobile Number" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->mobile : '' }}" required/>
                                                                 </div>
                                                                 <div class="col-lg-12 form-group">
                                                                     <label>Special instructions: </label>
@@ -117,9 +117,15 @@
                                                                         <input type="checkbox" name="log" id="log" class="custom-control-input" value="1" data-bs-toggle="collapse" data-bs-target="#log_{{ $clinic->clinic_id }}">
                                                                         <label class="custom-control-label text-2" for="terms">Remember Details</a></label>
                                                                     </div>
-                                                                    <div class="col-lg-12 form-group collapse" id="log_{{ $clinic->clinic_id }}">
-                                                                        <label>4 Digits PIN: </label>
-                                                                        <input type="text" maxlength="4" id="pin" class="form-control from-control-sm" name="pin" placeholder="0000"/>
+                                                                    <div class="row collapse" id="log_{{ $clinic->clinic_id }}">
+                                                                        <div class="col-lg-12 form-group">
+                                                                            <label>Email: </label>
+                                                                            <input type="email" id="email" class="form-control from-control-sm" name="email" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" placeholder="Email"/>
+                                                                        </div>
+                                                                        <div class="col-lg-12 form-group">
+                                                                            <label>Password: </label>
+                                                                            <input type="password" id="pin" class="form-control from-control-sm" name="password" placeholder="******"/>
+                                                                        </div>
                                                                     </div>
                                                                 @endif
                                                                 <div class="col text-center">                                                        

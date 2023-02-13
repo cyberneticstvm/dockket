@@ -125,7 +125,7 @@
                                                                 <div class="row mt-3">
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Selected Time: </label>
-                                                                        <input type="text" class="form-control from-control-sm atime" name="appointment_time" placeholder="Selected Time" readonly required/>
+                                                                        <input type="text" class="form-control from-control-sm atime" name="appointment_time" placeholder="Selected Time" required/>
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Full Name: </label>
@@ -133,16 +133,22 @@
                                                                     </div>
                                                                     <div class="col-lg-12 form-group">
                                                                         <label>Mobile Number: </label>
-                                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" placeholder="Mobile Number" required/>
+                                                                        <input type="text" class="form-control from-control-sm" maxlength="10" name="mobile" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->mobile : '' }}" placeholder="Mobile Number" required/>
                                                                     </div>
                                                                     @if(!isset(Auth::user()->id))
                                                                     <div class="col-lg-12 form-group">
                                                                         <input type="checkbox" name="log" id="log" class="custom-control-input" value="1" data-bs-toggle="collapse" data-bs-target="#log_{{ $app->id }}">
                                                                         <label class="custom-control-label text-2" for="terms">Remember Details</a></label>
                                                                     </div>
-                                                                    <div class="col-lg-12 form-group collapse" id="log_{{ $app->id }}">
-                                                                        <label>4 Digits PIN: </label>
-                                                                        <input type="text" maxlength="4" id="pin" class="form-control from-control-sm" name="pin" placeholder="0000"/>
+                                                                    <div class="row collapse" id="log_{{ $app->id }}">
+                                                                        <div class="col-lg-12 form-group">
+                                                                            <label>Email: </label>
+                                                                            <input type="email" id="email" class="form-control from-control-sm" name="email" value="{{ (isset(Auth::user()->user_type) && Auth::user()->user_type == 'P') ? Auth::user()->email : '' }}" placeholder="Email"/>
+                                                                        </div>
+                                                                        <div class="col-lg-12 form-group">
+                                                                            <label>Password: </label>
+                                                                            <input type="password" id="pin" class="form-control from-control-sm" name="password" placeholder="******"/>
+                                                                        </div>
                                                                     </div>
                                                                     @endif
                                                                     <div class="col text-center">                                                        
