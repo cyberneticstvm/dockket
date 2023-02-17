@@ -55,30 +55,30 @@
     </section>
 
     <div class="cards custom-cards container z-index-2">
-        <div class="cards-container row justify-content-center justify-content-xl-between w-100 my-5 mt-xl-0 mx-0">
+        <div class="cards-container row justify-content-center justify-content-xl-between">
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="400">
-                    <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'/img/dockket/search.png' }}" class="img-fluid" alt="Healthcare Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Search.</h4>
+                    <div class="card-body d-flex align-items-center flex-column z-index-1">
+                        <i class="fa fa-search text-info fa-2xl mb-5"></i>
+                        <h4 class="card-title font-weight-bold mb-5">Search.</h4>
                         <p class="card-text text-center">Find a Doctor based on your healthcare need. Search accordingly to distance, specific illness and date.</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="zoomIn" data-appear-animation-delay="100">
-                    <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'/img/dockket/finger-pointer.png' }}" alt="Immediate Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Select</h4>
+                    <div class="card-body d-flex align-items-center flex-column z-index-1">
+                        <i class="fa fas fa-hand-point-up text-info fa-2xl mb-5"></i>
+                        <h4 class="card-title mb-1 font-weight-bold mb-5">Select</h4>
                         <p class="card-text text-center">View professional profile of doctors. Select on credibility, specialization profile and location criteria. It's only a few clicks away to the right doctor.</p>
                     </div>
                 </div>
             </div>
             <div class="col-xs-12 col-lg-6 col-xl-4 mb-4 mb-xl-0 pb-2 pb-xl-0">
                 <div class="card border-radius-0 bg-color-light border-0 box-shadow-1 appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="400">
-                    <div class="card-body d-flex align-items-center justify-content-between flex-column z-index-1">
-                        <img src="{{ public_path().'/img/dockket/tick.png' }}" alt="Diagnostic Center">
-                        <h4 class="card-title mb-1 font-weight-bold">Book</h4>
+                    <div class="card-body d-flex align-items-center flex-column z-index-1">
+                        <i class="fa fa-check text-info fa-2xl mb-5"></i>
+                        <h4 class="card-title mb-1 font-weight-bold mb-5">Book</h4>
                         <p class="card-text text-center">Book an appointment with your preferred doctor all within the Dckket App.</p>
                     </div>
                 </div>
@@ -126,15 +126,15 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-4 mb-4 mb-lg-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">
-                    <h3 class="text-color-quaternary mb-3 font-weight-semibold text-capitalize pe-5">With Dockket, we bring health and happiness.</h3>
-                    <p class="text-uppercase mb-3">Team Dockket</p>
+                    <h3 class="text-color-quaternary mb-3 font-weight-semibold text-capitalize pe-5">With<span class'dockket'>DOCKKET</span>, we bring health and happiness.</h3>
+                    <p class="text-uppercase mb-3">Team <span class='dockket'>DOCKKET</span></p>
                     <!--<img src="" alt="Signature">-->
                 </div>
                 <div class="col-xs-12 col-lg-8 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
                     <p class="p-relative bottom-6">Recovery is just one click away. Connect with trusted doctors in your locality.
                     Select from a pool of specialized doctors who are committed to serve you.</p>
                     <p>In times of urgency, finding a reliable doctor becomes a stressful challenge. It is the worst scenario to be made
-                    to go from one hospital to another without knowledge at hand. With DOCKKET, you’ll not only receive critical
+                    to go from one hospital to another without knowledge at hand. With <span class='dockket'>DOCKKET</span>, you’ll not only receive critical
                     information during the time of need, you’ll be able to get a doctor and find yourself a clinic right away.</p>
                     <a href="/appointment/" class="font-weight-bold text-uppercase text-decoration-none">Make an Appointment</a>
                 </div>
@@ -146,16 +146,16 @@
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 col-lg-6 p-relative overflow-hidden col-cuttin-more-about"></div>
-                <div class="col-xs-12 col-lg-6 p-relative py-5 bg-color-light z-index-1 ps-lg-5 ps-xl-0">
+                <div class="col-xs-12 col-lg-6 p-relative py-5 bg-color-light z-index-1 ps-lg-5 ps-xl-0 ml-5">
                     <p class="text-uppercase mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="100">Who We Are</p>
-                    <h3 class="text-color-quaternary font-weight-bold text-capitalize mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">More About Dockket</h3>
-                    <p class="font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300">Dockket
+                    <h3 class="text-color-quaternary font-weight-bold text-capitalize mb-2 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">More About<span class='dockket'>  DOCKKET</span></h3>
+                    <p class="font-weight-semibold appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="300"> Dockket
                     provides services that allow a person with special needs to stay in their home. The care can be for
                     people who are getting older, are chronically ill, recovering from surgery, disabled, or any person that needs in
                     home care.</p>
                     <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We have tied up with world class blood testing and other check up labs around your locality for serving you
                     better IN THE COMFORT OF YOUR HOME.</p>
-                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We offer Home nursing, Physiotherapy to the bedridden patients. Your can trust DOCKKET and the dedicated team will take care of your elderly parents and loved ones in your absence.</p>
+                    <p class="mb-4 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="400">We offer Home nursing, Physiotherapy to the bedridden patients. Your can trust<span class='dockket'> DOCKKET</span> and the dedicated team will take care of your elderly parents and loved ones in your absence.</p>
                     <div class="row counters mb-4 flex-nowrap flex-sm-wrap">
                         <div class="col-xs-4 col-sm-4 col-lg-4 mb-0 d-flex">
                             <div class="counter counter-primary appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="500">
