@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -138,11 +139,18 @@ class AppointmentController extends Controller
         if($request->log == 1 && $request->email):
             User::upsert($input, 'email');
             $user = User::where('email', $request->email)->first();
-            Auth::login($user);            
+            Auth::login($user);           
         endif;        
         $input1['user_id'] = (Auth::user()) ? Auth::user()->id : 0;
+        if($request->doc):
+            $doc = $request->file('doc');
+            $fname = 'clinic/docs/'.$doc->getClientOriginalName();
+            Storage::disk('public')->putFileAs($fname, $doc, '');
+            $input1['document'] = $doc->getClientOriginalName();
+        endif;
         $service = ServiceRequest::create($input1);
         $clinic = Clinic::find($request->clinic_id);
+        $user = (!Auth::user()) ? User::find($clinic->user_id) : Auth::user();
         $date = $request->service_date; $type = 'S';
         $ss = Specialization::find($request->service_id);
         $sname = ($ss) ? $ss->name : 'All';
