@@ -186,23 +186,28 @@
                 <div class="col-xs-12 col-xl-6 p-relative bg-color-light z-index-1">
                     <p class="text-uppercase p-0 m-0">What They Say</p>
                     <h3 class="font-weight-bold text-color-quaternary mb-2 p-0 text-capitalize">Patients Reviews</h3>
-                    <p class="p-0 m-0 font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet libero id nisi.</p>
+                    <p class="p-0 m-0 font-weight-normal"></p>
                     <section class="section section-height-4 mt-0 mb-0 border-0 bg-color-light stage-margin">
                         <div class="owl-carousel owl-theme nav-style-2 mb-0" data-plugin-options="{'items': 1, 'loop': false, 'nav': true, 'dots': false, 'infinite': false, 'stagePadding': 0}">
                             <div class="text-center d-flex flex-wrap justify-content-center p-relative">
                                 <span class="review-quotes text-start position-absolute"><i class="fas fa-quote-left text-color-primary"></i></span>
-                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget risus porta, tincidunt turpis at, interdum tortor. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sociis natoque penatibus et magnis.</p>
-                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">John Smith</h4>
+                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">It was a wonderful experience to use Dockket. It is just like a virtual multispeciality hospital with specialist doctors and labs.</p>
+                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">Arun Mahesh</h4>
                             </div>
                             <div class="text-center d-flex flex-wrap justify-content-center p-relative">
                                 <span class="review-quotes text-start position-absolute"><i class="fas fa-quote-left text-color-primary"></i></span>
-                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">Lorem ipsum, consectetur adipiscing elit. Sed eget porta, tincidunt turpis at, interdum tortor. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sociis natoque penatibus et magnis.</p>
-                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">John Doe</h4>
+                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">The long queues and crowds at the labs and clinics are no more there. For the pharmacy also I depend on Dockket</p>
+                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">Jeena Jacob</h4>
                             </div>
                             <div class="text-center d-flex flex-wrap justify-content-center p-relative">
                                 <span class="review-quotes text-start position-absolute"><i class="fas fa-quote-left text-color-primary"></i></span>
-                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">Lorem ipsum dolor sit amet. Sed eget risus porta, tincidunt turpis at, interdum tortor. Suspendisse potenti. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sociis natoque penatibus et magnis.</p>
-                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">Janice Smith</h4>
+                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">Dockket made my life easier. At any time I can get a doctor to my home for my bedridden mother.</p>
+                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">Vijoy Sasidharan</h4>
+                            </div>
+                            <div class="text-center d-flex flex-wrap justify-content-center p-relative">
+                                <span class="review-quotes text-start position-absolute"><i class="fas fa-quote-left text-color-primary"></i></span>
+                                <p class="lead lead-2 mb-0 text-color-default font-weight-normal">The software is very user friendly that even my elderly father can make an appointment in his smart phone.</p>
+                                <h4 class="review-signature text-capitalize text-color-quaternary mt-3">Gokul Arjun</h4>
                             </div>
                         </div>
                     </section>
