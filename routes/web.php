@@ -29,6 +29,9 @@ Route::get('/contact', function () {
 Route::get('/login', function () {
     return view('doctor.login');
 })->name('login');
+Route::get('/privacy-policy', function () {
+    return view('privacy-policy');
+})->name('privacy-policy');
 
 Route::get('/appointment/', [AppointmentController::class, 'index'])->name('appointment');
 Route::post('/appointment/', [AppointmentController::class, 'show'])->name('appointment.show');
