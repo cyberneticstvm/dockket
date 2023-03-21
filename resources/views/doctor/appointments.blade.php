@@ -27,11 +27,12 @@
                                 {{ date('h:i A', $from) }}<br>
                                 @if(in_array(date('h:i A', $from), $atimes) || (date('h:i A', $from) >= date('h:i A', $bstime) && date('h:i A', $from) <= date('h:i A', $betime)))
                                     @php $index = array_search(date('h:i A', $from), $atimes); @endphp
-                                    Patient Name: {!! ($index != '') ? $apps[$index]->patient_name : "<span class='few-bold text-info'>Break Time{{ $from.'-'.$bstime.'-'.$betime }}</span>" !!}<br>
+                                    Patient Name: {!! ($index != '') ? $apps[$index]->patient_name : "<span class='few-bold text-info'>Break Time</span>" !!}<br>
                                     Contact No: {{ ($index != '') ? $apps[$index]->mobile : '' }}
                                 @else
                                     <input type="checkbox" name="appointments[]" value="{{ date('h:i A', $from) }}" />
                                 @endif
+                                <br>{{ $from.'-'.$bstime.'-'.$betime }}
                             </div>
                             @php $from = strtotime('+'.$dur.' minutes', $from); $c++; @endphp
                         @endwhile
