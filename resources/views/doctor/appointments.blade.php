@@ -32,7 +32,7 @@
                                 @else
                                     <input type="checkbox" name="appointments[]" value="{{ date('h:i A', $from) }}" />
                                 @endif
-                                <br>{{ $from.'-'.$bstime.'-'.$betime }}
+                                <br>{{ date('h:i A', $from).'-'.date('h:i A', $bstime).'-'.date('h:i A', $betime) }}
                             </div>
                             @php $from = strtotime('+'.$dur.' minutes', $from); $c++; @endphp
                         @endwhile
