@@ -21,7 +21,7 @@
                             $from = strtotime($settings->stime); $end = strtotime($settings->etime); $dur = $settings->time_per_appointment; $bstime = strtotime($settings->bstime); $betime = strtotime($settings->betime); $c = 0; $index = '';
                             $atimes = $apps->pluck('appointment_time')->toArray(); 
                         @endphp
-                        {{ $atimes }}
+                        @php $print_r($atimes) @endphp
                         @while($from <= $end)
                             @if($c == $settings->slots) @break; @endif
                             <div class="col-sm-3 slot1 {{ (in_array(date('h:i A', $from), $atimes)) ? 'bg-success text-white no-app' : '' }}">
