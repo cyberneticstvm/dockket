@@ -1,5 +1,16 @@
-@extends('base')
-@section('content')
+<!--@extends('base')
+@section('content')-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Dockket - Privacy Policy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+
 <div role="main" class="main">
     <div class="container">
         <div class="row">
@@ -45,4 +56,6 @@
         </div>
     </div>
 </div>
-@endsection
+</body>
+</html>
+<!--@endsection-->
