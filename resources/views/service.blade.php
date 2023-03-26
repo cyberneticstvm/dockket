@@ -96,6 +96,9 @@
                                                         <input type="hidden" name="service_id" value="{{ $input[0] }}" />
                                                         <input type="hidden" name="service_date" value="{{ $input[5] }}" />
                                                         <input type="hidden" name="user_id" value="{{ isset(Auth::user()->id) ? Auth::user()->id : 0 }}" />
+                                                        <input class="form-control form-control-lg text-3 h-auto py-2" type="hidden"  value="{{ ($input && $input[1]) ? $input[1] : old('location') }}" name="location" placeholder="Location" required>
+                                                        <input type="hidden" name="latitude" value="{{ ($input && $input[2]) ? $input[2] : '' }}" />
+                                                        <input type="hidden" name="longitude" value="{{ ($input && $input[3]) ? $input[3] : '' }}" />
                                                         
                                                         <div id="clinic_{{ $clinic->clinic_id }}" class="collapse">
                                                             <h5 class="text-center text-success">Booking Available on {{ date('d-M-Y', strtotime($input[5])) }}</h5>

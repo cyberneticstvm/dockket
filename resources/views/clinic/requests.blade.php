@@ -36,7 +36,7 @@
                     </div>
                 </form>                 
                 <table id="dataTbl" class="table table-bordered table-stripped">
-                    <thead><tr><th>SL No</th><th>Patient Name</th><th>Contact</th><th>Service</th><th>Notes</th><th>Attachment</th><th>Status</th></tr></thead>
+                    <thead><tr><th>SL No</th><th>Patient Name</th><th>Contact</th><th>Service</th><th>Notes</th><th>Location</th><th>Attachment</th><th>Status</th></tr></thead>
                     <tbody>
                         @php $c = 1; @endphp
                         @forelse($requests as $key => $req)
@@ -46,6 +46,7 @@
                                 <td>{{ $req->mobile }}</td>
                                 <td>{{ $req->sname }}</td>
                                 <td>{{ $req->notes }}</td>
+                                <td>{{ $req->location }}</td>
                                 <td class="text-center"><a href="{{ ($req->document) ? public_path().'/storage/clinic/docs/'.$req->document : '#' }}" target="_blank"><i class="fa fa-file"></i></a></td>
                                 <td class="text-center">
                                     <div class="form-check form-check-inline">
